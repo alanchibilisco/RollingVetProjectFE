@@ -11,6 +11,15 @@
   background-color: #218b99;
 }
 
+.bg-cardpp{
+  background-color: #e777cf;
+}
+
+.bg-cardm{
+  background-color: rgb(57, 134, 197);
+}
+
+
 
 @font-face {
   font-family: 'typo_round_regular_demoRg';
