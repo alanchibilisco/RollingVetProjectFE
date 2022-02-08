@@ -7,7 +7,7 @@ const Cardsplanes = () => {
         <h1 class="text-center">CONOCE NUESTROS PLANES MENSUALES</h1>
   <div class="row">
     <div class="col">
-    <div class=" col-sm-10 col-md-8 col-lg-8">
+    <div class="m-1 col-sm-10 col-md-8 col-lg-8">
     <div class="card text-center">
       <div class="card-body bg-cardpp text-light rounded-3">
         <img src="https://images.vexels.com/media/users/3/144928/isolated/lists/ebbccaf76f41f7d83e45a42974cfcd87-ilustracion-de-perro.png" alt="" />

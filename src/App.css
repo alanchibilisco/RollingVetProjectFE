@@ -19,7 +19,16 @@
   background-color: rgb(57, 134, 197);
 }
 
+.btn-outline-celeste{
+  color: white;
+  border-color:  #218b99;
+}
 
+.btn-outline-celeste:hover {
+  color: #fff;
+  background-color: #218b99;
+  border-color:  #218b99;
+}
 
 @font-face {
   font-family: 'typo_round_regular_demoRg';
