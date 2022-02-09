@@ -13,9 +13,9 @@ const Index = () => {
     <div>
       <NavBar />
       <Carrousel />
-      <Cardservicios />
-      <Cardsplanes />
-      <Cardtienda/>
+      {/* <Cardservicios /> */}
+      {/* <Cardsplanes /> */}
+      {/* <Cardtienda/> */}
       <Footer />
     </div>
   );

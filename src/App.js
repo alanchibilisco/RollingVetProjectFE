@@ -10,6 +10,13 @@ import Servicios from "./components/Servicios";
 
 
 function App() {
+  const URLPacientes=process.env.REACT_APP_API_PACIENTES;
+  const URLTurnos=process.env.REACT_APP_API_TURNOS;
+
+  
+  console.log(URLPacientes);
+  console.log(URLTurnos);
+  
   return (
     <div>
       <Router>
