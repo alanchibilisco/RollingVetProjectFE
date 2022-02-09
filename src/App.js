@@ -7,15 +7,51 @@ import Error404 from "./components/Error404";
 import Login from "./components/Login";
 import QuienesSomos from "./components/QuienesSomos";
 import Servicios from "./components/Servicios";
+import { useState } from "react";
+import { useEffect } from "react";
 
 
 function App() {
-  const URLPacientes=process.env.REACT_APP_API_PACIENTES;
-  const URLTurnos=process.env.REACT_APP_API_TURNOS;
+  //useState
+  const [pacientes, setPacientes]=useState([]);
+  const [turnos, setTurnos]=useState([]);
 
+  //useEffect
+  useEffect(()=>{
+    getApiPacientes();
+  }, []);
+
+  useEffect(()=>{
+    getApiTurnos();
+  }, []);
   
+  //utilizacion de las variables de entorno
+  const URLPacientes=process.env.REACT_APP_API_PACIENTES;
+  const URLTurnos=process.env.REACT_APP_API_TURNOS;  
   console.log(URLPacientes);
   console.log(URLTurnos);
+
+  const getApiPacientes=async()=>{
+    try {
+      const res=await fetch(URLPacientes);
+      const pacientesApi=await res.json();
+      console.log(pacientesApi);
+      setPacientes(pacientesApi);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  const getApiTurnos=async()=>{
+    try {
+      const res=await fetch(URLTurnos);
+      const turnosApi=await res.json();
+      console.log(turnosApi);
+      setTurnos(turnosApi);
+    } catch (error) {
+      console.log(error);
+    }
+  }
   return (
     <div>
       <Router>
