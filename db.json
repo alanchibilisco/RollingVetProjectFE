@@ -1,0 +1,25 @@
+{
+    "pacientes":[
+      {
+        "nombreDueño": "Dueño",
+        "apellidoDueño": "Apellido",
+        "email": "example@example.com",
+        "telefono": "+549xxxxxxxxx",
+        "nombreMascota": "Mascota",
+        "especieMascota": "Perro",
+        "razaMascota": "Mestizo",
+        "id": 1
+      }
+    ],
+    "turnos":[
+      {
+        "detalleCita": "Control",
+        "veterinario": "Medico",
+        "mascota": "Mascota-nombre",
+        "fecha": "date",
+        "hora": "hour",
+        "id": 1
+      }
+    ]
+  
+  }
