@@ -9,6 +9,7 @@ import QuienesSomos from "./components/QuienesSomos";
 import Servicios from "./components/Servicios";
 import { useState } from "react";
 import { useEffect } from "react";
+import Adm from "./components/Adm";
 
 
 function App() {
@@ -24,7 +25,7 @@ function App() {
   useEffect(()=>{
     getApiTurnos();
   }, []);
-  
+
   //utilizacion de las variables de entorno
   const URLPacientes=process.env.REACT_APP_API_PACIENTES;
   const URLTurnos=process.env.REACT_APP_API_TURNOS;  
@@ -73,6 +74,11 @@ function App() {
             exact
             path="/Contactanos"
             element={<Contacto></Contacto>}
+          ></Route>
+          <Route
+            exact
+            path="/Adm"
+            element={<Adm></Adm>}
           ></Route>
         </Routes>
       </Router>
