@@ -16,7 +16,7 @@ const CrearTurno = ({pacientes}) => {
             <Form.Select>
               <option value="">Selecciona una mascota</option>
               {pacientes.map((paciente)=>(
-                  <option value={paciente.nombreMascota}>{paciente.nombreMascota}</option>
+                  <option value={paciente.nombreMascota} key={paciente.id}>{paciente.nombreMascota}</option>
               ))}             
             </Form.Select>            
           </Form.Group>       

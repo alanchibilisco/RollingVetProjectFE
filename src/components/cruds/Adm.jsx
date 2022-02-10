@@ -6,7 +6,7 @@ import Footer from '../Footer';
 import NavBar from '../NavBar';
 
 
-const Adm =()=>{
+const Adm =({turnos})=>{
     return (
 <div className="border border-2 border-warning">
     <NavBar/>
@@ -24,15 +24,10 @@ const Adm =()=>{
     <hr className="container" />       
      
       <Row>
-          <Col xl={3} lg={4} md={6} xs={12}><CardTurnos></CardTurnos></Col>
-          <Col xl={3} lg={4} md={6} xs={12}><CardTurnos></CardTurnos></Col>
-          <Col xl={3} lg={4} md={6} xs={12}><CardTurnos></CardTurnos></Col>
-          <Col xl={3} lg={4} md={6} xs={12}><CardTurnos></CardTurnos></Col>
-          <Col xl={3} lg={4} md={6} xs={12}><CardTurnos></CardTurnos></Col>
-          <Col xl={3} lg={4} md={6} xs={12}><CardTurnos></CardTurnos></Col>
-          <Col xl={3} lg={4} md={6} xs={12}><CardTurnos></CardTurnos></Col>
-          <Col xl={3} lg={4} md={6} xs={12}><CardTurnos></CardTurnos></Col>
-                 
+        {turnos.map((turno)=>(
+            <Col xl={3} lg={4} md={6} xs={12}><CardTurnos turno={turno} key={turno.id}></CardTurnos></Col>
+        ))};          
+         
     </Row>
       </div>
       <div className="no-products-found d-flex align-items-center justify-content-center">

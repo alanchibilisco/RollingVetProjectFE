@@ -5,7 +5,7 @@ import Footer from '../Footer';
 import NavBar from '../NavBar';
 import Turno from './Turno';
 
-const AdmTurnos = () => {
+const AdmTurnos = ({turnos}) => {
     return (
         <div>
             <NavBar></NavBar>
@@ -36,30 +36,11 @@ const AdmTurnos = () => {
               </tr>
             </thead>
             <tbody>
-                {/* esto tiene que ir en turno */}
-              {/* <tr>
-                <td>Mascota</td>
-                <td>Veterinario</td>
-                <td>Detalle Cita</td>
-                <td>Fecha</td>
-                <td>Hora</td>                
-                <td className="w-25">
-                  <div className="d-flex justify-content-center">
-                    <Link
-                      to="/*"
-                      className=" btn btn-dark mx-1 text-decoration-none text-center"
-                    >
-                      Editar
-                    </Link>
-                    <button
-                      className="btn btn-dark mx-1"                      
-                    >
-                      Borrar
-                    </button>
-                  </div>
-                </td>
-              </tr> */}
-              <Turno></Turno>
+                {/* esto tiene que ir en turno */}          
+              {turnos.map((turno)=>(
+                  <Turno turno={turno} key={turno.id}></Turno>
+              ))}
+              
             </tbody>
           </Table>
 

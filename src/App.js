@@ -81,12 +81,12 @@ function App() {
           <Route
             exact
             path="/Adm"
-            element={<Adm></Adm>}
+            element={<Adm turnos={turnos}></Adm>}
           ></Route>
           <Route
             exact
             path="/Adm/pacientes"
-            element={<AdmPacientes></AdmPacientes>}
+            element={<AdmPacientes pacientes={pacientes}></AdmPacientes>}
           ></Route>
           <Route
             exact
@@ -96,7 +96,7 @@ function App() {
           <Route
             exact
             path="/Adm/turnos"
-            element={<AdmTurnos></AdmTurnos>}
+            element={<AdmTurnos turnos={turnos}></AdmTurnos>}
           ></Route>
           <Route
             exact

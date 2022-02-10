@@ -2,20 +2,20 @@ import React from "react";
 import { Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
-const CardTurnos = () => {
+const CardTurnos = ({turno}) => {
   return (
     <div>
       <Card className="my-4">
         <Card.Img className="img-fluid" variant="top" src="" />
         <Card.Body>
           <div className="d-flex align-items-center justify-content-center mb-2">
-            <Card.Title className="m-0 text-truncate fw-bold">MASCOTA</Card.Title>            
+            <Card.Title className="m-0 text-truncate fw-bold">Mascota: {turno.mascota}</Card.Title>            
           </div>
-          <Card.Text>VETERINARIO</Card.Text>
-          <Card.Text>DETALLE DE CITA</Card.Text>
+          <Card.Text><span className="fw-bold">Veterinario:</span> {turno.veterinario}</Card.Text>
+          <Card.Text><span className="fw-bold">Detalle Cita:</span> {turno.detalleCita}</Card.Text>
           <div className="d-flex align-items-center justify-content-between">
-            <span className="badge bg-dark fs-6">09/02/2022</span>
-            <span className="badge bg-dark fs-6">18:00</span>
+            <span className="badge bg-dark fs-6">{turno.fecha}</span>
+            <span className="badge bg-dark fs-6">{turno.hora}</span>
             
           </div>
           {/* <Link

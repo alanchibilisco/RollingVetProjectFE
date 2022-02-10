@@ -1,16 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const Paciente = () => {
+const Paciente = ({paciente}) => {
     return (                    
             <tr>
-                <td>idEj</td>
-                <td>ExampleName</td>
-                <td>ExampleLastName</td>
-                <td>Telefono</td>
-                <td>Mascota</td>
-                <td>Perro</td>
-                <td>Mestizo</td>
+                <td>{paciente.id}</td>
+                <td>{paciente.nombreDueño}</td>
+                <td>{paciente.apellidoDueño}</td>
+                <td>{paciente.telefono}</td>
+                <td>{paciente.email}</td>
+                <td>{paciente.nombreMascota}</td>
+                <td>{paciente.especieMascota}</td>
+                <td>{paciente.razaMascota}</td>
                 <td className="w-25">
                   <div className="d-flex justify-content-center">
                     <Link

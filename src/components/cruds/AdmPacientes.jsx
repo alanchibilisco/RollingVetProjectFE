@@ -5,7 +5,7 @@ import Footer from '../Footer';
 import NavBar from '../NavBar';
 import Paciente from "./Paciente";
 
-const AdmPacientes = () => {
+const AdmPacientes = ({pacientes}) => {
   return (
       
     <div>
@@ -31,6 +31,7 @@ const AdmPacientes = () => {
                 <th>Nombre</th>
                 <th>Apellido</th>
                 <th>Telefono</th>
+                <th>Email</th>
                 <th>Nombre Mascota</th>
                 <th>Especie</th>
                 <th>Raza</th>
@@ -63,7 +64,8 @@ const AdmPacientes = () => {
                   </div>
                 </td>
               </tr> */}
-              <Paciente></Paciente>
+              {pacientes.map((paciente)=>(<Paciente paciente={paciente} key={paciente.id}></Paciente>))}
+              
             </tbody>
           </Table>
 
