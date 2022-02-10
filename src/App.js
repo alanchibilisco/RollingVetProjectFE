@@ -9,8 +9,11 @@ import QuienesSomos from "./components/QuienesSomos";
 import Servicios from "./components/Servicios";
 import { useState } from "react";
 import { useEffect } from "react";
-import Adm from "./components/Adm";
-
+import Adm from "./components/cruds/Adm";
+import AdmPacientes from "./components/cruds/AdmPacientes";
+import AdmTurnos from "./components/cruds/AdmTurnos";
+import CrearPaciente from "./components/cruds/CrearPaciente";
+import CrearTurno from "./components/cruds/CrearTurno";
 
 function App() {
   //useState
@@ -80,6 +83,27 @@ function App() {
             path="/Adm"
             element={<Adm></Adm>}
           ></Route>
+          <Route
+            exact
+            path="/Adm/pacientes"
+            element={<AdmPacientes></AdmPacientes>}
+          ></Route>
+          <Route
+            exact
+            path="/Adm/pacientes/crear"
+            element={<CrearPaciente></CrearPaciente>}
+          ></Route>
+          <Route
+            exact
+            path="/Adm/turnos"
+            element={<AdmTurnos></AdmTurnos>}
+          ></Route>
+          <Route
+            exact
+            path="/Adm/turnos/crear"
+            element={<CrearTurno></CrearTurno>}
+          ></Route>
+         
         </Routes>
       </Router>
     </div>

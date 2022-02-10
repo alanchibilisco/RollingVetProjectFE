@@ -38,6 +38,9 @@ const NavBar = () => {
               <Nav.Link href="/Contactanos" className="text-white">
                 CONTACTANOS
               </Nav.Link>
+              <Nav.Link href="/Adm" className="text-white">
+                ADM
+              </Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </Container>

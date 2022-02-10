@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const CardTurnos = () => {
   return (
     <div>
-      <Card className="my-4 bg-warning">
+      <Card className="my-4">
         <Card.Img className="img-fluid" variant="top" src="" />
         <Card.Body>
           <div className="d-flex align-items-center justify-content-center mb-2">
@@ -18,12 +18,12 @@ const CardTurnos = () => {
             <span className="badge bg-dark fs-6">18:00</span>
             
           </div>
-          <Link
+          {/* <Link
               to="*"
               className=" btn btn-dark text-white text-decoration-none my-2"
             >
               Borrar
-            </Link>
+            </Link> */}
         </Card.Body>
       </Card>
     </div>

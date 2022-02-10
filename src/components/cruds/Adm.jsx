@@ -2,8 +2,9 @@ import React from "react";
 import { Button, Card, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import CardTurnos from "./CardTurnos";
-import Footer from './Footer';
-import NavBar from './NavBar';
+import Footer from '../Footer';
+import NavBar from '../NavBar';
+
 
 const Adm =()=>{
     return (
@@ -15,8 +16,8 @@ const Adm =()=>{
     <h5 className="text-end">RollingVet V:1_0_0</h5>
     <hr />
     <div className="d-flex justify-content-around">
-      <Link to="*" className="btn btn-dark text-decoration-none">Administrar Pacientes</Link>
-      <Link to="*" className="btn btn-dark text-decoration-none">Administrar Turnos</Link>
+      <Link to="/Adm/pacientes" className="btn btn-dark text-decoration-none">Administrar Pacientes</Link>
+      <Link to="/Adm/turnos" className="btn btn-dark text-decoration-none">Administrar Turnos</Link>
     </div>
     <hr />
     <h2 className="text-center bg-dark text-white">Turnos Asignados</h2>
@@ -34,6 +35,10 @@ const Adm =()=>{
                  
     </Row>
       </div>
+      <div className="no-products-found d-flex align-items-center justify-content-center">
+            {/* No products found message */}
+            <h1>🐶🐱 No hay turnos asignados 🐶🐱</h1>
+          </div>
     <Footer/>
 </div>
     );
