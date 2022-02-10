@@ -9,6 +9,16 @@
         "especieMascota": "Perro",
         "razaMascota": "Mestizo",
         "id": 1
+      },
+      {
+        "nombreDueño": "Prueba",
+        "apellidoDueño": "Apellido",
+        "email": "example@example.com",
+        "telefono": "+549xxxxxxxxx",
+        "nombreMascota": "Mascota2",
+        "especieMascota": "Perro",
+        "razaMascota": "Mestizo",
+        "id": 2
       }
     ],
     "turnos":[

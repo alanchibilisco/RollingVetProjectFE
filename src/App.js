@@ -101,7 +101,7 @@ function App() {
           <Route
             exact
             path="/Adm/turnos/crear"
-            element={<CrearTurno></CrearTurno>}
+            element={<CrearTurno pacientes={pacientes}></CrearTurno>}
           ></Route>
          
         </Routes>

@@ -39,7 +39,7 @@ const AdmPacientes = () => {
             </thead>
             <tbody>
                 {/* esto tiene que ir en paciente */}
-              <tr>
+              {/* <tr>
                 <td>idEj</td>
                 <td>ExampleName</td>
                 <td>ExampleLastName</td>
@@ -62,7 +62,7 @@ const AdmPacientes = () => {
                     </button>
                   </div>
                 </td>
-              </tr>
+              </tr> */}
               <Paciente></Paciente>
             </tbody>
           </Table>

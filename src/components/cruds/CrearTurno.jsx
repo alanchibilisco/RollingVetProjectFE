@@ -3,7 +3,7 @@ import { Container, Form } from "react-bootstrap";
 import Footer from "../Footer";
 import NavBar from "../NavBar";
 
-const CrearTurno = () => {
+const CrearTurno = ({pacientes}) => {
   return (
     <div>
       <NavBar></NavBar>
@@ -13,12 +13,24 @@ const CrearTurno = () => {
         <Form className="my-5">
           <Form.Group className="mb-3" controlId="formBasicMascota">
             <Form.Label>Mascota*</Form.Label>
-            <Form.Control type="text" placeholder="Mascota"></Form.Control>
-          </Form.Group>
+            <Form.Select>
+              <option value="">Selecciona una mascota</option>
+              {pacientes.map((paciente)=>(
+                  <option value={paciente.nombreMascota}>{paciente.nombreMascota}</option>
+              ))}             
+            </Form.Select>            
+          </Form.Group>       
 
-          <Form.Group className="mb-3" controlId="formBasicVeterinario">
+          <Form.Group className="mb-3" controlId="formBasicVet">
             <Form.Label>Veterinario*</Form.Label>
-            <Form.Control type="text" placeholder="Veterinario"></Form.Control>
+            <Form.Select>
+              <option value="">Selecciona un Veterinario</option>
+              <option value="Addle Romina">Dra. Addle Romina A.</option>
+              <option value="Fernandez Sara">Dra. Fernandez Sara V.</option>
+              <option value="Molinari Pablo">Dr. Molinari Pablo D.</option>
+              <option value="Kuc Damian">Dr. Kuc Damian</option>
+              <option value="Mezar Diego">Dr. Mezar Diego</option>
+            </Form.Select>
           </Form.Group>
 
           <Form.Group className="mb-3" controlId="formBasicDetalle">
@@ -44,7 +56,7 @@ const CrearTurno = () => {
           <div className="text-end">
             <button className="btn btn-dark">Guardar</button>
           </div>
-          
+
         </Form>
       </Container>
       <Footer></Footer>

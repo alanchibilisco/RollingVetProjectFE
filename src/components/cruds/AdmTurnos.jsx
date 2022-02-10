@@ -3,6 +3,7 @@ import { Container, Table } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import Footer from '../Footer';
 import NavBar from '../NavBar';
+import Turno from './Turno';
 
 const AdmTurnos = () => {
     return (
@@ -36,7 +37,7 @@ const AdmTurnos = () => {
             </thead>
             <tbody>
                 {/* esto tiene que ir en turno */}
-              <tr>
+              {/* <tr>
                 <td>Mascota</td>
                 <td>Veterinario</td>
                 <td>Detalle Cita</td>
@@ -57,8 +58,8 @@ const AdmTurnos = () => {
                     </button>
                   </div>
                 </td>
-              </tr>
-              
+              </tr> */}
+              <Turno></Turno>
             </tbody>
           </Table>
 
