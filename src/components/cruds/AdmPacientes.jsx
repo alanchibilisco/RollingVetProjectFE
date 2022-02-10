@@ -6,6 +6,7 @@ import NavBar from '../NavBar';
 import Paciente from "./Paciente";
 
 const AdmPacientes = ({pacientes}) => {
+  
   return (
       
     <div>
@@ -23,7 +24,7 @@ const AdmPacientes = ({pacientes}) => {
           </div>
           <hr />
           {/* Table of products */}
-
+          { pacientes.length!==0 ?
           <Table bordered hover responsive className="align-middle mt-3">
             <thead>
               <tr>
@@ -40,41 +41,19 @@ const AdmPacientes = ({pacientes}) => {
             </thead>
             <tbody>
                 {/* esto tiene que ir en paciente */}
-              {/* <tr>
-                <td>idEj</td>
-                <td>ExampleName</td>
-                <td>ExampleLastName</td>
-                <td>Telefono</td>
-                <td>Mascota</td>
-                <td>Perro</td>
-                <td>Mestizo</td>
-                <td className="w-25">
-                  <div className="d-flex justify-content-center">
-                    <Link
-                      to="/*"
-                      className=" btn btn-dark mx-1 text-decoration-none text-center"
-                    >
-                      Editar
-                    </Link>
-                    <button
-                      className="btn btn-dark mx-1"                      
-                    >
-                      Borrar
-                    </button>
-                  </div>
-                </td>
-              </tr> */}
+             
               {pacientes.map((paciente)=>(<Paciente paciente={paciente} key={paciente.id}></Paciente>))}
               
             </tbody>
           </Table>
-
-          <div className="no-products-found d-flex align-items-center justify-content-center">
-            {/* No products found message */}
-            <h1>🐶🐱 No hay pacientes registrados 🐶🐱</h1>
+          :
+          <div className="no-products-found d-flex align-items-center justify-content-center">            
+            <h1>🐶🐱 No hay pacientes registrados 🐱🐶</h1>
           </div>
+}
         </Container>
       </div>
+          
       <Footer></Footer>
     </div>
   );
