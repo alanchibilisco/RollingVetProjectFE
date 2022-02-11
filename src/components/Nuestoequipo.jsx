@@ -10,7 +10,8 @@ const Nuestoequipo = () => {
   return (
     <div style={{ backgroundImage: `url(${nuestroequipo})` }}>
       <h1 class=" mt-3 display-3 text-light text-center">NUESTRO EQUIPO</h1>
-    <div class="justify-content-center">
+      <div class="row justify-content-center">
+      <div class="col-4">
       <div
         id="carouselExampleSlidesOnly"
         class="carousel slide"
@@ -20,7 +21,7 @@ const Nuestoequipo = () => {
           <div class="carousel-item active">
             <div
               style={{ width: "18rem" }}
-              class="card m-1 col-sm-10 col-md-8 col-lg-8"
+              class="card m-1"
             >
               <img variant="top" class="card-img-top " src={doc1} />
               <div class="card-body">
@@ -34,7 +35,7 @@ const Nuestoequipo = () => {
           <div class="carousel-item">
             <div
               style={{ width: "18rem" }}
-              class="card w-100 m-1 col-sm-10 col-md-8 col-lg-8"
+              class="card m-1 "
             >
               <img variant="top" class="card-img-top " src={doc2} alt="" />
               <div class="card-body">
@@ -48,7 +49,7 @@ const Nuestoequipo = () => {
           <div class="carousel-item">
             <div
               style={{ width: "18rem" }}
-              class="card w-100 m-1 col-sm-10 col-md-8 col-lg-8"
+              class=" card m-1"
             >
               <img variant="top" class="card-img-top " src={doc3} alt="" />
               <div class="card-body">
@@ -60,6 +61,7 @@ const Nuestoequipo = () => {
             </div>
           </div>
         </div>
+      </div>
       </div>
     </div>
     </div>
