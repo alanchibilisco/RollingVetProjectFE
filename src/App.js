@@ -15,6 +15,7 @@ import AdmTurnos from "./components/cruds/AdmTurnos";
 import CrearPaciente from "./components/cruds/CrearPaciente";
 import CrearTurno from "./components/cruds/CrearTurno";
 import EditPacientes from "./components/cruds/EditPacientes";
+import EditTurnos from "./components/cruds/EditTurnos";
 
 function App() {
   //useState
@@ -105,6 +106,11 @@ function App() {
             exact
             path="/Adm/turnos/crear"
             element={<CrearTurno pacientes={pacientes} URLTurnos={URLTurnos} getApiTurnos={getApiTurnos}></CrearTurno>}
+          ></Route>
+          <Route
+            exact
+            path="/Adm/turnos/editar/:id"
+            element={<EditTurnos URLTurnos={URLTurnos} getApiTurnos={getApiTurnos} pacientes={pacientes}></EditTurnos>}
           ></Route>
          
         </Routes>

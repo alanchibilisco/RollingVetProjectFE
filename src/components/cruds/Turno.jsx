@@ -12,7 +12,7 @@ const Turno = ({turno}) => {
                 <td className="w-25">
                   <div className="d-flex justify-content-center">
                     <Link
-                      to="/*"
+                      to={`/Adm/turnos/editar/${turno.id}`}
                       className=" btn btn-dark mx-1 text-decoration-none text-center"
                     >
                       Editar
