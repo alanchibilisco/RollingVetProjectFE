@@ -1,18 +1,21 @@
 import React from 'react';
-import Card from 'react-bootstrap/Card'
-import CardGroup from 'react-bootstrap/CardGroup'
-
+import LineaSeparado from "./img/LineaSeparado.png";
+import Comedero from "./img/comedero.png"
+import Hueso from "./img/hueso.png"
+import Juguetes from "./img/juguetes.png"
 
 const Cardtienda = () => {
     return (
-      <div class="container mt-5">
+      <div class="container mt-5 bg-danger">
         <h1 class="text-center">NUESTRA TIENDA</h1>
-      <div class="row">
+        <img class="container " src={LineaSeparado} alt="lineaseparadora" />
+
+      <div class="row mx-auto">
     <div class="col">
-    <div class="m-1 col-sm-10 col-md-8 col-lg-8">
-    <div class="card text-center">
-      <div class="card-body  rounded-3">
-        <img src="https://images.vexels.com/media/users/3/144928/isolated/lists/ebbccaf76f41f7d83e45a42974cfcd87-ilustracion-de-perro.png" alt="" />
+    <div class="m-1 col-sm-12 col-md-10 col-lg-8">
+    <div class="card text-center border-celeste">
+      <div class="card-body rounded-3">
+        <img src={Comedero} class="img-fluid" alt="" />
         <h5 class="card-title">Comedero</h5>
         <p class="card-text"></p>
         <button type="button" class="btn btn-outline-celeste rounded-pill ">CONSULTAR AHORA</button>
@@ -21,10 +24,10 @@ const Cardtienda = () => {
   </div>
     </div>
     <div class="col order-5">
-    <div class=" m-1 col-sm-10 col-md-8 col-lg-8">
-    <div class="card text-center">
+    <div class=" m-1 col-sm-12 col-md-10 col-lg-8">
+    <div class="card text-center border-celeste">
       <div class="card-body rounded-3">
-        <img src="https://images.vexels.com/media/users/3/144928/isolated/lists/ebbccaf76f41f7d83e45a42974cfcd87-ilustracion-de-perro.png" alt="perro" />
+        <img src={Juguetes} class="img-fluid" alt="perro" />
         <h5 class="card-title">Juguetes</h5>
         <p class="card-text"></p>
         <button type="button" class="btn btn-outline-celeste rounded-pill ">CONSULTAR AHORA</button>
@@ -33,10 +36,10 @@ const Cardtienda = () => {
   </div>
     </div>
     <div class="col order-1">
-    <div class=" m-1 col-sm-10 col-md-8 col-lg-8">
-    <div class="card text-center">
+    <div class=" m-1 col-sm-12 col-md-10 col-lg-8">
+    <div class="card text-center border-celeste">
       <div class="card-body rounded-3">
-        <img src="https://images.vexels.com/media/users/3/144928/isolated/lists/ebbccaf76f41f7d83e45a42974cfcd87-ilustracion-de-perro.png" alt="" />
+        <img src={Hueso} class="img-fluid" alt="" />
         <h5 class="card-title">Alimento</h5>
         <p class="card-text"></p>
         <button type="button" class="btn btn-outline-celeste rounded-pill ">CONSULTAR AHORA</button>

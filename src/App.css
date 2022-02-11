@@ -8,15 +8,15 @@
 }
 
 .bg-celeste{
-  background-color: #218b99;
+  background-color: rgb(81, 168, 177)
 }
 
 .bg-cardpp{
-  background-color: #e777cf;
+  background-color: rgb(247, 173, 175);
 }
 
 .bg-cardm{
-  background-color: rgb(57, 134, 197);
+  background-color: rgb(125, 172, 198);
 }
 
 .btn-outline-celeste{
@@ -28,6 +28,10 @@
   color: #fff;
   background-color: #218b99;
   border-color:  #218b99;
+}
+
+.border-celeste {
+  border-color: #218b99 !important;
 }
 
 @font-face {

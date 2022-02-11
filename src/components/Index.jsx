@@ -6,7 +6,8 @@ import Cardsindex from "./Cardservicios";
 import Cardservicios from "./Cardservicios";
 import Cardsplanes from "./Cardplanes";
 import Cardtienda from "./Cardtienda";
-
+import Nuestrosaliados from "./Nuestrosaliados";
+import Nuestoequipo from "./Nuestoequipo";
 
 const Index = () => {
   return (
@@ -14,8 +15,10 @@ const Index = () => {
       <NavBar />
       <Carrousel />
       <Cardservicios />
+      <Nuestrosaliados/>
       <Cardsplanes />
-      <Cardtienda/>
+      <Cardtienda />
+      <Nuestoequipo/>
       <Footer />
     </div>
   );
