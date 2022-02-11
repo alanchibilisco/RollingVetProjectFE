@@ -8,6 +8,27 @@ import { useState } from "react";
 import { useEffect } from "react";
 
 const Adm = ({ turnos }) => {
+//aqui comienza la prueba
+console.log(turnos);
+
+  let sortTurnos=turnos;
+
+    sortTurnos.sort((a, b) => {
+     const as = a.fecha.split("-");
+     const ad = new Date(as[0], as[1]-1, as[2]);
+     // const ad = new Date(as[2], as[1] - 1, as[0]);
+     const bs = b.fecha.split("-");
+     const bd =new Date(bs[0], bs[1]-1, bs[2]);
+     // const bd = new Date(bs[2], bs[1] - 1, bs[0]);      
+     return ad - bd;
+   });
+//  //  console.log(sortTurnos);
+
+  console.log(sortTurnos);
+ 
+
+//aqui termina la prueba
+
   return (
     <div className="border border-2 border-warning">
       <NavBar />
