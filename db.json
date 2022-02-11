@@ -1,23 +1,23 @@
 {
   "pacientes": [
     {
-      "nombreDueño": "Dueño",
-      "apellidoDueño": "Apellido",
+      "nombreDueño": "Alan",
+      "apellidoDueño": "Chibilisco",
       "email": "example@example.com",
-      "telefono": "+549xxxxxxxxx",
+      "telefono": "+3815842864",
       "nombreMascota": "Macarena",
       "especieMascota": "Perro",
-      "razaMascota": "Mestizo",
+      "razaMascota": "Caniche",
       "id": 1
     },
     {
-      "nombreDueño": "Prueba",
-      "apellidoDueño": "Apellido",
+      "nombreDueño": "Melina",
+      "apellidoDueño": "Santillan",
       "email": "example@example.com",
-      "telefono": "+549xxxxxxxxx",
+      "telefono": "3816920140",
       "nombreMascota": "Rocky",
       "especieMascota": "Perro",
-      "razaMascota": "Mestizo",
+      "razaMascota": "Caniche",
       "id": 2
     },
     {
@@ -33,18 +33,18 @@
   ],
   "turnos": [
     {
-      "detalleCita": "Control",
+      "detalleCita": "control gral., revisar nodulos",
       "veterinario": "Addle Romina",
-      "mascota": "Macarena",
-      "fecha": "21/02/2022",
+      "mascota": "Macarena - Alan Chibilisco",
+      "fecha": "2022-02-11",
       "hora": "08:00",
       "id": 1
     },
     {
-      "detalleCita": "Control",
+      "detalleCita": "control gral., revisar nodulos",
       "veterinario": "Kuc Damian",
-      "mascota": "Rocky",
-      "fecha": "21/02/2022",
+      "mascota": "Rocky - Melina Santillan",
+      "fecha": "2022-02-11",
       "hora": "09:00",
       "id": 2
     },
