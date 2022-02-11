@@ -109,7 +109,7 @@ const CrearPaciente = ({URLPacientes, getApiPacientes}) => {
                 <Form.Label>Telefono*</Form.Label>
                 <Form.Control
                   type="text"
-                  placeholder="+549382869865"
+                  placeholder="3816000000"
                   onChange={({ target }) => setTelefono(target.value.trimStart())}
                 />
               </Form.Group>

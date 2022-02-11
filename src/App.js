@@ -98,7 +98,7 @@ function App() {
           <Route
             exact
             path="/Adm/turnos/crear"
-            element={<CrearTurno pacientes={pacientes}></CrearTurno>}
+            element={<CrearTurno pacientes={pacientes} URLTurnos={URLTurnos} getApiTurnos={getApiTurnos}></CrearTurno>}
           ></Route>
          
         </Routes>

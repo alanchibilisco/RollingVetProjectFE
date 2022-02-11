@@ -27,7 +27,7 @@ const AdmTurnos = ({ turnos }) => {
           <Table bordered hover responsive className="align-middle mt-3">
             <thead>
               <tr>
-                <th>Mascota</th>
+                <th>Mascota-Dueño</th>
                 <th>Veterinario</th>
                 <th>Detalle de cita</th>
                 <th>Fecha</th>

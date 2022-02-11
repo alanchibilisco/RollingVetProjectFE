@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Card, Row, Col } from "react-bootstrap";
+import { Row, Col, CardGroup } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import CardTurnos from "./CardTurnos";
 import Footer from "../Footer";
@@ -32,12 +32,14 @@ const Adm = ({ turnos }) => {
         <hr className="container" />
         {turnos.length !== 0 ? (
           <Row>
+            <CardGroup>
             {turnos.map((turno) => (
               <Col xl={3} lg={4} md={6} xs={12}>
                 <CardTurnos key={turno.id} turno={turno}></CardTurnos>
               </Col>
             ))}
             ;
+            </CardGroup>
           </Row>
         ) : (
           <div className="no-products-found d-flex align-items-center justify-content-center">            
