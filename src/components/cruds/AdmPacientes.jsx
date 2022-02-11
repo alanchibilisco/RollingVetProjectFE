@@ -51,6 +51,7 @@ const AdmPacientes = ({pacientes}) => {
             <h1>🐶🐱 No hay pacientes registrados 🐱🐶</h1>
           </div>
 }
+
         </Container>
       </div>
           

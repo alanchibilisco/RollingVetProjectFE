@@ -46,7 +46,7 @@ const CrearPaciente = ({URLPacientes, getApiPacientes}) => {
               body: JSON.stringify(newPaciente),
             });
             if (res.status === 201) {
-              Swal.fire("Creado!", "El paciente fue creado.", "OK");
+              Swal.fire("Creado!", "El paciente fue creado.", "success");
               getApiPacientes();
               navigate("/Adm/pacientes");
             }

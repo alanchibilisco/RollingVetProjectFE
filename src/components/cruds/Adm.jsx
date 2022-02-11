@@ -8,29 +8,21 @@ import { useState } from "react";
 import { useEffect } from "react";
 
 const Adm = ({ turnos }) => {
-//aqui comienza la prueba
-console.log(turnos);
+  //Ordeno el array en funcion a la fechas
+  let sortTurnos = turnos;
+  sortTurnos.sort((a, b) => {
+    const as = a.fecha.split("-");
+    const ad = new Date(as[0], as[1] - 1, as[2]);
+    const bs = b.fecha.split("-");
+    const bd = new Date(bs[0], bs[1] - 1, bs[2]);
+    return ad - bd;
+  });
+  //Fin orden array
 
-  let sortTurnos=turnos;
-
-    sortTurnos.sort((a, b) => {
-     const as = a.fecha.split("-");
-     const ad = new Date(as[0], as[1]-1, as[2]);
-     // const ad = new Date(as[2], as[1] - 1, as[0]);
-     const bs = b.fecha.split("-");
-     const bd =new Date(bs[0], bs[1]-1, bs[2]);
-     // const bd = new Date(bs[2], bs[1] - 1, bs[0]);      
-     return ad - bd;
-   });
-//  //  console.log(sortTurnos);
-
-  console.log(sortTurnos);
- 
-
-//aqui termina la prueba
+  
 
   return (
-    <div className="border border-2 border-warning">
+    <div>
       <NavBar />
       <div className="container">
         <h1 className="text-center my-3">ADMINISTRACION</h1>
@@ -53,17 +45,15 @@ console.log(turnos);
         <hr className="container" />
         {turnos.length !== 0 ? (
           <Row>
-            
             {turnos.map((turno) => (
               <Col xl={3} lg={4} md={6} xs={12}>
                 <CardTurnos key={turno.id} turno={turno}></CardTurnos>
+                
               </Col>
             ))}
-            
-            
           </Row>
         ) : (
-          <div className="no-products-found d-flex align-items-center justify-content-center">            
+          <div className="no-products-found d-flex align-items-center justify-content-center">
             <h1>🐶🐱 No hay turnos asignados 🐱🐶</h1>
           </div>
         )}

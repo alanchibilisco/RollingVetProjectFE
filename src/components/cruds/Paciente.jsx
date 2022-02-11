@@ -15,7 +15,7 @@ const Paciente = ({paciente}) => {
                 <td className="w-25">
                   <div className="d-flex justify-content-center">
                     <Link
-                      to="/*"
+                      to={`/Adm/pacientes/editar/${paciente.id}`}
                       className=" btn btn-dark mx-1 text-decoration-none text-center"
                     >
                       Editar
