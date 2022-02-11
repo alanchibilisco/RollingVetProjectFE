@@ -1,43 +1,52 @@
 {
-    "pacientes":[
-      {
-        "nombreDueño": "Dueño",
-        "apellidoDueño": "Apellido",
-        "email": "example@example.com",
-        "telefono": "+549xxxxxxxxx",
-        "nombreMascota": "Macarena",
-        "especieMascota": "Perro",
-        "razaMascota": "Mestizo",
-        "id": 1
-      },
-      {
-        "nombreDueño": "Prueba",
-        "apellidoDueño": "Apellido",
-        "email": "example@example.com",
-        "telefono": "+549xxxxxxxxx",
-        "nombreMascota": "Rocky",
-        "especieMascota": "Perro",
-        "razaMascota": "Mestizo",
-        "id": 2
-      }
-    ],
-    "turnos":[
-      {
-        "detalleCita": "Control",
-        "veterinario": "Addle Romina",
-        "mascota": "Macarena",
-        "fecha": "21/02/2022",
-        "hora": "08:00",
-        "id": 1
-      },
-      {
-        "detalleCita": "Control",
-        "veterinario": "Kuc Damian",
-        "mascota": "Rocky",
-        "fecha": "21/02/2022",
-        "hora": "09:00",
-        "id": 2
-      }
-    ]
-  
-  }
+  "pacientes": [
+    {
+      "nombreDueño": "Dueño",
+      "apellidoDueño": "Apellido",
+      "email": "example@example.com",
+      "telefono": "+549xxxxxxxxx",
+      "nombreMascota": "Macarena",
+      "especieMascota": "Perro",
+      "razaMascota": "Mestizo",
+      "id": 1
+    },
+    {
+      "nombreDueño": "Prueba",
+      "apellidoDueño": "Apellido",
+      "email": "example@example.com",
+      "telefono": "+549xxxxxxxxx",
+      "nombreMascota": "Rocky",
+      "especieMascota": "Perro",
+      "razaMascota": "Mestizo",
+      "id": 2
+    },
+    {
+      "nombreDueño": "Alan",
+      "apellidoDueño": "Chibilisco",
+      "email": "alan.chibilisco@gmail.com",
+      "telefono": "3815842864",
+      "nombreMascota": "Kiara",
+      "especieMascota": "Perro",
+      "razaMascota": "Dogo",
+      "id": 3
+    }
+  ],
+  "turnos": [
+    {
+      "detalleCita": "Control",
+      "veterinario": "Addle Romina",
+      "mascota": "Macarena",
+      "fecha": "21/02/2022",
+      "hora": "08:00",
+      "id": 1
+    },
+    {
+      "detalleCita": "Control",
+      "veterinario": "Kuc Damian",
+      "mascota": "Rocky",
+      "fecha": "21/02/2022",
+      "hora": "09:00",
+      "id": 2
+    }
+  ]
+}

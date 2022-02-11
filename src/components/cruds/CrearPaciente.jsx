@@ -2,9 +2,13 @@ import React, { useState } from "react";
 import { Col, Container, Form, Row } from "react-bootstrap";
 import NavBar from "../NavBar";
 import Footer from "../Footer";
+import Swal from "sweetalert2";
+import {validateTexto, validateEmail, validateTelefono} from "../Validaciones";
+import { useNavigate } from "react-router-dom";
 
-const CrearPaciente = () => {
 
+const CrearPaciente = ({URLPacientes, getApiPacientes}) => {
+  
   const [nombreDueño, setNombreDueño]=useState('');
   const [apellidoDueño, setApellidoDueño]=useState('');
   const [email, setEmail]=useState('');
@@ -13,11 +17,53 @@ const CrearPaciente = () => {
   const [especieMascota, setEspecieMascota]=useState('');
   const [razaMascota, setRazaMascota]=useState('');
   
+  const navigate=useNavigate();
   const handleSubmit=(e)=>{
+    
     e.preventDefault();
-  }
-
+    if(!validateTexto(nombreDueño)||!validateTexto(apellidoDueño)||!validateEmail(email)||!validateTelefono(telefono)||!validateTexto(nombreMascota)||!validateTexto(especieMascota)||!validateTexto(razaMascota)){
+      Swal.fire("Ops!", "Algunos de los campos es incorrectos", "Error");
+      return;
+    }else{
+      const newPaciente={
+        nombreDueño, apellidoDueño, email, telefono, nombreMascota, especieMascota, razaMascota
+      };
+      
+      Swal.fire({
+        title: "Estas Seguro?",
+        text: "No puedes revertir esto",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Guardar",
+      }).then(async (result) => {
+        if (result.isConfirmed) {
+          try {
+            const res = await fetch(URLPacientes, {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(newPaciente),
+            });
+            if (res.status === 201) {
+              Swal.fire("Creado!", "El paciente fue creado.", "OK");
+              getApiPacientes();
+              navigate("/Adm/pacientes");
+            }
+          } catch (error) {
+            console.log(error);
+          }
+        }
+      });
+    };
   
+
+
+
+    }
+  
+
+
   return (
     <div>
       <NavBar></NavBar>
