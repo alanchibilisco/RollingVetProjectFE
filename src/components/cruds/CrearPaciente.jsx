@@ -1,9 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import { Col, Container, Form, Row } from "react-bootstrap";
 import NavBar from "../NavBar";
 import Footer from "../Footer";
 
 const CrearPaciente = () => {
+
+  const [nombreDueño, setNombreDueño]=useState('');
+  const [apellidoDueño, setApellidoDueño]=useState('');
+  const [email, setEmail]=useState('');
+  const [telefono, setTelefono]=useState('');
+  const [nombreMascota, setNombreMascota]=useState('');
+  const [especieMascota, setEspecieMascota]=useState('');
+  const [razaMascota, setRazaMascota]=useState('');
+  
+  const handleSubmit=(e)=>{
+    e.preventDefault();
+  }
+
+  
   return (
     <div>
       <NavBar></NavBar>
@@ -11,7 +25,7 @@ const CrearPaciente = () => {
         <h1>Crear Paciente</h1>
         <hr />
         {/* Form Product */}
-        <Form className="my-5">
+        <Form className="my-5" onSubmit={handleSubmit}>
         <h2 className="text-center">Informacion</h2>
         <hr />
           <Row>
@@ -23,7 +37,7 @@ const CrearPaciente = () => {
                 <Form.Control
                   type="text"
                   placeholder="Rolling"
-                  //   onChange={({ target }) => setProductName(target.value)}
+                    onChange={({ target }) => setNombreDueño(target.value.trimStart())}
                 />
               </Form.Group>
 
@@ -32,7 +46,7 @@ const CrearPaciente = () => {
                 <Form.Control
                   type="text"
                   placeholder="Veterinaria"
-                  //   onChange={({ target }) => setProductName(target.value)}
+                  onChange={({ target }) => setApellidoDueño(target.value.trimStart())}
                 />
               </Form.Group>
 
@@ -41,7 +55,7 @@ const CrearPaciente = () => {
                 <Form.Control
                   type="email"
                   placeholder="rollingvet@rollingvet.com.ar"
-                  //   onChange={({ target }) => setProductName(target.value)}
+                  onChange={({ target }) => setEmail(target.value.trimStart())}
                 />
               </Form.Group>
 
@@ -50,7 +64,7 @@ const CrearPaciente = () => {
                 <Form.Control
                   type="text"
                   placeholder="+549382869865"
-                  //   onChange={({ target }) => setProductName(target.value)}
+                  onChange={({ target }) => setTelefono(target.value.trimStart())}
                 />
               </Form.Group>
             </Col>
@@ -62,7 +76,7 @@ const CrearPaciente = () => {
                 <Form.Control
                   type="text"
                   placeholder="Mascota"
-                  //   onChange={({ target }) => setProductName(target.value)}
+                  onChange={({ target }) => setNombreMascota(target.value.trimStart())}
                 />
               </Form.Group>
 
@@ -71,7 +85,7 @@ const CrearPaciente = () => {
                 <Form.Control
                   type="text"
                   placeholder="Especie"
-                  //   onChange={({ target }) => setProductName(target.value)}
+                  onChange={({ target }) => setEspecieMascota(target.value.trimStart())}
                 />
               </Form.Group>
 
@@ -80,7 +94,7 @@ const CrearPaciente = () => {
                 <Form.Control
                   type="text"
                   placeholder="Raza"
-                  //   onChange={({ target }) => setProductName(target.value)}
+                  onChange={({ target }) => setRazaMascota(target.value.trimStart())}
                 />
               </Form.Group>
               

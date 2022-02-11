@@ -32,14 +32,12 @@ function App() {
   //utilizacion de las variables de entorno
   const URLPacientes=process.env.REACT_APP_API_PACIENTES;
   const URLTurnos=process.env.REACT_APP_API_TURNOS;  
-  console.log(URLPacientes);
-  console.log(URLTurnos);
+  
 
   const getApiPacientes=async()=>{
     try {
       const res=await fetch(URLPacientes);
-      const pacientesApi=await res.json();
-      console.log(pacientesApi);
+      const pacientesApi=await res.json();      
       setPacientes(pacientesApi);
     } catch (error) {
       console.log(error);
@@ -49,8 +47,7 @@ function App() {
   const getApiTurnos=async()=>{
     try {
       const res=await fetch(URLTurnos);
-      const turnosApi=await res.json();
-      console.log(turnosApi);
+      const turnosApi=await res.json();      
       setTurnos(turnosApi);
     } catch (error) {
       console.log(error);
