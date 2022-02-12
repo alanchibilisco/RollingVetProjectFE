@@ -76,16 +76,17 @@ const EditTurnos = ({ URLTurnos, getApiTurnos, pacientes}) => {
       <NavBar></NavBar>
 
       <Container className="py-5">
-        <h1>Editar Turno</h1>
+        <h1 className="font-celeste">Editar Turno</h1>
         <hr />
         <Form className="my-5" onSubmit={handleSubmit}>
           <Form.Group className="mb-3" controlId="formBasicMascota">
-            <Form.Label>Mascota*</Form.Label>
+            <Form.Label className="font-celeste">Mascota*</Form.Label>
             <Form.Select
             value={turno.mascota}
                onChange={({ target }) => {
                  setTurno({...turno, mascota: target.value});
                }}
+               
             >              
               {pacientes.map((paciente) => (
                 <option
@@ -97,7 +98,7 @@ const EditTurnos = ({ URLTurnos, getApiTurnos, pacientes}) => {
           </Form.Group>
 
           <Form.Group className="mb-3" controlId="formBasicVet">
-            <Form.Label>Veterinario*</Form.Label>
+            <Form.Label className="font-celeste">Veterinario*</Form.Label>
             <Form.Select
             value={turno.veterinario}
                onChange={({ target }) => {
@@ -113,7 +114,7 @@ const EditTurnos = ({ URLTurnos, getApiTurnos, pacientes}) => {
           </Form.Group>
 
           <Form.Group className="mb-3" controlId="formBasicDetalle">
-            <Form.Label>Detalle de Cita*</Form.Label>
+            <Form.Label className="font-celeste">Detalle de Cita*</Form.Label>
             <Form.Control
               as="textarea"
               type="text"
@@ -125,7 +126,7 @@ const EditTurnos = ({ URLTurnos, getApiTurnos, pacientes}) => {
           </Form.Group>
 
           <Form.Group className="mb-3" controlId="formBasicFecha">
-            <Form.Label>Fecha (Lun a Vie)*</Form.Label>
+            <Form.Label className="font-celeste">Fecha (Lun a Vie)*</Form.Label>
             <Form.Control
               type="date"
               placeholder="21/02/2022"
@@ -135,7 +136,7 @@ const EditTurnos = ({ URLTurnos, getApiTurnos, pacientes}) => {
           </Form.Group>
 
           <Form.Group className="mb-3" controlId="formBasicHora">
-            <Form.Label>Hora (08 a 17)*</Form.Label>
+            <Form.Label className="font-celeste">Hora (08 a 17)*</Form.Label>
             <Form.Control
               type="time"
               placeholder="08:00"
@@ -145,7 +146,7 @@ const EditTurnos = ({ URLTurnos, getApiTurnos, pacientes}) => {
           </Form.Group>
 
           <div className="text-end">
-            <button className="btn btn-dark">Guardar</button>
+            <button className="btn-celeste">Guardar</button>
           </div>
         </Form>
       </Container>

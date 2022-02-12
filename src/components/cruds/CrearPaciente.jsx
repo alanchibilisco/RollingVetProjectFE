@@ -56,30 +56,23 @@ const CrearPaciente = ({URLPacientes, getApiPacientes}) => {
         }
       });
     };
-  
-
-
-
     }
-  
-
-
   return (
     <div>
       <NavBar></NavBar>
       <Container className="py-5">
-        <h1>Crear Paciente</h1>
+        <h1 className="font-celeste">Crear Paciente</h1>
         <hr />
         {/* Form Product */}
         <Form className="my-5" onSubmit={handleSubmit}>
-        <h2 className="text-center">Informacion</h2>
+        <h2 className="text-center font-celeste">Informacion</h2>
         <hr />
           <Row>
             <Col xs={12} md={6}>
-              <h3 className="text-center">Dueño</h3>
+              <h3 className="text-center font-celeste">Dueño</h3>
 
               <Form.Group className="mb-3" controlId="formBasicName">
-                <Form.Label>Nombre*</Form.Label>
+                <Form.Label className="font-celeste">Nombre*</Form.Label>
                 <Form.Control
                   type="text"
                   placeholder="Rolling"
@@ -88,7 +81,7 @@ const CrearPaciente = ({URLPacientes, getApiPacientes}) => {
               </Form.Group>
 
               <Form.Group className="mb-3" controlId="formBasicLastName">
-                <Form.Label>Apellido*</Form.Label>
+                <Form.Label className="font-celeste">Apellido*</Form.Label>
                 <Form.Control
                   type="text"
                   placeholder="Veterinaria"
@@ -97,7 +90,7 @@ const CrearPaciente = ({URLPacientes, getApiPacientes}) => {
               </Form.Group>
 
               <Form.Group className="mb-3" controlId="formBasicEmail">
-                <Form.Label>Email*</Form.Label>
+                <Form.Label className="font-celeste">Email*</Form.Label>
                 <Form.Control
                   type="email"
                   placeholder="rollingvet@rollingvet.com.ar"
@@ -106,7 +99,7 @@ const CrearPaciente = ({URLPacientes, getApiPacientes}) => {
               </Form.Group>
 
               <Form.Group className="mb-3" controlId="formBasicPhone">
-                <Form.Label>Telefono*</Form.Label>
+                <Form.Label className="font-celeste">Telefono*</Form.Label>
                 <Form.Control
                   type="text"
                   placeholder="3816000000"
@@ -115,10 +108,10 @@ const CrearPaciente = ({URLPacientes, getApiPacientes}) => {
               </Form.Group>
             </Col>
             <Col xs={12} md={6}>
-              <h3 className="text-center">Mascota</h3>
+              <h3 className="text-center font-celeste">Mascota</h3>
 
               <Form.Group className="mb-3" controlId="formBasicNameMasc">
-                <Form.Label>Nombre Mascota*</Form.Label>
+                <Form.Label className="font-celeste">Nombre Mascota*</Form.Label>
                 <Form.Control
                   type="text"
                   placeholder="Mascota"
@@ -127,7 +120,7 @@ const CrearPaciente = ({URLPacientes, getApiPacientes}) => {
               </Form.Group>
 
               <Form.Group className="mb-3" controlId="formBasicEspecie">
-                <Form.Label>Especie*</Form.Label>
+                <Form.Label className="font-celeste">Especie*</Form.Label>
                 <Form.Control
                   type="text"
                   placeholder="Especie"
@@ -136,7 +129,7 @@ const CrearPaciente = ({URLPacientes, getApiPacientes}) => {
               </Form.Group>
 
               <Form.Group className="mb-3" controlId="formBasicRaza">
-                <Form.Label>Raza*</Form.Label>
+                <Form.Label className="font-celeste">Raza*</Form.Label>
                 <Form.Control
                   type="text"
                   placeholder="Raza"
@@ -148,7 +141,7 @@ const CrearPaciente = ({URLPacientes, getApiPacientes}) => {
           </Row>
 
           <div className="text-end">
-            <button className="btn btn-dark">Guardar</button>
+            <button className="btn-celeste">Guardar</button>
           </div>
         </Form>
       </Container>

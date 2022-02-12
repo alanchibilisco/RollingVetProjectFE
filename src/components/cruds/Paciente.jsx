@@ -43,12 +43,12 @@ const Paciente = ({paciente, URLPacientes, getApiPacientes}) => {
                   <div className="d-flex justify-content-center">
                     <Link
                       to={`/Adm/pacientes/editar/${paciente.id}`}
-                      className=" btn btn-dark mx-1 text-decoration-none text-center"
+                      className=" btn-celeste mx-1 text-decoration-none text-center"
                     >
                       Editar
                     </Link>
                     <button
-                      className="btn btn-dark mx-1"
+                      className="btn-celeste mx-1"
                       onClick={()=>{handleDelete(paciente.id)}}                      
                     >
                       Borrar
