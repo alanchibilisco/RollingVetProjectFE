@@ -5,7 +5,7 @@ import Footer from '../Footer';
 import NavBar from '../NavBar';
 import Paciente from "./Paciente";
 
-const AdmPacientes = ({pacientes}) => {
+const AdmPacientes = ({pacientes, URLPacientes, getApiPacientes}) => {
   
   return (
       
@@ -42,7 +42,7 @@ const AdmPacientes = ({pacientes}) => {
             <tbody>
                 {/* esto tiene que ir en paciente */}
              
-              {pacientes.map((paciente)=>(<Paciente paciente={paciente} key={paciente.id}></Paciente>))}
+              {pacientes.map((paciente)=>(<Paciente paciente={paciente} key={paciente.id} URLPacientes={URLPacientes} getApiPacientes={getApiPacientes}></Paciente>))}
               
             </tbody>
           </Table>

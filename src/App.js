@@ -85,7 +85,7 @@ function App() {
           <Route
             exact
             path="/Adm/pacientes"
-            element={<AdmPacientes pacientes={pacientes}></AdmPacientes>}
+            element={<AdmPacientes pacientes={pacientes} URLPacientes={URLPacientes} getApiPacientes={getApiPacientes}></AdmPacientes>}
           ></Route>
           <Route
             exact
@@ -100,7 +100,7 @@ function App() {
           <Route
             exact
             path="/Adm/turnos"
-            element={<AdmTurnos turnos={turnos}></AdmTurnos>}
+            element={<AdmTurnos turnos={turnos} URLTurnos={URLTurnos} getApiTurnos={getApiTurnos}></AdmTurnos>}
           ></Route>
           <Route
             exact

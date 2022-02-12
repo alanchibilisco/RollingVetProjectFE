@@ -1,7 +1,34 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
-const Paciente = ({paciente}) => {
+const Paciente = ({paciente, URLPacientes, getApiPacientes}) => {
+    const handleDelete=(id)=>{
+      Swal.fire({
+        title: "¿Estas seguro de eliminar este paciente?",
+        text: "No puedes revertir esto!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Borrar",
+      }).then(async (result) => {
+        if (result.isConfirmed) {
+          try {
+            const res = await fetch(`${URLPacientes}/${id}`, {
+              method: "DELETE",
+              headers: {
+                "Content-Type": "application/json",
+              },
+            });
+            if (res.status === 200) {
+              Swal.fire("Borrado!", "El paciente ah sido borrado.", "success");
+              getApiPacientes();
+            }
+          } catch (error) {
+            console.log(error);
+          }
+        }
+      });
+    }
     return (                    
             <tr>
                 <td>{paciente.id}</td>
@@ -21,7 +48,8 @@ const Paciente = ({paciente}) => {
                       Editar
                     </Link>
                     <button
-                      className="btn btn-dark mx-1"                      
+                      className="btn btn-dark mx-1"
+                      onClick={()=>{handleDelete(paciente.id)}}                      
                     >
                       Borrar
                     </button>

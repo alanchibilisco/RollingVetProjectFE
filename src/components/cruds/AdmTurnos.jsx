@@ -5,7 +5,7 @@ import Footer from "../Footer";
 import NavBar from "../NavBar";
 import Turno from "./Turno";
 
-const AdmTurnos = ({ turnos }) => {
+const AdmTurnos = ({ turnos, URLTurnos, getApiTurnos }) => {
 
   let sortTurnos = turnos;
   sortTurnos.sort((a, b) => {
@@ -47,7 +47,7 @@ const AdmTurnos = ({ turnos }) => {
             <tbody>
               {/* esto tiene que ir en turno */}
               {sortTurnos.map((turno) => (
-                <Turno turno={turno} key={turno.id}></Turno>
+                <Turno turno={turno} key={turno.id} URLTurnos={URLTurnos} getApiTurnos={getApiTurnos}></Turno>
               ))}
             </tbody>
           </Table>

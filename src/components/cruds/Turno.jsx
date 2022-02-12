@@ -1,7 +1,34 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
-const Turno = ({turno}) => {
+const Turno = ({turno, URLTurnos, getApiTurnos}) => {
+  const handleDelete=(id)=>{
+    Swal.fire({
+      title: "¿Estas seguro de eliminar este turno?",
+      text: "No puedes revertir esto!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Borrar",
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        try {
+          const res = await fetch(`${URLTurnos}/${id}`, {
+            method: "DELETE",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          });
+          if (res.status === 200) {
+            Swal.fire("Borrado!", "El turno ah sido borrado.", "success");
+            getApiTurnos();
+          }
+        } catch (error) {
+          console.log(error);
+        }
+      }
+    });
+  }
     return (
         <tr>
                 <td>{turno.mascota}</td>
@@ -18,7 +45,8 @@ const Turno = ({turno}) => {
                       Editar
                     </Link>
                     <button
-                      className="btn btn-dark mx-1"                      
+                      className="btn btn-dark mx-1" 
+                      onClick={()=>{handleDelete(turno.id)}}                     
                     >
                       Borrar
                     </button>
