@@ -45,7 +45,7 @@ const Adm = ({ turnos }) => {
         <hr className="container" />
         {turnos.length !== 0 ? (
           <Row>
-            {turnos.map((turno) => (
+            {sortTurnos.map((turno) => (
               <Col xl={3} lg={4} md={6} xs={12}>
                 <CardTurnos key={turno.id} turno={turno}></CardTurnos>
                 

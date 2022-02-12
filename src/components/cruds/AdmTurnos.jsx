@@ -6,6 +6,15 @@ import NavBar from "../NavBar";
 import Turno from "./Turno";
 
 const AdmTurnos = ({ turnos }) => {
+
+  let sortTurnos = turnos;
+  sortTurnos.sort((a, b) => {
+    const as = a.fecha.split("-");
+    const ad = new Date(as[0], as[1] - 1, as[2]);
+    const bs = b.fecha.split("-");
+    const bd = new Date(bs[0], bs[1] - 1, bs[2]);
+    return ad - bd;
+  });
   return (
     <div>
       <NavBar></NavBar>
@@ -37,7 +46,7 @@ const AdmTurnos = ({ turnos }) => {
             </thead>
             <tbody>
               {/* esto tiene que ir en turno */}
-              {turnos.map((turno) => (
+              {sortTurnos.map((turno) => (
                 <Turno turno={turno} key={turno.id}></Turno>
               ))}
             </tbody>

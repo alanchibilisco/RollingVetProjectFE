@@ -91,16 +91,6 @@ const EditPacientes = ({ URLPacientes, getApiPacientes }) => {
           }
         }
       });
-
-
-
-
-
-
-
-
-
-
     }
   };
 
@@ -124,10 +114,7 @@ const EditPacientes = ({ URLPacientes, getApiPacientes }) => {
                   type="text"
                   placeholder="Rolling"
                   defaultValue={paciente.nombreDueño}
-                  ref={nombreDueñoRef}
-                  //onChange={({ target }) =>
-                  //setNombreDueño(target.value.trimStart())
-                  //}
+                  ref={nombreDueñoRef}                  
                 />
               </Form.Group>
 
@@ -137,10 +124,7 @@ const EditPacientes = ({ URLPacientes, getApiPacientes }) => {
                   type="text"
                   placeholder="Veterinaria"
                   defaultValue={paciente.apellidoDueño}
-                  ref={apellidoDueñoRef}
-                  //onChange={({ target }) =>
-                  //setApellidoDueño(target.value.trimStart())
-                  //}
+                  ref={apellidoDueñoRef}                  
                 />
               </Form.Group>
 
@@ -150,8 +134,7 @@ const EditPacientes = ({ URLPacientes, getApiPacientes }) => {
                   type="email"
                   placeholder="rollingvet@rollingvet.com.ar"
                   defaultValue={paciente.email}
-                  ref={emailRef}
-                  //onChange={({ target }) => setEmail(target.value.trimStart())}
+                  ref={emailRef}                  
                 />
               </Form.Group>
 
@@ -161,10 +144,7 @@ const EditPacientes = ({ URLPacientes, getApiPacientes }) => {
                   type="text"
                   placeholder="3816000000"
                   defaultValue={paciente.telefono}
-                  ref={telefonoRef}
-                  //onChange={({ target }) =>
-                  //setTelefono(target.value.trimStart())
-                  //}
+                  ref={telefonoRef}                  
                 />
               </Form.Group>
             </Col>
@@ -177,10 +157,7 @@ const EditPacientes = ({ URLPacientes, getApiPacientes }) => {
                   type="text"
                   placeholder="Mascota"
                   defaultValue={paciente.nombreMascota}
-                  ref={nombreMascRef}
-                  //onChange={({ target }) =>
-                  //setNombreMascota(target.value.trimStart())
-                  //}
+                  ref={nombreMascRef}                  
                 />
               </Form.Group>
 
@@ -190,10 +167,7 @@ const EditPacientes = ({ URLPacientes, getApiPacientes }) => {
                   type="text"
                   placeholder="Especie"
                   defaultValue={paciente.especieMascota}
-                  ref={especieMascRef}
-                  //onChange={({ target }) =>
-                  //setEspecieMascota(target.value.trimStart())
-                  //}
+                  ref={especieMascRef}                  
                 />
               </Form.Group>
 
@@ -203,10 +177,7 @@ const EditPacientes = ({ URLPacientes, getApiPacientes }) => {
                   type="text"
                   placeholder="Raza"
                   defaultValue={paciente.razaMascota}
-                  ref={razaMascRef}
-                  //onChange={({ target }) =>
-                  //setRazaMascota(target.value.trimStart())
-                  //}
+                  ref={razaMascRef}                  
                 />
               </Form.Group>
             </Col>
