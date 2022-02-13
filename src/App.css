@@ -7,6 +7,10 @@
   /* font-family: 'Varela Round', sans-serif; */
   font-family: 'typo_round_regular_demoRg';
 }
+.font-celeste{
+  color: #218b99;
+  font-weight: bold;
+}
 
 .bg-celeste{
   background-color: rgb(81, 168, 177)
@@ -24,11 +28,14 @@
   color: rgb(81, 168, 177) ;
 }
 
-.btn-outline-celeste{
-  color: white;
-  border-color:  #218b99;
+.bg-card-turnos{
+  background-color: #7DACC6;
 }
 
+.btn-outline-celeste{
+  color: white;
+  border-color:  #218b99;  
+}
 .btn-outline-celeste:hover {
   color: #fff;
   background-color: #218b99;

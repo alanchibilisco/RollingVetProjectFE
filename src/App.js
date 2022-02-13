@@ -7,15 +7,54 @@ import Error404 from "./components/Error404";
 import Login from "./components/Login";
 import QuienesSomos from "./components/QuienesSomos";
 import Servicios from "./components/Servicios";
-
+import { useState } from "react";
+import { useEffect } from "react";
+import Adm from "./components/cruds/Adm";
+import AdmPacientes from "./components/cruds/AdmPacientes";
+import AdmTurnos from "./components/cruds/AdmTurnos";
+import CrearPaciente from "./components/cruds/CrearPaciente";
+import CrearTurno from "./components/cruds/CrearTurno";
+import EditPacientes from "./components/cruds/EditPacientes";
+import EditTurnos from "./components/cruds/EditTurnos";
 
 function App() {
-  const URLPacientes=process.env.REACT_APP_API_PACIENTES;
-  const URLTurnos=process.env.REACT_APP_API_TURNOS;
+  //useState
+  const [pacientes, setPacientes]=useState([]);
+  const [turnos, setTurnos]=useState([]);
 
+  //useEffect
+  useEffect(()=>{
+    getApiPacientes();
+  }, []);
+
+  useEffect(()=>{
+    getApiTurnos();
+  }, []);
+
+  //utilizacion de las variables de entorno
+  const URLPacientes=process.env.REACT_APP_API_PACIENTES;
+  const URLTurnos=process.env.REACT_APP_API_TURNOS;  
   
-  console.log(URLPacientes);
-  console.log(URLTurnos);
+
+  const getApiPacientes=async()=>{
+    try {
+      const res=await fetch(URLPacientes);
+      const pacientesApi=await res.json();      
+      setPacientes(pacientesApi);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  const getApiTurnos=async()=>{
+    try {
+      const res=await fetch(URLTurnos);
+      const turnosApi=await res.json();      
+      setTurnos(turnosApi);
+    } catch (error) {
+      console.log(error);
+    }
+  }
   return (
     <div>
       <Router>
@@ -38,6 +77,42 @@ function App() {
             path="/Contactanos"
             element={<Contacto></Contacto>}
           ></Route>
+          <Route
+            exact
+            path="/Adm"
+            element={<Adm turnos={turnos}></Adm>}
+          ></Route>
+          <Route
+            exact
+            path="/Adm/pacientes"
+            element={<AdmPacientes pacientes={pacientes} URLPacientes={URLPacientes} getApiPacientes={getApiPacientes}></AdmPacientes>}
+          ></Route>
+          <Route
+            exact
+            path="/Adm/pacientes/crear"
+            element={<CrearPaciente URLPacientes={URLPacientes} getApiPacientes={getApiPacientes}></CrearPaciente>}
+          ></Route>
+          <Route
+            exact
+            path="/Adm/pacientes/editar/:id"
+            element={<EditPacientes URLPacientes={URLPacientes} getApiPacientes={getApiPacientes}></EditPacientes>}
+          ></Route>
+          <Route
+            exact
+            path="/Adm/turnos"
+            element={<AdmTurnos turnos={turnos} URLTurnos={URLTurnos} getApiTurnos={getApiTurnos}></AdmTurnos>}
+          ></Route>
+          <Route
+            exact
+            path="/Adm/turnos/crear"
+            element={<CrearTurno pacientes={pacientes} URLTurnos={URLTurnos} getApiTurnos={getApiTurnos}></CrearTurno>}
+          ></Route>
+          <Route
+            exact
+            path="/Adm/turnos/editar/:id"
+            element={<EditTurnos URLTurnos={URLTurnos} getApiTurnos={getApiTurnos} pacientes={pacientes}></EditTurnos>}
+          ></Route>
+         
         </Routes>
       </Router>
     </div>
