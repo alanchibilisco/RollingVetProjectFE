@@ -7,7 +7,7 @@
   /* font-family: 'Varela Round', sans-serif; */
   font-family: 'typo_round_regular_demoRg';
 }
-.font-celeste{
+.font-celeste-crud{
   color: #218b99;
   font-weight: bold;
 }
@@ -42,10 +42,45 @@
   border-color:  #218b99;
 }
 
-.border-celeste {
-  border-color: #218b99 !important;
+.btn-celeste-crud {
+  min-width: 70px;
+  height: 40px;
+  color: #fff;
+  padding: 5px 10px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+  outline: none;
+  border-radius: 5px;
+  z-index: 0;
+  background: #fff;
+  overflow: hidden;
+  border: 2px solid #218b99;
+  color: #218b99;
+}
+.btn-celeste-crud:hover {
+  color: #fff;
+}
+.btn-celeste-crud:hover:after {
+  width: 100%;
+}
+.btn-celeste-crud:after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  transition: all 0.3s ease;
+  left: 0;
+  top: 0;
+  width: 0;
+  height: 100%;
+  background: #218b99;
 }
 
+.border-celeste-crud{
+  border: 20px solid #218b99;
+}
 
 @font-face {
   font-family: 'typo_round_regular_demoRg';

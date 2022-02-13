@@ -6,7 +6,7 @@ const CardTurnos = ({turno}) => {
   return (
     <div>
       <Card className="my-4">
-        <Card.Img className="img-fluid" variant="top" src="" />
+        
         <Card.Body>
           <div className="d-flex align-items-center justify-content-center mb-2">
             <Card.Title className="m-0 fw-bold">{turno.mascota}</Card.Title>            

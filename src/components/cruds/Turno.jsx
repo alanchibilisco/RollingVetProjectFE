@@ -40,12 +40,12 @@ const Turno = ({turno, URLTurnos, getApiTurnos}) => {
                   <div className="d-flex justify-content-center">
                     <Link
                       to={`/Adm/turnos/editar/${turno.id}`}
-                      className=" btn-celeste mx-1 text-decoration-none text-center"
+                      className=" btn-celeste-crud mx-1 text-decoration-none text-center"
                     >
                       Editar
                     </Link>
                     <button
-                      className="btn-celeste mx-1" 
+                      className="btn-celeste-crud mx-1" 
                       onClick={()=>{handleDelete(turno.id)}}                     
                     >
                       Borrar

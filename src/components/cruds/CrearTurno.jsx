@@ -59,11 +59,11 @@ const handleSubmit=(e)=>{
     <div>
       <NavBar></NavBar>
       <Container className="py-5">
-        <h1 className="font-celeste">Agregar Turno</h1>
+        <h1 className="font-celeste-crud">Agregar Turno</h1>
         <hr />
         <Form className="my-5" onSubmit={handleSubmit}>
           <Form.Group className="mb-3" controlId="formBasicMascota">
-            <Form.Label className="font-celeste">Mascota*</Form.Label>
+            <Form.Label className="font-celeste-crud">Mascota*</Form.Label>
             <Form.Select onChange={({target})=>{setMascota(target.value.trimStart())}}>
               <option value="">Selecciona una mascota</option>
               {pacientes.map((paciente)=>(
@@ -73,7 +73,7 @@ const handleSubmit=(e)=>{
           </Form.Group>       
 
           <Form.Group className="mb-3" controlId="formBasicVet">
-            <Form.Label className="font-celeste">Veterinario*</Form.Label>
+            <Form.Label className="font-celeste-crud">Veterinario*</Form.Label>
             <Form.Select onChange={({target})=>{setVeterinario(target.value.trimStart())}}>
               <option value="">Selecciona un Veterinario</option>
               <option value="Addle Romina">Dra. Addle Romina A.</option>
@@ -85,7 +85,7 @@ const handleSubmit=(e)=>{
           </Form.Group>
 
           <Form.Group className="mb-3" controlId="formBasicDetalle">
-            <Form.Label className="font-celeste">Detalle de Cita*</Form.Label>
+            <Form.Label className="font-celeste-crud">Detalle de Cita*</Form.Label>
             <Form.Control
               as="textarea"
               type="text"
@@ -96,17 +96,17 @@ const handleSubmit=(e)=>{
           </Form.Group>
 
           <Form.Group className="mb-3" controlId="formBasicFecha">
-            <Form.Label className="font-celeste">Fecha (Lun a Vie)*</Form.Label>
+            <Form.Label className="font-celeste-crud">Fecha (Lun a Vie)*</Form.Label>
             <Form.Control type="date" placeholder="21/02/2022" onChange={({target})=>{setFecha(target.value.trimStart())}}></Form.Control>
           </Form.Group>
 
           <Form.Group className="mb-3" controlId="formBasicHora">
-            <Form.Label className="font-celeste">Hora (08 a 17)*</Form.Label>
+            <Form.Label className="font-celeste-crud">Hora (08 a 17)*</Form.Label>
             <Form.Control type="time" placeholder="08:00" onChange={({target})=>{setHora(target.value.trimStart())}}></Form.Control>
           </Form.Group>
 
           <div className="text-end">
-            <button className="btn-celeste">Guardar</button>
+            <button className="btn-celeste-crud">Guardar</button>
           </div>
 
         </Form>
