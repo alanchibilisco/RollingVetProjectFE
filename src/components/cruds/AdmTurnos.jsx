@@ -22,10 +22,10 @@ const AdmTurnos = ({ turnos, URLTurnos, getApiTurnos }) => {
       <div>
         <Container className="py-5">
           <div className="d-flex align-items-center justify-content-between">
-            <h1 className="font-celeste">Administrador de turnos</h1>
+            <h1 className="font-celeste-crud">Administrador de turnos</h1>
             <Link
               to="/Adm/turnos/crear"
-              className=" btn-celeste text-decoration-none text-center"
+              className=" btn-celeste-crud text-decoration-none text-center"
             >
               Agregar Turno
             </Link>
@@ -35,7 +35,7 @@ const AdmTurnos = ({ turnos, URLTurnos, getApiTurnos }) => {
           { turnos.length!==0 ?
           <Table bordered hover responsive className="align-middle mt-3">
             <thead>
-              <tr className="font-celeste">
+              <tr className="font-celeste-crud">
                 <th>Mascota-Dueño</th>
                 <th>Veterinario</th>
                 <th>Detalle de cita</th>

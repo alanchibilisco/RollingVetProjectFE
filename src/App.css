@@ -6,7 +6,7 @@
   /* font-family: 'Varela Round', sans-serif; */
   font-family: 'typo_round_regular_demoRg';
 }
-.font-celeste{
+.font-celeste-crud{
   color: #218b99;
   font-weight: bold;
 }
@@ -37,7 +37,7 @@
   border-color:  #218b99;
 }
 
-.btn-celeste {
+.btn-celeste-crud {
   min-width: 70px;
   height: 40px;
   color: #fff;
@@ -55,13 +55,13 @@
   border: 2px solid #218b99;
   color: #218b99;
 }
-.btn-celeste:hover {
+.btn-celeste-crud:hover {
   color: #fff;
 }
-.btn-celeste:hover:after {
+.btn-celeste-crud:hover:after {
   width: 100%;
 }
-.btn-celeste:after {
+.btn-celeste-crud:after {
   content: "";
   position: absolute;
   z-index: -1;
@@ -73,7 +73,7 @@
   background: #218b99;
 }
 
-.border-celeste{
+.border-celeste-crud{
   border: 20px solid #218b99;
 }
 

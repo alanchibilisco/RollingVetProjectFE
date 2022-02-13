@@ -25,18 +25,18 @@ const Adm = ({ turnos }) => {
     <div>
       <NavBar />
       <div className="container">
-        <h1 className="text-center my-3 font-celeste">ADMINISTRACION</h1>
-        <h3 className="text-center font-celeste">¡Bienvenido!</h3>
+        <h1 className="text-center my-3 font-celeste-crud">ADMINISTRACION</h1>
+        <h3 className="text-center font-celeste-crud">¡Bienvenido!</h3>
         <h5 className="text-end fs-6">RollingVet V:1-0-0</h5>
         <hr/>
         <div className="d-flex justify-content-around">
           <Link
             to="/Adm/pacientes"
-            className="btn-celeste text-decoration-none"
+            className="btn-celeste-crud text-decoration-none"
           >
             Administrar Pacientes
           </Link>
-          <Link to="/Adm/turnos" className="btn-celeste text-decoration-none">
+          <Link to="/Adm/turnos" className="btn-celeste-crud text-decoration-none">
             Administrar Turnos
           </Link>
         </div>

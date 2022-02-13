@@ -13,11 +13,11 @@ const AdmPacientes = ({pacientes, URLPacientes, getApiPacientes}) => {
         <NavBar></NavBar>
       <div>
         <Container className="py-5">
-          <div className="d-flex align-items-center justify-content-between font-celeste">
+          <div className="d-flex align-items-center justify-content-between font-celeste-crud">
             <h1>Administrador de Pacientes</h1>
             <Link
               to="/Adm/pacientes/crear"
-              className=" btn-celeste text-decoration-none text-center"
+              className=" btn-celeste-crud text-decoration-none text-center"
             >
               Agregar Paciente
             </Link>
@@ -26,7 +26,7 @@ const AdmPacientes = ({pacientes, URLPacientes, getApiPacientes}) => {
           {/* Table of products */}
           { pacientes.length!==0 ?
           <Table bordered hover responsive className="align-middle mt-3">
-            <thead className="font-celeste">
+            <thead className="font-celeste-crud">
               <tr>
                 <th>ID</th>
                 <th>Nombre</th>
