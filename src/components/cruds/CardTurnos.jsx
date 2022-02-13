@@ -14,8 +14,8 @@ const CardTurnos = ({turno}) => {
           <Card.Text><span className="fw-bold">Veterinario:</span> {turno.veterinario}</Card.Text>
           <Card.Text><span className="fw-bold">Detalle Cita:</span> {turno.detalleCita}</Card.Text>
           <div className="d-flex align-items-center justify-content-between">
-            <span className="badge bg-celeste fs-6">{turno.fecha}</span>
-            <span className="badge bg-celeste fs-6">{turno.hora}</span>            
+            <span className="badge bg-celeste-crud fs-6">{turno.fecha}</span>
+            <span className="badge bg-celeste-crud fs-6">{turno.hora}</span>            
           </div>         
         </Card.Body>
       </Card>

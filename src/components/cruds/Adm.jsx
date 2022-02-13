@@ -41,7 +41,7 @@ const Adm = ({ turnos }) => {
           </Link>
         </div>
         <hr />
-        <h2 className="text-center bg-celeste text-white">Turnos Asignados</h2>
+        <h2 className="text-center bg-celeste-crud text-white">Turnos Asignados</h2>
         <hr className="container" />
         {turnos.length !== 0 ? (
           <Row>
