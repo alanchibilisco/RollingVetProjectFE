@@ -33,9 +33,14 @@ function App() {
     getApiTurnos();
   }, []);
 
+  useEffect(()=>{
+    getWeather();
+  },[]);
+
   //utilizacion de las variables de entorno
   const URLPacientes = process.env.REACT_APP_API_PACIENTES;
   const URLTurnos = process.env.REACT_APP_API_TURNOS;
+  const key=process.env.REACT_APP_KEY
 
   const getApiPacientes = async () => {
     try {
@@ -60,17 +65,13 @@ function App() {
   const getWeather = async () => {
     try {
       const ipify = require("ipify2");
-      const resIp = await ipify.ipv4();
-      console.log(resIp); //borrar
+      const resIp = await ipify.ipv4();      
       const location = await fetch(`http://ip-api.com/json/${resIp}`);
       const locJson = await location.json();
       const openWeather = await fetch(
-        `http://api.openweathermap.org/data/2.5/weather?lat=${locJson.lat}&lon=${locJson.lon}&lang=es&units=metric&appid=89101df660e78594ffe9ac009875f78e`
+        `http://api.openweathermap.org/data/2.5/weather?lat=${locJson.lat}&lon=${locJson.lon}&lang=es&units=metric&appid=${key}`
       );
-      const openWthJson = await openWeather.json();
-      console.log(openWthJson.name);
-      console.log(Math.round(openWthJson.main.temp));
-      console.log(openWthJson);
+      const openWthJson = await openWeather.json();      
       setCity(openWthJson.name);
       setTemp(Math.round(openWthJson.main.temp)); 
     } catch (error) {
