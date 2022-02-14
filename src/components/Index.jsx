@@ -8,12 +8,15 @@ import Cardsplanes from "./Cardplanes";
 import Cardtienda from "./Cardtienda";
 import Nuestrosaliados from "./Nuestrosaliados";
 import Nuestoequipo from "./Nuestoequipo";
+import Weather from "./weather/Weather";
 
-const Index = () => {
+
+const Index = ({city, temp}) => {
   return (
     <div>
       <NavBar />
-      <Carrousel />
+      <Weather city={city} temp={temp}></Weather>
+      <Carrousel />      
       <Cardservicios />
       <Nuestrosaliados/>
       <Cardsplanes />

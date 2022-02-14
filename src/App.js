@@ -19,47 +19,72 @@ import EditTurnos from "./components/cruds/EditTurnos";
 
 function App() {
   //useState
-  const [pacientes, setPacientes]=useState([]);
-  const [turnos, setTurnos]=useState([]);
+  const [pacientes, setPacientes] = useState([]);
+  const [turnos, setTurnos] = useState([]);
+  const [city, setCity]=useState('');
+  const [temp, setTemp]=useState('');
 
   //useEffect
-  useEffect(()=>{
+  useEffect(() => {
     getApiPacientes();
   }, []);
 
-  useEffect(()=>{
+  useEffect(() => {
     getApiTurnos();
   }, []);
 
   //utilizacion de las variables de entorno
-  const URLPacientes=process.env.REACT_APP_API_PACIENTES;
-  const URLTurnos=process.env.REACT_APP_API_TURNOS;  
-  
+  const URLPacientes = process.env.REACT_APP_API_PACIENTES;
+  const URLTurnos = process.env.REACT_APP_API_TURNOS;
 
-  const getApiPacientes=async()=>{
+  const getApiPacientes = async () => {
     try {
-      const res=await fetch(URLPacientes);
-      const pacientesApi=await res.json();      
+      const res = await fetch(URLPacientes);
+      const pacientesApi = await res.json();
       setPacientes(pacientesApi);
     } catch (error) {
       console.log(error);
     }
-  }
+  };
 
-  const getApiTurnos=async()=>{
+  const getApiTurnos = async () => {
     try {
-      const res=await fetch(URLTurnos);
-      const turnosApi=await res.json();      
+      const res = await fetch(URLTurnos);
+      const turnosApi = await res.json();
       setTurnos(turnosApi);
     } catch (error) {
       console.log(error);
     }
-  }
+  };
+  //weather
+  const getWeather = async () => {
+    try {
+      const ipify = require("ipify2");
+      const resIp = await ipify.ipv4();
+      console.log(resIp); //borrar
+      const location = await fetch(`http://ip-api.com/json/${resIp}`);
+      const locJson = await location.json();
+      const openWeather = await fetch(
+        `http://api.openweathermap.org/data/2.5/weather?lat=${locJson.lat}&lon=${locJson.lon}&lang=es&units=metric&appid=89101df660e78594ffe9ac009875f78e`
+      );
+      const openWthJson = await openWeather.json();
+      console.log(openWthJson.name);
+      console.log(Math.round(openWthJson.main.temp));
+      console.log(openWthJson);
+      setCity(openWthJson.name);
+      setTemp(Math.round(openWthJson.main.temp)); 
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  window.setInterval(getWeather, 300000);
+  //getWeather();
+
   return (
     <div>
       <Router>
         <Routes>
-          <Route exact path="/" element={<Index></Index>}></Route>
+          <Route exact path="/" element={<Index city={city} temp={temp}></Index>}></Route>
           <Route
             exact
             path="/QuienesSomos"
@@ -85,34 +110,67 @@ function App() {
           <Route
             exact
             path="/Adm/pacientes"
-            element={<AdmPacientes pacientes={pacientes} URLPacientes={URLPacientes} getApiPacientes={getApiPacientes}></AdmPacientes>}
+            element={
+              <AdmPacientes
+                pacientes={pacientes}
+                URLPacientes={URLPacientes}
+                getApiPacientes={getApiPacientes}
+              ></AdmPacientes>
+            }
           ></Route>
           <Route
             exact
             path="/Adm/pacientes/crear"
-            element={<CrearPaciente URLPacientes={URLPacientes} getApiPacientes={getApiPacientes}></CrearPaciente>}
+            element={
+              <CrearPaciente
+                URLPacientes={URLPacientes}
+                getApiPacientes={getApiPacientes}
+              ></CrearPaciente>
+            }
           ></Route>
           <Route
             exact
             path="/Adm/pacientes/editar/:id"
-            element={<EditPacientes URLPacientes={URLPacientes} getApiPacientes={getApiPacientes}></EditPacientes>}
+            element={
+              <EditPacientes
+                URLPacientes={URLPacientes}
+                getApiPacientes={getApiPacientes}
+              ></EditPacientes>
+            }
           ></Route>
           <Route
             exact
             path="/Adm/turnos"
-            element={<AdmTurnos turnos={turnos} URLTurnos={URLTurnos} getApiTurnos={getApiTurnos}></AdmTurnos>}
+            element={
+              <AdmTurnos
+                turnos={turnos}
+                URLTurnos={URLTurnos}
+                getApiTurnos={getApiTurnos}
+              ></AdmTurnos>
+            }
           ></Route>
           <Route
             exact
             path="/Adm/turnos/crear"
-            element={<CrearTurno pacientes={pacientes} URLTurnos={URLTurnos} getApiTurnos={getApiTurnos}></CrearTurno>}
+            element={
+              <CrearTurno
+                pacientes={pacientes}
+                URLTurnos={URLTurnos}
+                getApiTurnos={getApiTurnos}
+              ></CrearTurno>
+            }
           ></Route>
           <Route
             exact
             path="/Adm/turnos/editar/:id"
-            element={<EditTurnos URLTurnos={URLTurnos} getApiTurnos={getApiTurnos} pacientes={pacientes}></EditTurnos>}
+            element={
+              <EditTurnos
+                URLTurnos={URLTurnos}
+                getApiTurnos={getApiTurnos}
+                pacientes={pacientes}
+              ></EditTurnos>
+            }
           ></Route>
-         
         </Routes>
       </Router>
     </div>
