@@ -11,11 +11,11 @@ import Nuestoequipo from "./Nuestoequipo";
 import Weather from "./weather/Weather";
 
 
-const Index = ({city, temp}) => {
+const Index = ({weather}) => {
   return (
     <div>
       <NavBar />
-      <Weather city={city} temp={temp}></Weather>
+      <Weather weather={weather}></Weather>
       <Carrousel />      
       <Cardservicios />
       <Nuestrosaliados/>

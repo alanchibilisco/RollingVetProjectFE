@@ -21,8 +21,7 @@ function App() {
   //useState
   const [pacientes, setPacientes] = useState([]);
   const [turnos, setTurnos] = useState([]);
-  const [city, setCity]=useState('');
-  const [temp, setTemp]=useState('');
+  const [weather, setWeather]=useState({});
 
   //useEffect
   useEffect(() => {
@@ -71,9 +70,14 @@ function App() {
       const openWeather = await fetch(
         `http://api.openweathermap.org/data/2.5/weather?lat=${locJson.lat}&lon=${locJson.lon}&lang=es&units=metric&appid=${key}`
       );
-      const openWthJson = await openWeather.json();      
-      setCity(openWthJson.name);
-      setTemp(Math.round(openWthJson.main.temp)); 
+      const openWthJson = await openWeather.json();           
+      const weather={
+        city: `${openWthJson.name}`,
+        temp: `${openWthJson.main.temp}`,
+        sky: `${openWthJson.weather[0].description}`,
+        wind: `${openWthJson.wind.speed}`
+      };
+      setWeather(weather); 
     } catch (error) {
       console.log(error);
     }
@@ -85,7 +89,7 @@ function App() {
     <div>
       <Router>
         <Routes>
-          <Route exact path="/" element={<Index city={city} temp={temp}></Index>}></Route>
+          <Route exact path="/" element={<Index weather={weather}></Index>}></Route>
           <Route
             exact
             path="/QuienesSomos"
