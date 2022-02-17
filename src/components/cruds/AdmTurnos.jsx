@@ -7,14 +7,14 @@ import Turno from "./Turno";
 
 const AdmTurnos = ({ turnos, URLTurnos, getApiTurnos }) => {
 
-  let sortTurnos = turnos;
-  sortTurnos.sort((a, b) => {
-    const as = a.fecha.split("-");
-    const ad = new Date(as[0], as[1] - 1, as[2]);
-    const bs = b.fecha.split("-");
-    const bd = new Date(bs[0], bs[1] - 1, bs[2]);
-    return ad - bd;
-  });
+  // let sortTurnos = turnos;
+  // sortTurnos.sort((a, b) => {
+  //   const as = a.fecha.split("-");
+  //   const ad = new Date(as[0], as[1] - 1, as[2]);
+  //   const bs = b.fecha.split("-");
+  //   const bd = new Date(bs[0], bs[1] - 1, bs[2]);
+  //   return ad - bd;
+  // });
   return (
     <div>
       <NavBar></NavBar>
@@ -39,14 +39,13 @@ const AdmTurnos = ({ turnos, URLTurnos, getApiTurnos }) => {
                 <th>Mascota-Dueño</th>
                 <th>Veterinario</th>
                 <th>Detalle de cita</th>
-                <th>Fecha</th>
-                <th>Hora</th>
+                <th>Fecha / Hora</th>                
                 <th>Acciones</th>
               </tr>
             </thead>
             <tbody>
               {/* esto tiene que ir en turno */}
-              {sortTurnos.map((turno) => (
+              {turnos.map((turno) => (
                 <Turno turno={turno} key={turno.id} URLTurnos={URLTurnos} getApiTurnos={getApiTurnos}></Turno>
               ))}
             </tbody>

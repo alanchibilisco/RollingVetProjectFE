@@ -9,14 +9,14 @@ import { useEffect } from "react";
 
 const Adm = ({ turnos }) => {
   //Ordeno el array en funcion a la fechas
-  let sortTurnos = turnos;
-  sortTurnos.sort((a, b) => {
-    const as = a.fecha.split("-");
-    const ad = new Date(as[0], as[1] - 1, as[2]);
-    const bs = b.fecha.split("-");
-    const bd = new Date(bs[0], bs[1] - 1, bs[2]);
-    return ad - bd;
-  });
+  // let sortTurnos = turnos;
+  // sortTurnos.sort((a, b) => {
+  //   const as = a.fecha.split("-");
+  //   const ad = new Date(as[0], as[1] - 1, as[2]);
+  //   const bs = b.fecha.split("-");
+  //   const bd = new Date(bs[0], bs[1] - 1, bs[2]);
+  //   return ad - bd;
+  // });
   //Fin orden array
 
   
@@ -45,7 +45,7 @@ const Adm = ({ turnos }) => {
         <hr className="container" />
         {turnos.length !== 0 ? (
           <Row>
-            {sortTurnos.map((turno) => (
+            {turnos.map((turno) => (
               <Col xl={3} lg={4} md={6} xs={12} key={turno.id}>
                 <CardTurnos turno={turno}></CardTurnos>
                 

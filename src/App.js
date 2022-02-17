@@ -45,7 +45,7 @@ function App() {
     try {
       const res = await fetch(URLPacientes);
       const pacientesApi = await res.json();
-      setPacientes(pacientesApi);
+      setPacientes(pacientesApi);      
     } catch (error) {
       console.log(error);
     }
@@ -55,7 +55,7 @@ function App() {
     try {
       const res = await fetch(URLTurnos);
       const turnosApi = await res.json();
-      setTurnos(turnosApi);
+      setTurnos(turnosApi);      
     } catch (error) {
       console.log(error);
     }

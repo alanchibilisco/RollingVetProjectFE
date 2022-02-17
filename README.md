@@ -7,6 +7,8 @@ EJECUTAR npm start
 REACT BOOTSTRAP´
 SWEET ALERT 2
 IPIFY2 = npm i ipify2
+npm install date-fns --save
+npm install react-datepicker --save
 
 
 <!-- This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

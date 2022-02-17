@@ -3,6 +3,10 @@ import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
 const Turno = ({turno, URLTurnos, getApiTurnos}) => {
+  const newStr=(turno.startDate).slice(0,turno.startDate.length-1);  
+  const date=new Date(newStr);
+  const textDate=date.toLocaleString(); 
+
   const handleDelete=(id)=>{
     Swal.fire({
       title: "¿Estas seguro de eliminar este turno?",
@@ -34,8 +38,7 @@ const Turno = ({turno, URLTurnos, getApiTurnos}) => {
                 <td>{turno.mascota}</td>
                 <td>{turno.veterinario}</td>
                 <td>{turno.detalleCita}</td>
-                <td>{turno.fecha}</td>
-                <td>{turno.hora}</td>                
+                <td>{textDate}</td>                                
                 <td className="w-25">
                   <div className="d-flex justify-content-center">
                     <Link
