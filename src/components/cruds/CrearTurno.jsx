@@ -46,7 +46,7 @@ const CrearTurno = ({ pacientes, URLTurnos, getApiTurnos }) => {
         detalleCita,
         veterinario,
         mascota,
-        startDate
+        startDate: startDate.toString()
       };
 
       Swal.fire({

@@ -55,7 +55,7 @@ const EditTurnos = ({ URLTurnos, getApiTurnos, pacientes}) => {
                 detalleCita: detalleCitaRef.current.value,
                 veterinario: turno.veterinario,
                 mascota: turno.mascota,
-                startDate: data
+                startDate: data.toString()
             };
             
             Swal.fire({
