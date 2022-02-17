@@ -6,43 +6,40 @@ import Juguetes from "./img/juguetes.png"
 
 const Cardtienda = () => {
     return (
-      <div class="container mt-5 bg-danger">
-        <h1 class="text-center">NUESTRA TIENDA</h1>
-        <img class="container " src={LineaSeparado} alt="lineaseparadora" />
+      <div className="container mt-5 ">
+        <h1 className="text-center colorfuente">NUESTRA TIENDA</h1>
+        <img className="container" src={LineaSeparado} alt="lineaseparadora" />
 
-      <div class="row mx-auto">
-    <div class="col">
-    <div class="m-1 col-sm-12 col-md-10 col-lg-8">
-    <div class="card text-center border-celeste">
-      <div class="card-body rounded-3">
-        <img src={Comedero} class="img-fluid" alt="" />
-        <h5 class="card-title">Comedero</h5>
-        <p class="card-text"></p>
-        <button type="button" class="btn btn-outline-celeste rounded-pill ">CONSULTAR AHORA</button>
+      <div className="row mx-auto">
+    <div className="col">
+    <div className="w-100 my-3 col-sm-12 col-md-6 col-lg-3">
+    <div className="card text-center border-celeste">
+      <div className="card-body rounded-3">
+        <img src={Comedero} className="img-fluid" alt="comedero" width={200}/>
+        <h5 className="card-title colorfuente">Comedero</h5>
+        <p className="card-text"></p>
       </div>
     </div>
   </div>
     </div>
-    <div class="col order-5">
-    <div class=" m-1 col-sm-12 col-md-10 col-lg-8">
-    <div class="card text-center border-celeste">
-      <div class="card-body rounded-3">
-        <img src={Juguetes} class="img-fluid" alt="perro" />
-        <h5 class="card-title">Juguetes</h5>
-        <p class="card-text"></p>
-        <button type="button" class="btn btn-outline-celeste rounded-pill ">CONSULTAR AHORA</button>
+    <div className="col order-5">
+    <div className="w-100 my-3 col-sm-12 col-md-6 col-lg-3">
+    <div className="card text-center border-celeste">
+      <div className="card-body rounded-3">
+        <img src={Juguetes} className="img-fluid" alt="perro" width={200}/>
+        <h5 className="card-title colorfuente">Juguetes</h5>
+        <p className="card-text"></p>
       </div>
     </div>
   </div>
     </div>
-    <div class="col order-1">
-    <div class=" m-1 col-sm-12 col-md-10 col-lg-8">
-    <div class="card text-center border-celeste">
-      <div class="card-body rounded-3">
-        <img src={Hueso} class="img-fluid" alt="" />
-        <h5 class="card-title">Alimento</h5>
-        <p class="card-text"></p>
-        <button type="button" class="btn btn-outline-celeste rounded-pill ">CONSULTAR AHORA</button>
+    <div className="col order-1">
+    <div className="w-100 my-3 col-sm-12 col-md-6 col-lg-3">
+    <div className="card text-center border-celeste">
+      <div className="card-body rounded-3">
+        <img src={Hueso} className="img-fluid" alt="alimento" width={200}/>
+        <h5 className="card-title colorfuente">Alimento</h5>
+        <p className="card-text"></p>
       </div>
     </div>
   </div>

@@ -1,69 +1,53 @@
 import React from "react";
-
 import nuestroequipo from "../components/img/NuestroEquipo.jpg";
-
 import doc1 from "../components/img/doc1.png";
 import doc2 from "../components/img/doc2.png";
 import doc3 from "../components/img/doc3.png";
+import "../App.css";
 
 const Nuestoequipo = () => {
   return (
     <div style={{ backgroundImage: `url(${nuestroequipo})` }}>
-      <h1 class=" mt-3 display-3 text-light text-center">NUESTRO EQUIPO</h1>
-      <div class="row justify-content-center">
-      <div class="col-4">
-      <div
-        id="carouselExampleSlidesOnly"
-        class="carousel slide"
-        data-bs-ride="carousel"
-      >
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <div
-              style={{ width: "18rem" }}
-              class="card m-1"
-            >
-              <img variant="top" class="card-img-top " src={doc1} />
-              <div class="card-body">
-                <p class="card-text">
-                  Some quick example text to build on the card title and make up
-                  the bulk of the card's content.
-                </p>
-              </div>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <div
-              style={{ width: "18rem" }}
-              class="card m-1 "
-            >
-              <img variant="top" class="card-img-top " src={doc2} alt="" />
-              <div class="card-body">
-                <p class="card-text">
-                  Some quick example text to build on the card title and make up
-                  the bulk of the card's content.
-                </p>
-              </div>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <div
-              style={{ width: "18rem" }}
-              class=" card m-1"
-            >
-              <img variant="top" class="card-img-top " src={doc3} alt="" />
-              <div class="card-body">
-                <p class="card-text">
-                  Some quick example text to build on the card title and make up
-                  the bulk of the card's content.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      </div>
+      <h1 className="text-center text-light">NUESTRO EQUIPO</h1>
+     {/*<div class="card-group">
+  <div class="card m-5 bg-celeste rounded-3 mb-3 text-center">
+     <img  src={doc1} class="card-img-top img-fluid" alt="doctor" width={150}/>
+    <div class="card-body">
+      <h5 class="card-title">Diego Altieri</h5>
+      <p class="card-text">Especialista en cachorros</p>
     </div>
+  </div>
+  <div class="card m-5 bg-celeste rounded-3 mb-3 text-center">
+     <img  src={doc2} class="card-img-top img-fluid" alt="doctor" width={150}/>
+    <div class="card-body">
+      <h5 class="card-title">Juan Gomez</h5>
+      <p class="card-text">Profesional en mascotas adultas</p>
+    </div>
+  </div>
+  <div class="card m-5 bg-celeste rounded-3 mb-3 text-center">
+     <img  src={doc3} class="card-img-top img-fluid" alt="doctor" width={150}/>
+    <div class="card-body">
+      <h5 class="card-title">Florencia Diaz</h5>
+      <p class="card-text">Experta en mascotas jovenes</p>
+    </div>
+  </div>
+  </div>*/}
+  <div className="container">
+  <div class="row align-items-center">
+    <div class="col">
+   <img src={doc1} alt="" width={200}/>
+  <p className="text-center text-light">Lorem ipsum dolor sit amet.</p>
+    </div>
+    <div class="col">
+      <img src={doc2} alt="" width={200}/>
+      <p className="text-center text-light">Lorem ipsum dolor sit amet.</p>
+    </div>
+    <div class="col">
+    <img src={doc3} alt="" width={200}/>
+  <p className="text-center text-light">Lorem ipsum dolor sit amet.</p>
+    </div>
+  </div>
+  </div>
     </div>
   );
 };
