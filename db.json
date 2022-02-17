@@ -26,28 +26,28 @@
       "detalleCita": "control gral., revisar nodulos",
       "veterinario": "Addle Romina",
       "mascota": "Mascota 1 - Paciente 1 Prueba",
-      "startDate": "2022-02-17T10:30:00.000Z",
+      "startDate": "Thu Feb 17 2022 16:00:00 GMT-0300 (hora estándar de Argentina)",
       "id": 1
     },
     {
       "detalleCita": "Drenamiento nodulo oreja",
       "veterinario": "Mezar Diego",
       "mascota": "Mascota 2 - Paciente 2 Prueba",
-      "startDate": "2022-02-18T11:30:00.000Z",
+      "startDate": "Fri Feb 18 2022 16:00:00 GMT-0300 (hora estándar de Argentina)",
       "id": 2
     },
     {
       "detalleCita": "test",
       "veterinario": "Kuc Damian",
       "mascota": "Mascota 1 - Paciente 1 Prueba",
-      "startDate": "2022-02-24T12:30:00.000Z",
+      "startDate": "Thu Feb 24 2022 16:00:00 GMT-0300 (hora estándar de Argentina)",
       "id": 3
     },
     {
       "detalleCita": "xxxxxxxxxxxxxxxxxxxxxxxxxxxx",
       "veterinario": "Mezar Diego",
       "mascota": "Mascota 2 - Paciente 2 Prueba",
-      "startDate": "Thu Feb 17 2022 16:30:00 GMT-0300 (hora estándar de Argentina)",
+      "startDate": "Thu Feb 17 2022 16:00:00 GMT-0300 (hora estándar de Argentina)",
       "id": 4
     }
   ]
