@@ -5,11 +5,20 @@ import { useNavigate, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
 import Footer from "../Footer";
 import NavBar from "../NavBar";
-import { validateTextoEsp, validateFecha, validateHora } from "../Validaciones";
+import { validateTextoEsp} from "../Validaciones";
+//datepickery
+import DatePicker from "react-datepicker";
+import es from "date-fns/locale/es";
+import "react-datepicker/dist/react-datepicker.css";
+import { setHours, setMinutes } from "date-fns";
 
 const EditTurnos = ({ URLTurnos, getApiTurnos, pacientes}) => {
     //state
     const [turno, setTurno]=useState({});
+    //const [startDate, setStartDate] = useState(
+      // setHours(setMinutes(new Date(), 0), 0)
+     //);
+    const [data, setData]=useState('');    
     //parametro
     const {id}=useParams();
     //efect
@@ -18,29 +27,35 @@ const EditTurnos = ({ URLTurnos, getApiTurnos, pacientes}) => {
             const res=await fetch(`${URLTurnos}/${id}`);
             const turnoApi=await res.json();
             setTurno(turnoApi);
+            setData(new Date(turnoApi.startDate.slice(0, turnoApi.startDate.length-1)));   
         } catch (error) {
             console.log(error);
         }
     }, []);
+    //manejo de startDate
+    
+    
     //referencias    
-    const detalleCitaRef=useRef('');    
-    const fechaRef=useRef('');
-    const horaRef=useRef('');
+    const detalleCitaRef=useRef('');       
     //navigate
     const navigate=useNavigate();
+    //handle date
+  const handleDate=(date)=>{
+        setData(date);        
+  }
     //handleSubmit
-    const handleSubmit=(e)=>{
-        e.preventDefault();        
-        if(!validateTextoEsp(turno.mascota)||!validateTextoEsp(turno.veterinario)||!validateTextoEsp(detalleCitaRef.current.value.trimStart())||!validateFecha(fechaRef.current.value)||!validateHora(horaRef.current.value)){
+    const handleSubmit=(e)=>{      
+        e.preventDefault();                
+        if(!validateTextoEsp(turno.mascota)||!validateTextoEsp(turno.veterinario)||!validateTextoEsp(detalleCitaRef.current.value.trimStart())){
             Swal.fire("Ops!", "Algunos de los campos es incorrectos", "Error");
             return;
         }else{
+
             const turnoUpdate={
                 detalleCita: detalleCitaRef.current.value,
                 veterinario: turno.veterinario,
                 mascota: turno.mascota,
-                fecha: fechaRef.current.value,
-                hora: horaRef.current.value
+                startDate: data
             };
             
             Swal.fire({
@@ -125,7 +140,7 @@ const EditTurnos = ({ URLTurnos, getApiTurnos, pacientes}) => {
             ></Form.Control>
           </Form.Group>
 
-          <Form.Group className="mb-3" controlId="formBasicFecha">
+          {/* <Form.Group className="mb-3" controlId="formBasicFecha">
             <Form.Label className="font-celeste-crud">Fecha (Lun a Vie)*</Form.Label>
             <Form.Control
               type="date"
@@ -143,8 +158,32 @@ const EditTurnos = ({ URLTurnos, getApiTurnos, pacientes}) => {
               defaultValue={turno.hora}
               ref={horaRef}            
             ></Form.Control>
+          </Form.Group> */}
+          {/* inicio datepickery */}
+          {turno.startDate!==undefined? 
+          <Form.Group>
+            <Form.Label className="font-celeste-crud">Seleccione fecha y hora</Form.Label>
+                         
+            <DatePicker
+            locale={es}             
+            selected={data}             
+            onChange={(date) =>{handleDate(date)}}
+            minDate={new Date()}
+            filterDate={(date) => date.getDay() !== 6 && date.getDay() !== 0}
+            showTimeSelect
+            filterTime={(date) =>
+              (date.getHours() >= 8 && date.getHours() <= 12)||(date.getHours() >= 14 && date.getHours() <= 18)
+            }
+            excludeTimes={[setHours(setMinutes(new Date(),30),12)]}
+            minTime={setHours(setMinutes(new Date(), 0), 8)}
+            maxTime={setHours(setMinutes(new Date(), 0), 18)}
+            dateFormat="Pp"
+            className="container-fluid form form-control mb-3"
+          ></DatePicker>
           </Form.Group>
-
+          :          
+          <></>
+          }                
           <div className="text-end">
             <button className="btn-celeste-crud">Guardar</button>
           </div>
