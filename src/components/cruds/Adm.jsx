@@ -18,9 +18,6 @@ const Adm = ({ turnos }) => {
   //   return ad - bd;
   // });
   //Fin orden array
-
-  
-
   return (
     <div>
       <NavBar />

@@ -77,12 +77,12 @@ function App() {
         sky: `${openWthJson.weather[0].description}`,
         wind: `${openWthJson.wind.speed}`
       };
-      setWeather(weather); 
+      setWeather(weather);      
     } catch (error) {
       console.log(error);
     }
   };
-  window.setInterval(getWeather, 300000);
+  window.setInterval(getWeather, 600000);
   //getWeather();
 
   return (

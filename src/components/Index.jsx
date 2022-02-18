@@ -12,10 +12,14 @@ import Weather from "./weather/Weather";
 
 
 const Index = ({weather}) => {
-  return (
+ return (
     <div>
       <NavBar />
-      <Weather weather={weather}></Weather>
+      {weather.city!==undefined ?
+      <Weather weather={weather}></Weather>      
+      :
+      <></>
+      }      
       <Carrousel />      
       <Cardservicios />
       <Nuestrosaliados/>

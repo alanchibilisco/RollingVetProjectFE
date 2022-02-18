@@ -27,7 +27,7 @@ const EditTurnos = ({ URLTurnos, getApiTurnos, pacientes}) => {
             const res=await fetch(`${URLTurnos}/${id}`);
             const turnoApi=await res.json();
             setTurno(turnoApi);
-            setData(new Date(turnoApi.startDate.slice(0, turnoApi.startDate.length-1)));   
+            setData(new Date(turnoApi.startDate));   
         } catch (error) {
             console.log(error);
         }

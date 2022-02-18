@@ -109,12 +109,9 @@ const CrearTurno = ({ pacientes, URLTurnos, getApiTurnos }) => {
                 setVeterinario(target.value.trimStart());
               }}
             >
-              <option value="">Selecciona un Veterinario</option>
-              <option value="Addle Romina">Dra. Addle Romina A.</option>
-              <option value="Fernandez Sara">Dra. Fernandez Sara V.</option>
-              <option value="Molinari Pablo">Dr. Molinari Pablo D.</option>
-              <option value="Kuc Damian">Dr. Kuc Damian</option>
-              <option value="Mezar Diego">Dr. Mezar Diego</option>
+              <option value="">Selecciona un Veterinario</option>              
+              <option value="Molinari Pablo">Dr. Molinari Pablo</option>
+              <option value="Kuc Damian">Dr. Kuc Damian</option>              
             </Form.Select>
           </Form.Group>
 
@@ -125,7 +122,7 @@ const CrearTurno = ({ pacientes, URLTurnos, getApiTurnos }) => {
             <Form.Control
               as="textarea"
               type="text"
-              placeholder="Mascota"
+              placeholder="Ej: Control"
               style={{ height: "100px" }}
               onChange={({ target }) => {
                 setDetalleCita(target.value.trimStart());
@@ -157,11 +154,9 @@ const CrearTurno = ({ pacientes, URLTurnos, getApiTurnos }) => {
                 setHora(target.value.trimStart());
               }}
             ></Form.Control>
-          </Form.Group> */}
-                {/* copiado */}
+          </Form.Group> */}               
           <Form.Group>
-            <Form.Label className="font-celeste-crud">Seleccione fecha y hora</Form.Label>
-            
+            <Form.Label className="font-celeste-crud">Seleccione fecha y hora</Form.Label>            
             <DatePicker
               locale={es}
               selected={startDate}
@@ -172,16 +167,13 @@ const CrearTurno = ({ pacientes, URLTurnos, getApiTurnos }) => {
               filterTime={(date) =>
                 (date.getHours() >= 8 && date.getHours() <= 12)||(date.getHours() >= 14 && date.getHours() <= 18)
               }
-              excludeTimes={[setHours(setMinutes(new Date(),30),12)]}
+              excludeTimes={[setHours(setMinutes(new Date(),30),12)]}             
               minTime={setHours(setMinutes(new Date(), 0), 8)}
               maxTime={setHours(setMinutes(new Date(), 0), 18)}
               dateFormat="Pp"
               className="container-fluid form form-control mb-3"
-            ></DatePicker>
-            
+            ></DatePicker>            
           </Form.Group>
-          {/* fin copiado */}
-
           <div className="text-end">
             <button className="btn-celeste-crud">Guardar</button>
           </div>

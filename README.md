@@ -10,6 +10,9 @@ IPIFY2 = npm i ipify2
 npm install date-fns --save
 npm install react-datepicker --save
 
+<!-- logica para eliminar horas del menu datepicker -->
+<!-- excludeTimes={[setHours(setMinutes(new Date(),30),12),setHours(setMinutes(new Date(),30),15),setHours(setMinutes(new Date(),0),17)]} -->
+
 
 <!-- This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 

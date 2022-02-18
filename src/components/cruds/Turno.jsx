@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
 const Turno = ({turno, URLTurnos, getApiTurnos}) => {
-  const newStr=(turno.startDate).slice(0,turno.startDate.length-1);  
-  const date=new Date(newStr);
+  //const newStr=(turno.startDate).slice(0,turno.startDate.length-1);  
+  const date=new Date(turno.startDate);
   const textDate=date.toLocaleString(); 
 
   const handleDelete=(id)=>{

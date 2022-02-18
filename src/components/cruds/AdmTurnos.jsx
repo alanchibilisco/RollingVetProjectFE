@@ -6,7 +6,6 @@ import NavBar from "../NavBar";
 import Turno from "./Turno";
 
 const AdmTurnos = ({ turnos, URLTurnos, getApiTurnos }) => {
-
   // let sortTurnos = turnos;
   // sortTurnos.sort((a, b) => {
   //   const as = a.fecha.split("-");
@@ -18,7 +17,6 @@ const AdmTurnos = ({ turnos, URLTurnos, getApiTurnos }) => {
   return (
     <div>
       <NavBar></NavBar>
-
       <div>
         <Container className="py-5">
           <div className="d-flex align-items-center justify-content-between">
