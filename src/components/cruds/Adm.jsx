@@ -18,6 +18,11 @@ const Adm = ({ turnos }) => {
   //   return ad - bd;
   // });
   //Fin orden array
+  const arrayMolinari=turnos.filter((turno)=>turno.veterinario==="Molinari Pablo");
+  const arrayKuc=turnos.filter((turno)=>turno.veterinario==="Kuc Damian");
+  console.log(arrayMolinari);
+  console.log(arrayKuc);
+
   return (
     <div>
       <NavBar />
@@ -40,12 +45,13 @@ const Adm = ({ turnos }) => {
         <hr />
         <h2 className="text-center bg-celeste-crud text-white">Turnos Asignados</h2>
         <hr className="container" />
-        {turnos.length !== 0 ? (
+        <h3 className="text-center bg-celeste-crud text-white">Turnos Dr. Molinari</h3>
+        <hr className="container" />
+        {arrayMolinari.length !== 0 ? (
           <Row>
-            {turnos.map((turno) => (
+            {arrayMolinari.map((turno) => (
               <Col xl={3} lg={4} md={6} xs={12} key={turno.id}>
-                <CardTurnos turno={turno}></CardTurnos>
-                
+                <CardTurnos turno={turno}></CardTurnos>                
               </Col>
             ))}
           </Row>
@@ -54,6 +60,23 @@ const Adm = ({ turnos }) => {
             <h1>🐶🐱 No hay turnos asignados 🐱🐶</h1>
           </div>
         )}
+        <hr className="container" />
+        <h3 className="text-center bg-celeste-crud text-white">Turnos Dr. Kuc</h3>
+        <hr className="container" />
+        {arrayKuc.length !== 0 ? (
+          <Row>
+            {arrayKuc.map((turno) => (
+              <Col xl={3} lg={4} md={6} xs={12} key={turno.id}>
+                <CardTurnos turno={turno}></CardTurnos>                
+              </Col>
+            ))}
+          </Row>
+        ) : (
+          <div className="no-products-found d-flex align-items-center justify-content-center">
+            <h1>🐶🐱 No hay turnos asignados 🐱🐶</h1>
+          </div>
+        )}
+        <hr className="container" />
       </div>
       <Footer />
     </div>
