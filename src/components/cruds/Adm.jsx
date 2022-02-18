@@ -19,10 +19,7 @@ const Adm = ({ turnos }) => {
   // });
   //Fin orden array
   const arrayMolinari=turnos.filter((turno)=>turno.veterinario==="Molinari Pablo");
-  const arrayKuc=turnos.filter((turno)=>turno.veterinario==="Kuc Damian");
-  console.log(arrayMolinari);
-  console.log(arrayKuc);
-
+  const arrayKuc=turnos.filter((turno)=>turno.veterinario==="Kuc Damian");  
   return (
     <div>
       <NavBar />

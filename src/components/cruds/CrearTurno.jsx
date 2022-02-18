@@ -11,7 +11,8 @@ import es from "date-fns/locale/es";
 import "react-datepicker/dist/react-datepicker.css";
 import { setHours, setMinutes } from "date-fns";
 
-const CrearTurno = ({ pacientes, URLTurnos, getApiTurnos }) => {
+const CrearTurno = ({ pacientes, URLTurnos, getApiTurnos, turnos }) => {
+
   const [detalleCita, setDetalleCita] = useState("");
   const [veterinario, setVeterinario] = useState("");
   const [mascota, setMascota] = useState("");
@@ -22,6 +23,16 @@ const CrearTurno = ({ pacientes, URLTurnos, getApiTurnos }) => {
     setHours(setMinutes(new Date(), 0), 8)
   );
   //fin FH
+  //manejo de turnos
+    console.log(turnos);
+    const arrayTurnos=[];
+    turnos.map((turno)=>(arrayTurnos.push(turno.startDate)));
+    console.log(arrayTurnos);
+    const arrT=[setHours(setMinutes(new Date(),30),12)];
+    arrayTurnos.map((turno)=>(arrT.push(setHours(setMinutes(new Date(turno), new Date(turno).getMinutes()),new Date(turno).getHours()))));
+    console.log(arrT);
+
+  //fin manejo turnos
 
   const navigate = useNavigate();
 
@@ -128,33 +139,7 @@ const CrearTurno = ({ pacientes, URLTurnos, getApiTurnos }) => {
                 setDetalleCita(target.value.trimStart());
               }}
             ></Form.Control>
-          </Form.Group>
-
-          {/* <Form.Group className="mb-3" controlId="formBasicFecha">
-            <Form.Label className="font-celeste-crud">
-              Fecha (Lun a Vie)*
-            </Form.Label>
-            <Form.Control
-              type="date"
-              placeholder="21/02/2022"
-              onChange={({ target }) => {
-                setFecha(target.value.trimStart());
-              }}
-            ></Form.Control>
-          </Form.Group>
-
-          <Form.Group className="mb-3" controlId="formBasicHora">
-            <Form.Label className="font-celeste-crud">
-              Hora (08 a 17)*
-            </Form.Label>
-            <Form.Control
-              type="time"
-              placeholder="08:00"              
-              onChange={({ target }) => {
-                setHora(target.value.trimStart());
-              }}
-            ></Form.Control>
-          </Form.Group> */}               
+          </Form.Group>                  
           <Form.Group>
             <Form.Label className="font-celeste-crud">Seleccione fecha y hora</Form.Label>            
             <DatePicker
@@ -167,7 +152,7 @@ const CrearTurno = ({ pacientes, URLTurnos, getApiTurnos }) => {
               filterTime={(date) =>
                 (date.getHours() >= 8 && date.getHours() <= 12)||(date.getHours() >= 14 && date.getHours() <= 18)
               }
-              excludeTimes={[setHours(setMinutes(new Date(),30),12)]}             
+              excludeTimes={arrT}             
               minTime={setHours(setMinutes(new Date(), 0), 8)}
               maxTime={setHours(setMinutes(new Date(), 0), 18)}
               dateFormat="Pp"

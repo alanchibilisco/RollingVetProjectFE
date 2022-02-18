@@ -14,10 +14,7 @@ import { setHours, setMinutes } from "date-fns";
 
 const EditTurnos = ({ URLTurnos, getApiTurnos, pacientes}) => {
     //state
-    const [turno, setTurno]=useState({});
-    //const [startDate, setStartDate] = useState(
-      // setHours(setMinutes(new Date(), 0), 0)
-     //);
+    const [turno, setTurno]=useState({});    
     const [data, setData]=useState('');    
     //parametro
     const {id}=useParams();

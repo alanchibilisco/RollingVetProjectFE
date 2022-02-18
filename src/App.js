@@ -162,6 +162,7 @@ function App() {
                 pacientes={pacientes}
                 URLTurnos={URLTurnos}
                 getApiTurnos={getApiTurnos}
+                turnos={turnos}
               ></CrearTurno>
             }
           ></Route>
