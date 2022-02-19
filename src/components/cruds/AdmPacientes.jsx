@@ -27,8 +27,7 @@ const AdmPacientes = ({pacientes, URLPacientes, getApiPacientes}) => {
           { pacientes.length!==0 ?
           <Table bordered hover responsive className="align-middle mt-3">
             <thead className="font-celeste-crud">
-              <tr>
-                <th>ID</th>
+              <tr>                
                 <th>Nombre</th>
                 <th>Apellido</th>
                 <th>Telefono</th>

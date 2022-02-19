@@ -31,7 +31,6 @@ const Paciente = ({paciente, URLPacientes, getApiPacientes}) => {
     }
     return (                    
             <tr>
-                <td>{paciente.id}</td>
                 <td>{paciente.nombreDueño}</td>
                 <td>{paciente.apellidoDueño}</td>
                 <td>{paciente.telefono}</td>
