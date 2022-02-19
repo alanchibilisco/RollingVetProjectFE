@@ -7,8 +7,7 @@ import NavBar from "../NavBar";
 import Turno from "./Turno";
 
 const AdmTurnos = ({ turnos, URLTurnos, getApiTurnos }) => {
-   const sortTurnos = turnos;
-   
+   const sortTurnos = turnos;   
     sortTurnos.sort((a, b) => {
       const as = a.startDate;
       const ad = new Date(as);
@@ -18,7 +17,7 @@ const AdmTurnos = ({ turnos, URLTurnos, getApiTurnos }) => {
     });
     
   const arrayMolinari=sortTurnos.filter((turno)=>turno.veterinario==="Molinari Pablo");
-  const arrayKuc=sortTurnos.filter((turno)=>turno.veterinario==="Kuc Damian");
+  const arrayKuc=sortTurnos.filter((turno)=>turno.veterinario==="Kuc Damian");  
   return (
     <div>
       <NavBar></NavBar>
@@ -63,7 +62,7 @@ const AdmTurnos = ({ turnos, URLTurnos, getApiTurnos }) => {
           <hr className="container" />
            <h3 className="text-center bg-celeste-crud text-white">Turnos Dr. Kuc</h3>
         <hr className="container" />
-        { arrayMolinari.length!==0 ?
+        { arrayKuc.length!==0 ?
           <Table bordered hover responsive className="align-middle mt-3">
             <thead>
               <tr className="font-celeste-crud">

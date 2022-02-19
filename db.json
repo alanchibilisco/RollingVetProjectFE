@@ -33,20 +33,6 @@
   ],
   "turnos": [
     {
-      "detalleCita": "Control gral",
-      "veterinario": "Kuc Damian",
-      "mascota": "Mascota 1 - Paciente 1 Prueba",
-      "startDate": "Thu Feb 17 2022 15:30:00 GMT-0300 (hora estándar de Argentina)",
-      "id": 1
-    },
-    {
-      "detalleCita": "control gral\n",
-      "veterinario": "Molinari Pablo",
-      "mascota": "Mascota 2 - Paciente 2 Prueba",
-      "startDate": "Fri Feb 18 2022 16:30:00 GMT-0300 (hora estándar de Argentina)",
-      "id": 2
-    },
-    {
       "detalleCita": "control gral",
       "veterinario": "Kuc Damian",
       "mascota": "Mascota 1 - Paciente 1 Prueba",
@@ -54,10 +40,10 @@
       "id": 3
     },
     {
-      "detalleCita": "control gral",
+      "detalleCita": "control",
       "veterinario": "Molinari Pablo",
-      "mascota": "Mascota 2 - Paciente 2 Prueba",
-      "startDate": "Thu Feb 17 2022 15:30:00 GMT-0300 (hora estándar de Argentina)",
+      "mascota": "Pichi - Santiago Adan",
+      "startDate": "Mon Feb 21 2022 08:00:00 GMT-0300 (hora estándar de Argentina)",
       "id": 4
     }
   ]

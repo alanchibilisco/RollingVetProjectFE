@@ -55,6 +55,7 @@ function App() {
     try {
       const res = await fetch(URLTurnos);
       const turnosApi = await res.json();
+      autoDelete(turnosApi);
       setTurnos(turnosApi);      
     } catch (error) {
       console.log(error);
@@ -83,8 +84,23 @@ function App() {
     }
   };
   window.setInterval(getWeather, 600000);
-  //getWeather();
+  //Fin weather
 
+   //Auto borrado de turnos en funcion a la fecha
+   const autoDelete=(turnos)=>{
+     const borrar = async(turno)=>{
+       if(new Date(turno.startDate)<new Date()){
+        const res = await fetch(`${URLTurnos}/${turno.id}`, {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+       }
+     }
+   turnos.map((turno)=>(borrar(turno)));   
+   };
+   //fin borrado
   return (
     <div>
       <Router>
