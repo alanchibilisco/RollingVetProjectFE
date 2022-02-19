@@ -9,28 +9,41 @@ import { validateTextoEsp} from "../Validaciones";
 import DatePicker from "react-datepicker";
 import es from "date-fns/locale/es";
 import "react-datepicker/dist/react-datepicker.css";
-import { setHours, setMinutes } from "date-fns";
+import { addDays, setHours, setMinutes, subDays } from "date-fns";
 
 const CrearTurno = ({ pacientes, URLTurnos, getApiTurnos, turnos }) => {
 
   const [detalleCita, setDetalleCita] = useState("");
   const [veterinario, setVeterinario] = useState("");
   const [mascota, setMascota] = useState("");
-  //const [fecha, setFecha] = useState("");
-  //const [hora, setHora] = useState("");
+  
   //manejo de FH  
   const [startDate, setStartDate] = useState(
     setHours(setMinutes(new Date(), 0), 8)
   );
   //fin FH
+
   //manejo de turnos
-    console.log(turnos);
+    /*console.log(turnos);
     const arrayTurnos=[];
-    turnos.map((turno)=>(arrayTurnos.push(turno.startDate)));
+    turnos.map((turno)=>(arrayTurnos.push(turno.startDate)))
     console.log(arrayTurnos);
+    console.log(arrayTurnos.sort());
     const arrT=[setHours(setMinutes(new Date(),30),12)];
     arrayTurnos.map((turno)=>(arrT.push(setHours(setMinutes(new Date(turno), new Date(turno).getMinutes()),new Date(turno).getHours()))));
     console.log(arrT);
+    console.log(new Date());
+    const nd=new Date(); //19/02/2022
+    console.log(nd);
+    nd.setDate(nd.getDate() + 1);
+    console.log(nd);
+    const arr=[setHours(setMinutes(new Date(),0),16)];
+    prueba con selected predeterminado
+    console.log(addDays(startDate,1).getDay());//aqui tomo la fecha actual y le agrego un dia mas
+
+    
+    //&&addDays(startDate,1).getDay()!==6&&addDays(startDate,2).getDay()!==0&&addDays(startDate,2).getDay()!==6)
+    //*/
 
   //fin manejo turnos
 
@@ -146,15 +159,27 @@ const CrearTurno = ({ pacientes, URLTurnos, getApiTurnos, turnos }) => {
               locale={es}
               selected={startDate}
               onChange={(date) =>{handleDate(date)}}
-              minDate={new Date()}
+              minDate={addDays(new Date(), 2)}
               filterDate={(date) => date.getDay() !== 6 && date.getDay() !== 0}
               showTimeSelect
-              filterTime={(date) =>
-                (date.getHours() >= 8 && date.getHours() <= 12)||(date.getHours() >= 14 && date.getHours() <= 18)
-              }
-              excludeTimes={arrT}             
-              minTime={setHours(setMinutes(new Date(), 0), 8)}
-              maxTime={setHours(setMinutes(new Date(), 0), 18)}
+              //filterTime={(date) =>
+                //(date.getHours() >= 8 && date.getHours() <= 12)||(date.getHours() >= 14 && date.getHours() <= 18)
+              //}
+              //excludeTimes={arr}             
+              //minTime={setHours(setMinutes(new Date(), 0), 8)}
+              //maxTime={setHours(setMinutes(new Date(), 0), 18)}
+              includeTimes={[setHours(setMinutes(new Date(),0),8),
+                setHours(setMinutes(new Date(),0),9),
+                setHours(setMinutes(new Date(),0),10),
+                setHours(setMinutes(new Date(),0),11),
+                setHours(setMinutes(new Date(),0),12),
+                setHours(setMinutes(new Date(),0),14),
+                setHours(setMinutes(new Date(),0),15),
+                setHours(setMinutes(new Date(),0),16),
+                setHours(setMinutes(new Date(),0),17),
+                setHours(setMinutes(new Date(),0),18)                
+              ]}
+
               dateFormat="Pp"
               className="container-fluid form form-control mb-3"
             ></DatePicker>            

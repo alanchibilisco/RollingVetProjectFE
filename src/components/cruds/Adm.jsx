@@ -9,17 +9,17 @@ import { useEffect } from "react";
 
 const Adm = ({ turnos }) => {
   //Ordeno el array en funcion a la fechas
-  // let sortTurnos = turnos;
-  // sortTurnos.sort((a, b) => {
-  //   const as = a.fecha.split("-");
-  //   const ad = new Date(as[0], as[1] - 1, as[2]);
-  //   const bs = b.fecha.split("-");
-  //   const bd = new Date(bs[0], bs[1] - 1, bs[2]);
-  //   return ad - bd;
-  // });
+   const sortTurnos = turnos;
+   sortTurnos.sort((a, b) => {
+     const as = a.startDate;
+     const ad = new Date(as);
+     const bs = b.startDate;
+     const bd = new Date(bs);
+     return ad - bd;
+   });
   //Fin orden array
-  const arrayMolinari=turnos.filter((turno)=>turno.veterinario==="Molinari Pablo");
-  const arrayKuc=turnos.filter((turno)=>turno.veterinario==="Kuc Damian");  
+  const arrayMolinari=sortTurnos.filter((turno)=>turno.veterinario==="Molinari Pablo");
+  const arrayKuc=sortTurnos.filter((turno)=>turno.veterinario==="Kuc Damian");  
   return (
     <div>
       <NavBar />

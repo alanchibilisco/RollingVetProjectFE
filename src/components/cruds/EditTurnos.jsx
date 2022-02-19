@@ -10,7 +10,7 @@ import { validateTextoEsp} from "../Validaciones";
 import DatePicker from "react-datepicker";
 import es from "date-fns/locale/es";
 import "react-datepicker/dist/react-datepicker.css";
-import { setHours, setMinutes } from "date-fns";
+import { addDays, setHours, setMinutes } from "date-fns";
 
 const EditTurnos = ({ URLTurnos, getApiTurnos, pacientes}) => {
     //state
@@ -165,15 +165,26 @@ const EditTurnos = ({ URLTurnos, getApiTurnos, pacientes}) => {
             locale={es}             
             selected={data}             
             onChange={(date) =>{handleDate(date)}}
-            minDate={new Date()}
+            minDate={addDays(new Date(data),2)}
             filterDate={(date) => date.getDay() !== 6 && date.getDay() !== 0}
             showTimeSelect
-            filterTime={(date) =>
+            /*filterTime={(date) =>
               (date.getHours() >= 8 && date.getHours() <= 12)||(date.getHours() >= 14 && date.getHours() <= 18)
-            }
-            excludeTimes={[setHours(setMinutes(new Date(),30),12)]}
-            minTime={setHours(setMinutes(new Date(), 0), 8)}
-            maxTime={setHours(setMinutes(new Date(), 0), 18)}
+            }*/
+            //excludeTimes={[setHours(setMinutes(new Date(),30),12)]}
+            //minTime={setHours(setMinutes(new Date(), 0), 8)}
+            //maxTime={setHours(setMinutes(new Date(), 0), 18)}
+            includeTimes={[setHours(setMinutes(new Date(),0),8),
+              setHours(setMinutes(new Date(),0),9),
+              setHours(setMinutes(new Date(),0),10),
+              setHours(setMinutes(new Date(),0),11),
+              setHours(setMinutes(new Date(),0),12),
+              setHours(setMinutes(new Date(),0),14),
+              setHours(setMinutes(new Date(),0),15),
+              setHours(setMinutes(new Date(),0),16),
+              setHours(setMinutes(new Date(),0),17),
+              setHours(setMinutes(new Date(),0),18)                
+            ]}
             dateFormat="Pp"
             className="container-fluid form form-control mb-3"
           ></DatePicker>

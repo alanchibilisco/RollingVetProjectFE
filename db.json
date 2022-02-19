@@ -19,11 +19,21 @@
       "especieMascota": "Perro",
       "razaMascota": "Mestizo",
       "id": 2
+    },
+    {
+      "nombreDueño": "Santiago",
+      "apellidoDueño": "Adan",
+      "email": "rolling@rolling.com.ar",
+      "telefono": "3816000000",
+      "nombreMascota": "Pichi",
+      "especieMascota": "Perro",
+      "razaMascota": "caschi",
+      "id": 3
     }
   ],
   "turnos": [
     {
-      "detalleCita": "Control gral.",
+      "detalleCita": "Control gral",
       "veterinario": "Kuc Damian",
       "mascota": "Mascota 1 - Paciente 1 Prueba",
       "startDate": "Thu Feb 17 2022 15:30:00 GMT-0300 (hora estándar de Argentina)",

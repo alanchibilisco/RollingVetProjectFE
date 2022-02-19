@@ -1,3 +1,4 @@
+import  compareAsc  from "date-fns/compareAsc";
 import React from "react";
 import { Container, Table } from "react-bootstrap";
 import { Link } from "react-router-dom";
@@ -6,16 +7,18 @@ import NavBar from "../NavBar";
 import Turno from "./Turno";
 
 const AdmTurnos = ({ turnos, URLTurnos, getApiTurnos }) => {
-  // let sortTurnos = turnos;
-  // sortTurnos.sort((a, b) => {
-  //   const as = a.fecha.split("-");
-  //   const ad = new Date(as[0], as[1] - 1, as[2]);
-  //   const bs = b.fecha.split("-");
-  //   const bd = new Date(bs[0], bs[1] - 1, bs[2]);
-  //   return ad - bd;
-  // });
-  const arrayMolinari=turnos.filter((turno)=>turno.veterinario==="Molinari Pablo");
-  const arrayKuc=turnos.filter((turno)=>turno.veterinario==="Kuc Damian");
+   const sortTurnos = turnos;
+   
+    sortTurnos.sort((a, b) => {
+      const as = a.startDate;
+      const ad = new Date(as);
+      const bs = b.startDate;
+      const bd = new Date(bs);
+      return ad - bd;
+    });
+    
+  const arrayMolinari=sortTurnos.filter((turno)=>turno.veterinario==="Molinari Pablo");
+  const arrayKuc=sortTurnos.filter((turno)=>turno.veterinario==="Kuc Damian");
   return (
     <div>
       <NavBar></NavBar>
