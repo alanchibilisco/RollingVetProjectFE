@@ -9,6 +9,7 @@ SWEET ALERT 2
 IPIFY2 = npm i ipify2
 npm install date-fns --save
 npm install react-datepicker --save
+npm install bcryptjs
 
 <!-- logica para eliminar horas del menu datepicker -->
 <!-- excludeTimes={[setHours(setMinutes(new Date(),30),12),setHours(setMinutes(new Date(),30),15),setHours(setMinutes(new Date(),0),17)]} -->

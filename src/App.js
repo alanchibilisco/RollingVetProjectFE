@@ -45,7 +45,7 @@ function App() {
   //utilizacion de las variables de entorno
   const URLPacientes = process.env.REACT_APP_API_PACIENTES;
   const URLTurnos = process.env.REACT_APP_API_TURNOS;
-  const URLUser= process.env.REACT_APP_API_TURNOS;
+  const URLUser= process.env.REACT_APP_API_USER;
   const key=process.env.REACT_APP_KEY
 
   const getApiPacientes = async () => {
@@ -60,7 +60,7 @@ function App() {
 
   const getApiTurnos = async () => {
     try {
-      const res = await fetch(URLTurnos);
+      const res = await fetch(URLTurnos);      
       const turnosApi = await res.json();
       autoDelete(turnosApi);
       setTurnos(turnosApi);      
@@ -71,9 +71,10 @@ function App() {
 
   const getApiUser=async()=>{
     try {
-      const res=await fetch(URLUser);
+      const res=await fetch(URLUser);      
       const userApi=await res.json();
-      setUser(userApi);
+      console.log(userApi.userName);
+      setUser(userApi);      
     } catch (error) {
       console.log(error);
     }
@@ -132,7 +133,9 @@ function App() {
       console.log(res);
    }
 
-   
+   console.log(user);
+   console.log(user.userName);
+   console.log(user.pass);
    
    
 
@@ -153,7 +156,7 @@ function App() {
             path="/NuestrosServicios"
             element={<Servicios></Servicios>}
           ></Route>
-          <Route exact path="/Login" element={<Login></Login>}></Route>
+          <Route exact path="/Login" element={<Login user={user}></Login>}></Route>
           <Route
             exact
             path="/Contactanos"

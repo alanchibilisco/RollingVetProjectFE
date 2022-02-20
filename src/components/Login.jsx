@@ -1,41 +1,56 @@
-import React from "react";
+import React, { useState } from "react";
+import {Col, Container, Form, Row } from "react-bootstrap";
 import Footer from "./Footer";
 import NavBar from "./NavBar";
+import contacto from './img/contactoIMG.jpg';
+import bcrypt from "bcryptjs/dist/bcrypt";
 
+const Login = ({ user }) => {
+  console.log(user); 
+  const[logUser, setLogUser]=useState('');
+  const[logPass, setLogPass]=useState('');
 
-const Login = () => {
-  return (<div>
+  const handleSubmit=(e)=>{
+    e.preventDefault();
+    if(bcrypt.compareSync(logUser,user.userName)&&bcrypt.compareSync(logPass, user.pass)){
+      console.log('esta logueado ok');      
+    }else{
+      console.log('esta logueado mal');
+    }
+  }
+
+  return (
+    <div>
       <NavBar />
-      <div class="">
-        <form></form>
-        <div class="row justify-content-evenly">
-        <div class="row align-items-center  w-100">
-          <div class="col-4 col-sm-12 col-md-6" data-aos="fade-right"
-          data-aos-anchor="#example-anchor"
-          data-aos-offset="500"
-          data-aos-duration="500">
-            <h1 class="display-4 mt-3">Accede a tu cuenta</h1>
-            <form>
-              <div>
-                <label for="InputEmail1" class="form-label">Email / Usuario</label>
-                <input class="form-control" required placeholder="RollingVetUser"></input>
+      <Container className="py-5">
+      <h1 className="font-celeste-crud">INICIE SESION</h1>
+      <hr />
+      <div className="my-5">        
+            <Form className="my-5" onSubmit={handleSubmit}>    
+            <Row>
+              <Col xs={12} md={6} className='my-2'>
+              <Form.Group className="mb-3" controlId="formBasicUser">
+                <Form.Label className="font-celeste-crud">Nombre de usuario / email</Form.Label>
+                <Form.Control type="text" placeholder="RollingUser" onChange={({target})=>setLogUser(target.value.trimStart())}></Form.Control>
+              </Form.Group>
+              <Form.Group className="mb-3" controlId="formBasicPass">
+                <Form.Label className="font-celeste-crud">Contraseña</Form.Label>
+                <Form.Control type="password" placeholder="rollingPass" onChange={({target})=>setLogPass(target.value.trimStart())}></Form.Control>
+              </Form.Group> 
+              <div className="text-end">
+              <button className="btn-celeste-crud">Ingresar</button>
               </div>
-              <div class="mb-3">
-                <label for="InputPassword1" class="form-label">Contraseña</label>
-                <input type="password" class="form-control" required placeholder="Ingrese su contraseña..." ></input>
-              </div>
-              <div>
-              <button type="submit" class="btn btn-primary">Iniciar Sesion</button>
+              </Col>
+              <Col xs={12} md={6} className='my-2'><img src={contacto} width='100%' alt="Imagen de contacto"></img></Col>
+              </Row>                      
+              
+            </Form>
+
             </div>
-            </form>
-            <hr />
-        </div>
-        </div>
-        </div>
+      </Container>
       <Footer />
-      </div>
-      </div>
-)  ;
-  };
+    </div>
+  );
+};
 
 export default Login;
