@@ -16,7 +16,6 @@ const Login = ({ user }) => {
   const handleSubmit=(e)=>{
     e.preventDefault();
     if(bcrypt.compareSync(logUser,user[0].userName)&&bcrypt.compareSync(logPass, user[0].pass)){
-      console.log('esta logueado ok');
       session=true;
       sessionStorage.setItem('stateSession',JSON.stringify(session));
       Swal.fire(
