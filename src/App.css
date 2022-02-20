@@ -51,8 +51,10 @@
 }
 
 .btn-celeste-crud {
-  min-width: 70px;
-  height: 40px;
+  
+  min-width: 100px;
+  height: 60px;
+  line-height: 50px;
   color: #fff;
   padding: 5px 10px;
   font-weight: bold;
