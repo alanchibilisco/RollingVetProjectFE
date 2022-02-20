@@ -4,20 +4,39 @@ import Footer from "./Footer";
 import NavBar from "./NavBar";
 import contacto from './img/contactoIMG.jpg';
 import bcrypt from "bcryptjs/dist/bcrypt";
+import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
-const Login = ({ user }) => {
-  console.log(user); 
+const Login = ({ user }) => { 
+  
   const[logUser, setLogUser]=useState('');
   const[logPass, setLogPass]=useState('');
-
+  let session=false;
+  const navigate=useNavigate();
   const handleSubmit=(e)=>{
     e.preventDefault();
-    if(bcrypt.compareSync(logUser,user.userName)&&bcrypt.compareSync(logPass, user.pass)){
-      console.log('esta logueado ok');      
+    if(bcrypt.compareSync(logUser,user[0].userName)&&bcrypt.compareSync(logPass, user[0].pass)){
+      console.log('esta logueado ok');
+      session=true;
+      sessionStorage.setItem('stateSession',JSON.stringify(session));
+      Swal.fire(
+        'Correctamente logueado!',
+        '',
+        'success'
+      )
+      setTimeout(() => {
+        navigate("/");  
+      }, 2000);
+      
+
     }else{
-      console.log('esta logueado mal');
+      Swal.fire(
+        'Usuario o Contraseña Incorrectos',
+        'Vuelva a intentar',
+        'error'
+      )      
     }
-  }
+  } 
 
   return (
     <div>
@@ -31,7 +50,9 @@ const Login = ({ user }) => {
               <Col xs={12} md={6} className='my-2'>
               <Form.Group className="mb-3" controlId="formBasicUser">
                 <Form.Label className="font-celeste-crud">Nombre de usuario / email</Form.Label>
-                <Form.Control type="text" placeholder="RollingUser" onChange={({target})=>setLogUser(target.value.trimStart())}></Form.Control>
+                <Form.Control type="text" placeholder="RollingUser" onChange={({target})=>{
+                  setLogUser(target.value.trimStart());
+                }}></Form.Control>
               </Form.Group>
               <Form.Group className="mb-3" controlId="formBasicPass">
                 <Form.Label className="font-celeste-crud">Contraseña</Form.Label>

@@ -8,7 +8,11 @@ import { useNavigate } from "react-router-dom";
 
 
 const CrearPaciente = ({URLPacientes, getApiPacientes}) => {
-  
+  const redirect = useNavigate();
+  const session = JSON.parse(sessionStorage.getItem("stateSession")) || false;
+  if (!session) {
+    redirect("/");
+  }
   const [nombreDueño, setNombreDueño]=useState('');
   const [apellidoDueño, setApellidoDueño]=useState('');
   const [email, setEmail]=useState('');

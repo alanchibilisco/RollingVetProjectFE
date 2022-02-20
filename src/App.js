@@ -72,8 +72,7 @@ function App() {
   const getApiUser=async()=>{
     try {
       const res=await fetch(URLUser);      
-      const userApi=await res.json();
-      console.log(userApi.userName);
+      const userApi=await res.json();      
       setUser(userApi);      
     } catch (error) {
       console.log(error);
@@ -119,27 +118,7 @@ function App() {
    turnos.map((turno)=>(borrar(turno)));   
    };
    //fin borrado
-
-   //user
-   const pass=async()=>{
-    const bcrypt=require('bcryptjs');
-   const passCrypt= await bcrypt.hash('admin',8);
-   console.log(passCrypt);
-   }
    
-   const compare=()=>{ 
-      const hash="$2a$08$0oM716UFy9lb2LLDVgr0U..B1fCssk4jcLABz8J8LpMVYW30pzawW";
-      const res=bcrypt.compareSync("admin",hash);
-      console.log(res);
-   }
-
-   console.log(user);
-   console.log(user.userName);
-   console.log(user.pass);
-   
-   
-
-   //fin user
   return (
     <div>
       <Router>

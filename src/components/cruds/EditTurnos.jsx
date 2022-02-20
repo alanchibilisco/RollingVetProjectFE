@@ -13,6 +13,11 @@ import "react-datepicker/dist/react-datepicker.css";
 import { addDays, setHours, setMinutes } from "date-fns";
 
 const EditTurnos = ({ URLTurnos, getApiTurnos, pacientes}) => {
+  const redirect = useNavigate();
+  const session = JSON.parse(sessionStorage.getItem("stateSession")) || false;
+  if (!session) {
+    redirect("/");
+  }
     //state
     const [turno, setTurno]=useState({});    
     const [data, setData]=useState('');    

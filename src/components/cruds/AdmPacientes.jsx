@@ -1,12 +1,16 @@
 import React from "react";
 import { Container, Table } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Footer from '../Footer';
 import NavBar from '../NavBar';
 import Paciente from "./Paciente";
 
 const AdmPacientes = ({pacientes, URLPacientes, getApiPacientes}) => {
-  
+  const navigate = useNavigate();
+  const session = JSON.parse(sessionStorage.getItem("stateSession")) || false;
+  if (!session) {
+    navigate("/");
+  }
   return (
       
     <div>

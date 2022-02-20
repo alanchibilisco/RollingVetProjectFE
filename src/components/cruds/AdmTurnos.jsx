@@ -1,12 +1,17 @@
 import  compareAsc  from "date-fns/compareAsc";
 import React from "react";
 import { Container, Table } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Footer from "../Footer";
 import NavBar from "../NavBar";
 import Turno from "./Turno";
 
 const AdmTurnos = ({ turnos, URLTurnos, getApiTurnos }) => {
+  const navigate = useNavigate();
+  const session = JSON.parse(sessionStorage.getItem("stateSession")) || false;
+  if (!session) {
+    navigate("/");
+  }
    const sortTurnos = turnos;   
     sortTurnos.sort((a, b) => {
       const as = a.startDate;

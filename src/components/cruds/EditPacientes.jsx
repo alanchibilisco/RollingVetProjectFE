@@ -14,6 +14,12 @@ import {
 } from "../Validaciones";
 
 const EditPacientes = ({ URLPacientes, getApiPacientes }) => {
+  const redirect = useNavigate();
+  const session = JSON.parse(sessionStorage.getItem("stateSession")) || false;
+  if (!session) {
+    redirect("/");
+  }
+
   //state
   const [paciente, setPaciente] = useState({});
   //parametro
