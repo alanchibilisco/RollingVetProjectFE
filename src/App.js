@@ -16,12 +16,14 @@ import CrearPaciente from "./components/cruds/CrearPaciente";
 import CrearTurno from "./components/cruds/CrearTurno";
 import EditPacientes from "./components/cruds/EditPacientes";
 import EditTurnos from "./components/cruds/EditTurnos";
+import bcrypt from "bcryptjs/dist/bcrypt";
 
 function App() {
   //useState
   const [pacientes, setPacientes] = useState([]);
   const [turnos, setTurnos] = useState([]);
   const [weather, setWeather]=useState({});
+  const [user, setUser]=useState([]);
 
   //useEffect
   useEffect(() => {
@@ -36,9 +38,14 @@ function App() {
     getWeather();
   },[]);
 
+  useEffect(()=>{
+    getApiUser();
+  }, []);
+
   //utilizacion de las variables de entorno
   const URLPacientes = process.env.REACT_APP_API_PACIENTES;
   const URLTurnos = process.env.REACT_APP_API_TURNOS;
+  const URLUser= process.env.REACT_APP_API_TURNOS;
   const key=process.env.REACT_APP_KEY
 
   const getApiPacientes = async () => {
@@ -57,6 +64,16 @@ function App() {
       const turnosApi = await res.json();
       autoDelete(turnosApi);
       setTurnos(turnosApi);      
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const getApiUser=async()=>{
+    try {
+      const res=await fetch(URLUser);
+      const userApi=await res.json();
+      setUser(userApi);
     } catch (error) {
       console.log(error);
     }
@@ -101,6 +118,25 @@ function App() {
    turnos.map((turno)=>(borrar(turno)));   
    };
    //fin borrado
+
+   //user
+   const pass=async()=>{
+    const bcrypt=require('bcryptjs');
+   const passCrypt= await bcrypt.hash('admin',8);
+   console.log(passCrypt);
+   }
+   
+   const compare=()=>{ 
+      const hash="$2a$08$0oM716UFy9lb2LLDVgr0U..B1fCssk4jcLABz8J8LpMVYW30pzawW";
+      const res=bcrypt.compareSync("admin",hash);
+      console.log(res);
+   }
+
+   
+   
+   
+
+   //fin user
   return (
     <div>
       <Router>

@@ -46,5 +46,13 @@
       "startDate": "Mon Feb 21 2022 08:00:00 GMT-0300 (hora estándar de Argentina)",
       "id": 4
     }
-  ]
+  ],
+  
+    "user":[
+      {
+        "userName": "$2a$08$0oM716UFy9lb2LLDVgr0U..B1fCssk4jcLABz8J8LpMVYW30pzawW",
+        "pass": "$2a$08$UgdtDRaUoeKqrqRuObXjhOvBn6bn.zjy/RvrXLgjagnCQO6NDqRd."
+      }
+    ]
+  
 }
