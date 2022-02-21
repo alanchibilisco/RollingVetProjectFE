@@ -15,6 +15,7 @@ npm install --save @fortawesome/free-solid-svg-icons
 npm install --save @fortawesome/react-fontawesome
 npm install sweetalert2
 npm install react-bootstrap bootstrap@5.1.3
+npm install @emailjs/browser --save
 
 
 ##LOGIN
