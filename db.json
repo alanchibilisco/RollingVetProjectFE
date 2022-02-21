@@ -38,22 +38,13 @@
       "mascota": "Mascota 1 - Paciente 1 Prueba",
       "startDate": "Thu Feb 24 2022 16:30:00 GMT-0300 (hora estándar de Argentina)",
       "id": 3
-    },
-    {
-      "detalleCita": "control",
-      "veterinario": "Molinari Pablo",
-      "mascota": "Pichi - Santiago Adan",
-      "startDate": "Mon Feb 21 2022 08:00:00 GMT-0300 (hora estándar de Argentina)",
-      "id": 4
     }
-  ],  
-    "users":[
-      {
-        "userName":"$2a$08$0oM716UFy9lb2LLDVgr0U..B1fCssk4jcLABz8J8LpMVYW30pzawW",
-        "pass":"$2a$08$UgdtDRaUoeKqrqRuObXjhOvBn6bn.zjy/RvrXLgjagnCQO6NDqRd.",
-        "id":1
-      }
-    ]
-  
+  ],
+  "users": [
+    {
+      "userName": "$2a$08$0oM716UFy9lb2LLDVgr0U..B1fCssk4jcLABz8J8LpMVYW30pzawW",
+      "pass": "$2a$08$UgdtDRaUoeKqrqRuObXjhOvBn6bn.zjy/RvrXLgjagnCQO6NDqRd.",
+      "id": 1
+    }
+  ]
 }
-

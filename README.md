@@ -4,12 +4,17 @@
 EJECUTAR json-server --watch db.json --port 3004
 EJECUTAR npm start
 ##librerias a instalar
-REACT BOOTSTRAP´
-SWEET ALERT 2
+npm install
 IPIFY2 = npm i ipify2
 npm install date-fns --save
 npm install react-datepicker --save
 npm install bcryptjs
+npm install react-router-dom@6
+npm i --save @fortawesome/fontawesome-svg-core
+npm install --save @fortawesome/free-solid-svg-icons
+npm install --save @fortawesome/react-fontawesome
+npm install sweetalert2
+npm install react-bootstrap bootstrap@5.1.3
 
 
 ##LOGIN
