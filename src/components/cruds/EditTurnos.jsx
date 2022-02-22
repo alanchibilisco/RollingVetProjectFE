@@ -13,6 +13,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import { addDays, setHours, setMinutes } from "date-fns";
 
 const EditTurnos = ({ URLTurnos, getApiTurnos, pacientes, turnos }) => {
+
   const redirect = useNavigate();
   const session = JSON.parse(sessionStorage.getItem("stateSession")) || false;
   if (!session) {
@@ -21,6 +22,7 @@ const EditTurnos = ({ URLTurnos, getApiTurnos, pacientes, turnos }) => {
   //state
   const [turno, setTurno] = useState({});
   const [data, setData] = useState(setHours(setMinutes(new Date(), 0), 8));
+  const [minDate, setMinDate]=useState(setHours(setMinutes(new Date(), 0), 8));
 
   //parametro
   const { id } = useParams();
@@ -31,6 +33,7 @@ const EditTurnos = ({ URLTurnos, getApiTurnos, pacientes, turnos }) => {
       const turnoApi = await res.json();
       setTurno(turnoApi);
       setData(new Date(turnoApi.startDate));
+      setMinDate(addDays(setHours(setMinutes(new Date(turnoApi.startDate),0),8), 2));
     } catch (error) {
       console.log(error);
     }
@@ -184,7 +187,7 @@ const EditTurnos = ({ URLTurnos, getApiTurnos, pacientes, turnos }) => {
                 onChange={(date) => {
                   handleDate(date);
                 }}
-                minDate={data}
+                minDate={minDate}
                 filterDate={(date) =>
                   date.getDay() !== 6 && date.getDay() !== 0
                 }
