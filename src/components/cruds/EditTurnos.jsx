@@ -12,7 +12,7 @@ import es from "date-fns/locale/es";
 import "react-datepicker/dist/react-datepicker.css";
 import { addDays, setHours, setMinutes } from "date-fns";
 
-const EditTurnos = ({ URLTurnos, getApiTurnos, pacientes}) => {
+const EditTurnos = ({ URLTurnos, getApiTurnos, pacientes, turnos}) => {
   const redirect = useNavigate();
   const session = JSON.parse(sessionStorage.getItem("stateSession")) || false;
   if (!session) {
@@ -20,7 +20,8 @@ const EditTurnos = ({ URLTurnos, getApiTurnos, pacientes}) => {
   }
     //state
     const [turno, setTurno]=useState({});    
-    const [data, setData]=useState('');    
+    const [data, setData]=useState(setHours(setMinutes(new Date(), 0), 8));  
+     
     //parametro
     const {id}=useParams();
     //efect
@@ -34,7 +35,15 @@ const EditTurnos = ({ URLTurnos, getApiTurnos, pacientes}) => {
             console.log(error);
         }
     }, []);
-    //manejo de startDate
+    //manejo de turnos
+    const mapTurnos=[];//aqui guardare los turnos en formato Date
+    turnos.map((turno)=>(mapTurnos.push(new Date(turno.startDate))));//recorro el array de turnos y los voy convirtiendo a formato Date y guardando en el array mapTurnos.
+    console.log(mapTurnos);
+    const filterTurnos=mapTurnos.filter((turno)=>(turno.getDate()===data.getDate()));//filtro los turnos en funcion a la fecha
+    console.log(filterTurnos);
+    const excTimes=[];//aqui se guardaran los excludes times del dia de la fecha
+    filterTurnos.map((turno)=>(excTimes.push(setHours(setMinutes(turno,turno.getMinutes()),turno.getHours()))));//aqui mapeo los turnos filtrados
+    console.log(excTimes);
     
     
     //referencias    
@@ -43,7 +52,7 @@ const EditTurnos = ({ URLTurnos, getApiTurnos, pacientes}) => {
     const navigate=useNavigate();
     //handle date
   const handleDate=(date)=>{
-        setData(date);        
+        setData(date);         
   }
     //handleSubmit
     const handleSubmit=(e)=>{      
@@ -88,6 +97,7 @@ const EditTurnos = ({ URLTurnos, getApiTurnos, pacientes}) => {
               });
         }
     }
+    
   return (
     <div>
       <NavBar></NavBar>
@@ -170,13 +180,13 @@ const EditTurnos = ({ URLTurnos, getApiTurnos, pacientes}) => {
             locale={es}             
             selected={data}             
             onChange={(date) =>{handleDate(date)}}
-            minDate={addDays(new Date(data),2)}
+            minDate={data}
             filterDate={(date) => date.getDay() !== 6 && date.getDay() !== 0}
             showTimeSelect
             /*filterTime={(date) =>
               (date.getHours() >= 8 && date.getHours() <= 12)||(date.getHours() >= 14 && date.getHours() <= 18)
             }*/
-            //excludeTimes={[setHours(setMinutes(new Date(),30),12)]}
+            excludeTimes={excTimes}
             //minTime={setHours(setMinutes(new Date(), 0), 8)}
             //maxTime={setHours(setMinutes(new Date(), 0), 18)}
             includeTimes={[setHours(setMinutes(new Date(),0),8),

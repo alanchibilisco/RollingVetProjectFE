@@ -208,6 +208,7 @@ function App() {
                 URLTurnos={URLTurnos}
                 getApiTurnos={getApiTurnos}
                 pacientes={pacientes}
+                turnos={turnos}
               ></EditTurnos>
             }
           ></Route>
