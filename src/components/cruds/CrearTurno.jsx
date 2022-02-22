@@ -44,11 +44,21 @@ const CrearTurno = ({ pacientes, URLTurnos, getApiTurnos, turnos }) => {
     console.log(nd);
     const arr=[setHours(setMinutes(new Date(),0),16)];
     prueba con selected predeterminado
-    console.log(addDays(startDate,1).getDay());//aqui tomo la fecha actual y le agrego un dia mas
-
+    console.log(addDays(startDate,1).getDay());//aqui tomo la fecha actual y le agrego un dia mas    
     
     //&&addDays(startDate,1).getDay()!==6&&addDays(startDate,2).getDay()!==0&&addDays(startDate,2).getDay()!==6)
     //*/
+    const mapTurnos=[];//aqui guardare los turnos en formato Date
+    turnos.map((turno)=>(mapTurnos.push(new Date(turno.startDate))));//recorro el array de turnos y los voy convirtiendo a formato Date y guardando en el array mapTurnos.
+    console.log(mapTurnos);
+    const filterTurnos=mapTurnos.filter((turno)=>(turno.getDate()===startDate.getDate()));//filtro los turnos en funcion a la fecha
+    console.log(filterTurnos);
+    const excTimes=[];//aqui se guardaran los excludes times del dia de la fecha
+    filterTurnos.map((turno)=>(excTimes.push(setHours(setMinutes(turno,turno.getMinutes()),turno.getHours()))));//aqui mapeo los turnos filtrados
+    console.log(excTimes);
+
+
+
 
   //fin manejo turnos
 
@@ -170,7 +180,7 @@ const CrearTurno = ({ pacientes, URLTurnos, getApiTurnos, turnos }) => {
               //filterTime={(date) =>
                 //(date.getHours() >= 8 && date.getHours() <= 12)||(date.getHours() >= 14 && date.getHours() <= 18)
               //}
-              //excludeTimes={arr}             
+              excludeTimes={excTimes}             
               //minTime={setHours(setMinutes(new Date(), 0), 8)}
               //maxTime={setHours(setMinutes(new Date(), 0), 18)}
               includeTimes={[setHours(setMinutes(new Date(),0),8),

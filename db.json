@@ -45,6 +45,13 @@
       "mascota": "Pichi - Santiago Adan",
       "startDate": "Wed Feb 23 2022 11:00:00 GMT-0300 (hora estándar de Argentina)",
       "id": 4
+    },
+    {
+      "detalleCita": "control",
+      "veterinario": "Molinari Pablo",
+      "mascota": "Pichi - Santiago Adan",
+      "startDate": "Wed Feb 22 2022 11:00:00 GMT-0300 (hora estándar de Argentina)",
+      "id": 5
     }
   ],
   "users": [
