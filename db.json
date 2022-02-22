@@ -73,6 +73,13 @@
       "mascota": "Mascota 1 - Paciente 1 Prueba",
       "startDate": "Tue Mar 01 2022 11:00:00 GMT-0300 (hora estándar de Argentina)",
       "id": 8
+    },
+    {
+      "detalleCita": "hhgf",
+      "veterinario": "Molinari Pablo",
+      "mascota": "Mascota 2 - Paciente 2 Prueba",
+      "startDate": "Tue Mar 01 2022 10:00:00 GMT-0300 (hora estándar de Argentina)",
+      "id": 9
     }
   ],
   "users": [

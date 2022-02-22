@@ -12,61 +12,47 @@ import "react-datepicker/dist/react-datepicker.css";
 import { addDays, setHours, setMinutes, subDays } from "date-fns";
 
 const CrearTurno = ({ pacientes, URLTurnos, getApiTurnos, turnos }) => {
+
+  const minDate=addDays(setHours(setMinutes(new Date(),0),8), 2); 
   const redirect = useNavigate();
   const session = JSON.parse(sessionStorage.getItem("stateSession")) || false;
   if (!session) {
     redirect("/");
   }
 
+ 
+
   const [detalleCita, setDetalleCita] = useState("");
   const [veterinario, setVeterinario] = useState("");
-  const [mascota, setMascota] = useState("");
-  
+  const [mascota, setMascota] = useState("");  
   //manejo de FH  
-  const [startDate, setStartDate] = useState(
-    setHours(setMinutes(new Date(), 0), 8)
-  );
+  const [startDate, setStartDate] = useState(minDate);
   //fin FH
 
-  //manejo de turnos
-    /*console.log(turnos);
-    const arrayTurnos=[];
-    turnos.map((turno)=>(arrayTurnos.push(turno.startDate)))
-    console.log(arrayTurnos);
-    console.log(arrayTurnos.sort());
-    const arrT=[setHours(setMinutes(new Date(),30),12)];
-    arrayTurnos.map((turno)=>(arrT.push(setHours(setMinutes(new Date(turno), new Date(turno).getMinutes()),new Date(turno).getHours()))));
-    console.log(arrT);
-    console.log(new Date());
-    const nd=new Date(); //19/02/2022
-    console.log(nd);
-    nd.setDate(nd.getDate() + 1);
-    console.log(nd);
-    const arr=[setHours(setMinutes(new Date(),0),16)];
-    prueba con selected predeterminado
-    console.log(addDays(startDate,1).getDay());//aqui tomo la fecha actual y le agrego un dia mas    
-    
-    //&&addDays(startDate,1).getDay()!==6&&addDays(startDate,2).getDay()!==0&&addDays(startDate,2).getDay()!==6)
-    //*/
+  //manejo de turnos    
     const mapTurnos=[];//aqui guardare los turnos en formato Date
-    turnos.map((turno)=>(mapTurnos.push(new Date(turno.startDate))));//recorro el array de turnos y los voy convirtiendo a formato Date y guardando en el array mapTurnos.
-    console.log(mapTurnos);
-    const filterTurnos=mapTurnos.filter((turno)=>(turno.getDate()===startDate.getDate()));//filtro los turnos en funcion a la fecha
-    console.log(filterTurnos);
+    turnos.map((turno)=>(mapTurnos.push(new Date(turno.startDate))));//recorro el array de turnos y los voy convirtiendo a formato Date y guardando en el array mapTurnos.    
+    const filterTurnos=mapTurnos.filter((turno)=>(turno.getDate()===startDate.getDate()));//filtro los turnos en funcion a la fecha    
     const excTimes=[];//aqui se guardaran los excludes times del dia de la fecha
     filterTurnos.map((turno)=>(excTimes.push(setHours(setMinutes(turno,turno.getMinutes()),turno.getHours()))));//aqui mapeo los turnos filtrados
-    console.log(excTimes);
-
-
-
-
-  //fin manejo turnos
+    //prueba      
+    const incTimes=[setHours(setMinutes(new Date(),0),8),
+      setHours(setMinutes(new Date(),0),9),
+      setHours(setMinutes(new Date(),0),10),
+      setHours(setMinutes(new Date(),0),11),
+      setHours(setMinutes(new Date(),0),12),
+      setHours(setMinutes(new Date(),0),14),
+      setHours(setMinutes(new Date(),0),15),
+      setHours(setMinutes(new Date(),0),16),
+      setHours(setMinutes(new Date(),0),17),
+      setHours(setMinutes(new Date(),0),18)];    
+    //fin manejo turnos
 
   const navigate = useNavigate();
 
   //handle date
   const handleDate=(date)=>{
-    setStartDate(date);    
+    setStartDate(date);  
   }
 
   //fin handle date
@@ -169,32 +155,17 @@ const CrearTurno = ({ pacientes, URLTurnos, getApiTurnos, turnos }) => {
             ></Form.Control>
           </Form.Group>                  
           <Form.Group>
-            <Form.Label className="font-celeste-crud">Seleccione fecha y hora</Form.Label>            
+            <Form.Label className="font-celeste-crud">Seleccione fecha y hora (los turnos se reservan con 2 dias de anticipacion)</Form.Label> 
+                       
             <DatePicker
               locale={es}
               selected={startDate}
               onChange={(date) =>{handleDate(date)}}
-              minDate={addDays(new Date(), 2)}
+              minDate={minDate}
               filterDate={(date) => date.getDay() !== 6 && date.getDay() !== 0}
-              showTimeSelect
-              //filterTime={(date) =>
-                //(date.getHours() >= 8 && date.getHours() <= 12)||(date.getHours() >= 14 && date.getHours() <= 18)
-              //}
-              excludeTimes={excTimes}             
-              //minTime={setHours(setMinutes(new Date(), 0), 8)}
-              //maxTime={setHours(setMinutes(new Date(), 0), 18)}
-              includeTimes={[setHours(setMinutes(new Date(),0),8),
-                setHours(setMinutes(new Date(),0),9),
-                setHours(setMinutes(new Date(),0),10),
-                setHours(setMinutes(new Date(),0),11),
-                setHours(setMinutes(new Date(),0),12),
-                setHours(setMinutes(new Date(),0),14),
-                setHours(setMinutes(new Date(),0),15),
-                setHours(setMinutes(new Date(),0),16),
-                setHours(setMinutes(new Date(),0),17),
-                setHours(setMinutes(new Date(),0),18)                
-              ]}
-
+              showTimeSelect              
+              excludeTimes={excTimes}            
+              includeTimes={incTimes}
               dateFormat="Pp"
               className="container-fluid form form-control mb-3"
             ></DatePicker>            
