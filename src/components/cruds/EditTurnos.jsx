@@ -32,7 +32,7 @@ const EditTurnos = ({ URLTurnos, getApiTurnos, pacientes, turnos }) => {
       const res = await fetch(`${URLTurnos}/${id}`);
       const turnoApi = await res.json();
       setTurno(turnoApi);
-      setData(new Date(turnoApi.startDate));
+      setData(addDays(setHours(setMinutes(new Date(turnoApi.startDate),0),8), 2));
       setMinDate(addDays(setHours(setMinutes(new Date(turnoApi.startDate),0),8), 2));
     } catch (error) {
       console.log(error);
@@ -179,7 +179,7 @@ const EditTurnos = ({ URLTurnos, getApiTurnos, pacientes, turnos }) => {
           {turno.startDate !== undefined ? (
             <Form.Group>
               <Form.Label className="font-celeste-crud">
-                Seleccione fecha y hora
+                Seleccione fecha y hora (su turno era: {new Date(turno.startDate).toLocaleString()})
               </Form.Label>
               <DatePicker
                 locale={es}
