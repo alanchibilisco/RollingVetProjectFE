@@ -11,12 +11,17 @@ import Swal from "sweetalert2";
 const Adm = ({ turnos }) => {
   const navigate = useNavigate();
   const session = JSON.parse(sessionStorage.getItem("stateSession")) || false;
-  if (!session) {
-    navigate("/");
+
+  const checkSession=()=>{
+    if (!session) {
+      navigate("/");
+    }      
   }
-  // } else {
-  //   Swal.fire("Bienvenido!", "RollingVet V.1.0.0", "success");
-  // }
+
+  useEffect(()=>{
+    checkSession();
+  },[]);
+  
   //Ordeno el array en funcion a la fechas
   const sortTurnos = turnos;
   sortTurnos.sort((a, b) => {

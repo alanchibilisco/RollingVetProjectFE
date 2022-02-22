@@ -48,7 +48,7 @@ const Turno = ({turno, URLTurnos, getApiTurnos}) => {
                       Editar
                     </Link>
                     <button
-                      className="btn-celeste-crud mx-1" 
+                      className="btn-red-crud mx-1" 
                       onClick={()=>{handleDelete(turno.id)}}                     
                     >
                       Borrar

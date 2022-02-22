@@ -4,15 +4,19 @@ import NavBar from "../NavBar";
 import Footer from "../Footer";
 import Swal from "sweetalert2";
 import {validateTexto, validateEmail, validateTelefono} from "../Validaciones";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 
 const CrearPaciente = ({URLPacientes, getApiPacientes}) => {
   const redirect = useNavigate();
   const session = JSON.parse(sessionStorage.getItem("stateSession")) || false;
-  if (!session) {
-    redirect("/");
-  }
+  useEffect(()=>{
+    if (!session) {
+      redirect("/");
+    }
+  },[]);
+  
   const [nombreDueño, setNombreDueño]=useState('');
   const [apellidoDueño, setApellidoDueño]=useState('');
   const [email, setEmail]=useState('');
@@ -144,8 +148,10 @@ const CrearPaciente = ({URLPacientes, getApiPacientes}) => {
             </Col>
           </Row>
 
-          <div className="text-end">
-            <button className="btn-celeste-crud">Guardar</button>
+          <div className="d-flex justify-content-end">
+            <button className="btn-celeste-crud text-center mx-1">Guardar</button>
+            <Link to="/Adm/pacientes" className="btn-red-crud text-decoration-none text-center mx-1">Cancelar</Link>  
+            
           </div>
         </Form>
       </Container>

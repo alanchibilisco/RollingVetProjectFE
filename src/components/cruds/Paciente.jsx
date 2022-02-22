@@ -47,7 +47,7 @@ const Paciente = ({paciente, URLPacientes, getApiPacientes}) => {
                       Editar
                     </Link>
                     <button
-                      className="btn-celeste-crud mx-1"
+                      className="btn-red-crud mx-1"
                       onClick={()=>{handleDelete(paciente.id)}}                      
                     >
                       Borrar

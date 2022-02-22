@@ -19,13 +19,13 @@ const Login = ({ user }) => {
       session=true;
       sessionStorage.setItem('stateSession',JSON.stringify(session));
       Swal.fire(
-        'Correctamente logueado!',
-        '',
+        'Bienvenido "ADMINISTRADOR"!',
+        'RollingVet v.1.0.0',
         'success'
       )
       setTimeout(() => {
         navigate("/");  
-      }, 2000);
+      }, 1500);
       
 
     }else{

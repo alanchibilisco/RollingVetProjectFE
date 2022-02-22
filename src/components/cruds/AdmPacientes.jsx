@@ -1,4 +1,5 @@
 import React from "react";
+import { useEffect } from "react";
 import { Container, Table } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import Footer from '../Footer';
@@ -8,9 +9,12 @@ import Paciente from "./Paciente";
 const AdmPacientes = ({pacientes, URLPacientes, getApiPacientes}) => {
   const navigate = useNavigate();
   const session = JSON.parse(sessionStorage.getItem("stateSession")) || false;
-  if (!session) {
-    navigate("/");
-  }
+  useEffect(()=>{
+    if (!session) {
+      navigate("/");
+    }
+  },[]);
+  
   return (
       
     <div>
@@ -19,12 +23,15 @@ const AdmPacientes = ({pacientes, URLPacientes, getApiPacientes}) => {
         <Container className="py-5">
           <div className="d-flex align-items-center justify-content-between font-celeste-crud">
             <h1>Administrador de Pacientes</h1>
+            </div>
+            <div className="d-flex justify-content-around">
             <Link
               to="/Adm/pacientes/crear"
-              className=" btn-celeste-crud text-decoration-none text-center"
+              className=" btn-celeste-crud text-decoration-none text-center mx-3"
             >
               Agregar Paciente
             </Link>
+            <Link to="/Adm" className="btn-celeste-crud text-decoration-none text-center mx-3">Volver</Link>
           </div>
           <hr />
           {/* Table of products */}

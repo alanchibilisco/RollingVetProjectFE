@@ -3,7 +3,7 @@ import { useRef } from "react";
 import { useEffect } from "react";
 import { useState } from "react";
 import { Col, Container, Form, Row } from "react-bootstrap";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
 import Footer from "../Footer";
 import NavBar from "../NavBar";
@@ -16,9 +16,12 @@ import {
 const EditPacientes = ({ URLPacientes, getApiPacientes }) => {
   const redirect = useNavigate();
   const session = JSON.parse(sessionStorage.getItem("stateSession")) || false;
-  if (!session) {
-    redirect("/");
-  }
+  useEffect(()=>{
+    if (!session) {
+      redirect("/");
+    }
+  },[]);
+  
 
   //state
   const [paciente, setPaciente] = useState({});
@@ -189,9 +192,10 @@ const EditPacientes = ({ URLPacientes, getApiPacientes }) => {
             </Col>
           </Row>
 
-          <div className="text-end">
-            <button className="btn-celeste-crud">Guardar</button>
-          </div>
+          <div className="d-flex justify-content-end">
+            <button className="btn-celeste-crud text-center mx-1">Guardar</button>
+            <Link to="/Adm/pacientes" className="btn-red-crud text-decoration-none text-center mx-1">Cancelar</Link>  
+          </div>          
         </Form>
       </Container>
 

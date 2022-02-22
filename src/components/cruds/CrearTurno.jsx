@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Container, Form } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import Footer from "../Footer";
 import NavBar from "../NavBar";
@@ -170,9 +170,11 @@ const CrearTurno = ({ pacientes, URLTurnos, getApiTurnos, turnos }) => {
               className="container-fluid form form-control mb-3"
             ></DatePicker>            
           </Form.Group>
-          <div className="text-end">
-            <button className="btn-celeste-crud">Guardar</button>
+          <div className="d-flex justify-content-end">
+            <button className="btn-celeste-crud mx-1 text-center">Guardar</button> 
+            <Link to="/Adm/turnos" className="btn-red-crud text-decoration-none text-center mx-1">Cancelar</Link>           
           </div>
+          
         </Form>
       </Container>
       <Footer></Footer>

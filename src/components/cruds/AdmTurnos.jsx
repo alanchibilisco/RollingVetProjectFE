@@ -1,5 +1,6 @@
 import  compareAsc  from "date-fns/compareAsc";
 import React from "react";
+import { useEffect } from "react";
 import { Container, Table } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import Footer from "../Footer";
@@ -9,9 +10,12 @@ import Turno from "./Turno";
 const AdmTurnos = ({ turnos, URLTurnos, getApiTurnos }) => {
   const navigate = useNavigate();
   const session = JSON.parse(sessionStorage.getItem("stateSession")) || false;
-  if (!session) {
-    navigate("/");
-  }
+  useEffect(()=>{
+    if (!session) {
+      navigate("/");
+    }
+  },[]);
+  
    const sortTurnos = turnos;   
     sortTurnos.sort((a, b) => {
       const as = a.startDate;
@@ -30,13 +34,17 @@ const AdmTurnos = ({ turnos, URLTurnos, getApiTurnos }) => {
         <Container className="py-5">
           <div className="d-flex align-items-center justify-content-between">
             <h1 className="font-celeste-crud">Administrador de turnos</h1>
+            </div>
+            <div className="d-flex   justify-content-around">
             <Link
               to="/Adm/turnos/crear"
-              className=" btn-celeste-crud text-decoration-none text-center"
+              className=" btn-celeste-crud text-decoration-none text-center mx-3"
             >
               Agregar Turno
             </Link>
-          </div>
+            <Link to="/Adm" className="btn-celeste-crud text-decoration-none text-center mx-3">Volver</Link>
+            </div>
+          
           <hr />
           {/* Table of products */}
           <h3 className="text-center bg-celeste-crud text-white">Turnos Dr. Molinari</h3>

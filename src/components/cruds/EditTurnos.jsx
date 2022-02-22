@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import { useState } from "react";
 import { Col, Container, Form, Row } from "react-bootstrap";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
 import Footer from "../Footer";
 import NavBar from "../NavBar";
@@ -16,9 +16,12 @@ const EditTurnos = ({ URLTurnos, getApiTurnos, pacientes, turnos }) => {
 
   const redirect = useNavigate();
   const session = JSON.parse(sessionStorage.getItem("stateSession")) || false;
-  if (!session) {
-    redirect("/");
-  }
+  useEffect(()=>{
+    if (!session) {
+      redirect("/");
+    }
+  },[]);
+  
   //state
   const [turno, setTurno] = useState({});
   const [data, setData] = useState(setHours(setMinutes(new Date(), 0), 8));
@@ -201,9 +204,12 @@ const EditTurnos = ({ URLTurnos, getApiTurnos, pacientes, turnos }) => {
           ) : (
             <></>
           )}
-          <div className="text-end">
-            <button className="btn-celeste-crud">Guardar</button>
+         
+          <div className="d-flex justify-content-end">
+            <button className="btn-celeste-crud text-center mx-1">Guardar</button>
+            <Link to="/Adm/turnos" className="btn-red-crud text-decoration-none text-center mx-1">Cancelar</Link>  
           </div>
+          
         </Form>
       </Container>
 
