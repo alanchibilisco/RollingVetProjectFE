@@ -1,6 +1,6 @@
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Redirect } from "react-router-dom";
 import Index from "./components/Index";
 import Contacto from "./components/Contacto";
 import Error404 from "./components/Error404";
@@ -17,13 +17,15 @@ import CrearTurno from "./components/cruds/CrearTurno";
 import EditPacientes from "./components/cruds/EditPacientes";
 import EditTurnos from "./components/cruds/EditTurnos";
 import bcrypt from "bcryptjs/dist/bcrypt";
+import Adultos from "./components/Adultos";
+import Madurando from "./components/Madurando";
 
 function App() {
   //useState
   const [pacientes, setPacientes] = useState([]);
   const [turnos, setTurnos] = useState([]);
-  const [weather, setWeather]=useState({});
-  const [user, setUser]=useState([]);
+  const [weather, setWeather] = useState({});
+  const [user, setUser] = useState([]);
 
   //useEffect
   useEffect(() => {
@@ -34,25 +36,25 @@ function App() {
     getApiTurnos();
   }, []);
 
-  useEffect(()=>{
+  useEffect(() => {
     getWeather();
-  },[]);
+  }, []);
 
-  useEffect(()=>{
+  useEffect(() => {
     getApiUser();
   }, []);
 
   //utilizacion de las variables de entorno
   const URLPacientes = process.env.REACT_APP_API_PACIENTES;
   const URLTurnos = process.env.REACT_APP_API_TURNOS;
-  const URLUser= process.env.REACT_APP_API_USER;
-  const key=process.env.REACT_APP_KEY
+  const URLUser = process.env.REACT_APP_API_USER;
+  const key = process.env.REACT_APP_KEY;
 
   const getApiPacientes = async () => {
     try {
       const res = await fetch(URLPacientes);
       const pacientesApi = await res.json();
-      setPacientes(pacientesApi);      
+      setPacientes(pacientesApi);
     } catch (error) {
       console.log(error);
     }
@@ -60,20 +62,20 @@ function App() {
 
   const getApiTurnos = async () => {
     try {
-      const res = await fetch(URLTurnos);      
+      const res = await fetch(URLTurnos);
       const turnosApi = await res.json();
       autoDelete(turnosApi);
-      setTurnos(turnosApi);      
+      setTurnos(turnosApi);
     } catch (error) {
       console.log(error);
     }
   };
 
-  const getApiUser=async()=>{
+  const getApiUser = async () => {
     try {
-      const res=await fetch(URLUser);      
-      const userApi=await res.json();      
-      setUser(userApi);      
+      const res = await fetch(URLUser);
+      const userApi = await res.json();
+      setUser(userApi);
     } catch (error) {
       console.log(error);
     }
@@ -82,20 +84,20 @@ function App() {
   const getWeather = async () => {
     try {
       const ipify = require("ipify2");
-      const resIp = await ipify.ipv4();      
+      const resIp = await ipify.ipv4();
       const location = await fetch(`http://ip-api.com/json/${resIp}`);
       const locJson = await location.json();
       const openWeather = await fetch(
         `http://api.openweathermap.org/data/2.5/weather?lat=${locJson.lat}&lon=${locJson.lon}&lang=es&units=metric&appid=${key}`
       );
-      const openWthJson = await openWeather.json();           
-      const weather={
+      const openWthJson = await openWeather.json();
+      const weather = {
         city: `${openWthJson.name}`,
         temp: `${openWthJson.main.temp}`,
         sky: `${openWthJson.weather[0].description}`,
-        wind: `${openWthJson.wind.speed}`
+        wind: `${openWthJson.wind.speed}`,
       };
-      setWeather(weather);      
+      setWeather(weather);
     } catch (error) {
       console.log(error);
     }
@@ -103,27 +105,31 @@ function App() {
   window.setInterval(getWeather, 600000);
   //Fin weather
 
-   //Auto borrado de turnos en funcion a la fecha
-   const autoDelete=(turnos)=>{
-     const borrar = async(turno)=>{
-       if(new Date(turno.startDate)<new Date()){
+  //Auto borrado de turnos en funcion a la fecha
+  const autoDelete = (turnos) => {
+    const borrar = async (turno) => {
+      if (new Date(turno.startDate) < new Date()) {
         const res = await fetch(`${URLTurnos}/${turno.id}`, {
           method: "DELETE",
           headers: {
             "Content-Type": "application/json",
           },
         });
-       }
-     }
-   turnos.map((turno)=>(borrar(turno)));   
-   };
-   //fin borrado
-   
+      }
+    };
+    turnos.map((turno) => borrar(turno));
+  };
+  //fin borrado
+
   return (
     <div>
       <Router>
         <Routes>
-          <Route exact path="/" element={<Index weather={weather}></Index>}></Route>
+          <Route
+            exact
+            path="/"
+            element={<Index weather={weather}></Index>}
+          ></Route>
           <Route
             exact
             path="/QuienesSomos"
@@ -135,12 +141,18 @@ function App() {
             path="/NuestrosServicios"
             element={<Servicios></Servicios>}
           ></Route>
-          <Route exact path="/Login" element={<Login user={user}></Login>}></Route>
+          <Route
+            exact
+            path="/Login"
+            element={<Login user={user}></Login>}
+          ></Route>
           <Route
             exact
             path="/Contactanos"
             element={<Contacto></Contacto>}
           ></Route>
+          <Route exact path="/Adultos" ></Route>
+          <Route exact path="/Madurando" component={Madurando}></Route>
           <Route
             exact
             path="/Adm"

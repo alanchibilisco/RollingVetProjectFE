@@ -1,11 +1,10 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import LineaSeparado from "./img/LineaSeparado.png";
 import Plan1 from "./img/plan1.png"
 import Plan2 from "./img/plan2.png"
 import Plan3 from "./img/plan3.png"
-import Primerospasos from "./Primerospasos";
-import Madurando from "./Madurando"
-import Adultos from "./Adultos"
+import { useNavigate } from "react-router-dom";
 
 const Cardsplanes = () => {
     return(
@@ -19,9 +18,9 @@ const Cardsplanes = () => {
     <div className="card text-center">
       <div className="card-body bg-cardpp text-light rounded-3">
         <img src={Plan1} className="img-fluid" alt="plan1" width={150}/>
-        <h5 className="card-title">Primeros Pasos</h5>
+        <h5 className="card-title">Cachorros</h5>
         <p className="card-text">Servicio para mascotas de 0 a 5 años</p>
-        <button type="button" className="btn btn-outline-light rounded-pill "><a href={Primerospasos}>CONSULTA AHORA</a></button>
+        <button type="button" className="btn btn-outline-light rounded-pill ">CONSULTA AHORA</button>
       </div>
     </div>
   </div>
@@ -33,7 +32,8 @@ const Cardsplanes = () => {
         <img src={Plan3} className="img-fluid" alt="plan3" width={150}/>
         <h5 className="card-title">Adultos</h5>
         <p className="card-text">Servicio para mascotas de mas de 10 años</p>
-        <button type="button" className="btn btn-outline-light rounded-pill "><a href={Adultos}>CONSULTA AHORA</a></button>
+        <button type="button" className="btn btn-outline-light rounded-pill ">CONSULTAR AHORA</button>
+        
       </div>
     </div>
   </div>
@@ -45,7 +45,7 @@ const Cardsplanes = () => {
         <img src={Plan2} className="img-fluid" alt="plan2" width={150}/>
         <h5 className="card-title">Madurando</h5>
         <p className="card-text">Servicio para mascotas de 5 a 10 años</p>
-        <button type="button" className="btn btn-outline-light rounded-pill "><a href={Madurando}>CONSULTA AHORA</a></button>
+       <Link to="/Adultos">ADULTOS</Link>
       </div>
     </div>
   </div>
