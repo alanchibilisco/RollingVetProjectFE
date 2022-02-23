@@ -3,7 +3,7 @@ import NavBar from "./NavBar";
 import Footer from "./Footer";
 import ListGroup from "react-bootstrap/ListGroup";
 
-const Cachorro = () => {
+const Adultos = () => {
   return (
     <>
       <NavBar />
@@ -82,4 +82,4 @@ const Cachorro = () => {
   );
 };
 
-export default Cachorro;
+export default Adultos;

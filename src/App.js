@@ -19,6 +19,8 @@ import EditTurnos from "./components/cruds/EditTurnos";
 import bcrypt from "bcryptjs/dist/bcrypt";
 
 import Madurando from "./components/Madurando";
+import Cachorro from "./components/Cachorro";
+import Adultos from "./components/Adultos";
 
 function App() {
   //useState
@@ -137,8 +139,18 @@ function App() {
           ></Route>
           <Route
             exact
-            path="/Adultos"
+            path="/Madurando"
             element={<Madurando></Madurando>}
+          ></Route>
+          <Route
+            exact
+            path="/Cachorro"
+            element={<Cachorro></Cachorro>}
+          ></Route>
+          <Route
+            exact
+            path="/Adultos"
+            element={<Adultos></Adultos>}
           ></Route>
           <Route exact path="*" element={<Error404></Error404>}></Route>
           <Route

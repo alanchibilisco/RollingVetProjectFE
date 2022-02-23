@@ -20,8 +20,7 @@ const Cardsplanes = () => {
         <img src={Plan1} className="img-fluid" alt="plan1" width={150}/>
         <h5 className="card-title">Cachorros</h5>
         <p className="card-text">Servicio para mascotas de 0 a 5 años</p>
-        <button type="button" className="btn btn-outline-light rounded-pill ">CONSULTA AHORA</button>
-      </div>
+        <Link className="btn btn-outline-light rounded-pill " to="/Cachorro">CONSULTAR AHORA</Link>      </div>
     </div>
   </div>
     </div>
@@ -32,7 +31,7 @@ const Cardsplanes = () => {
         <img src={Plan3} className="img-fluid" alt="plan3" width={150}/>
         <h5 className="card-title">Adultos</h5>
         <p className="card-text">Servicio para mascotas de mas de 10 años</p>
-        <button type="button" className="btn btn-outline-light rounded-pill ">CONSULTAR AHORA</button>
+        <Link className="btn btn-outline-light rounded-pill " to="/Adultos">CONSULTAR AHORA</Link>
         
       </div>
     </div>
@@ -45,7 +44,7 @@ const Cardsplanes = () => {
         <img src={Plan2} className="img-fluid" alt="plan2" width={150}/>
         <h5 className="card-title">Madurando</h5>
         <p className="card-text">Servicio para mascotas de 5 a 10 años</p>
-       <Link className="btn btn-outline-light rounded-pill " to="/Adultos">CONSULTAR AHORA</Link>
+       <Link className="btn btn-outline-light rounded-pill " to="/Madurando">CONSULTAR AHORA</Link>
       </div>
     </div>
   </div>
