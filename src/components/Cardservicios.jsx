@@ -6,7 +6,7 @@ import LineaSeparado from "./img/LineaSeparado.png";
 
 const Cardservicios = () => {
   return (
-    <div className="container text-end">
+    <div className="container text-end border border-danger">
       <h1 className="text-center mt-4 colorfuente">SERVICIOS</h1>
       <img
         className="container m-4"

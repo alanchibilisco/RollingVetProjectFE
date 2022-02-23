@@ -8,13 +8,13 @@ import { useNavigate } from "react-router-dom";
 
 const Cardsplanes = () => {
     return(
-      <div className="container mt-5">
+      <div className="container mt-5 border border-danger">
         <h1 className="text-center colorfuente">CONOCE NUESTROS PLANES MENSUALES</h1>
         <img className="container " src={LineaSeparado} alt="lineaseparadora" />
 
-  <div className="row mt-3">
+  <div className="row mt-3 row row-cols-1 row-cols-md-3 g-4">
     <div className="col">
-    <div className="w-100 m-1 col-sm-10 col-md-8 col-lg-8">
+    <div className="">
     <div className="card text-center">
       <div className="card-body bg-cardpp text-light rounded-3">
         <img src={Plan1} className="img-fluid" alt="plan1" width={150}/>
@@ -26,7 +26,7 @@ const Cardsplanes = () => {
   </div>
     </div>
     <div className="col order-5">
-    <div className="w-100 m-1 col-sm-10 col-md-8 col-lg-8">
+    <div className="">
     <div className="card text-center">
       <div className="card-body bg-celeste text-light rounded-3">
         <img src={Plan3} className="img-fluid" alt="plan3" width={150}/>
@@ -39,13 +39,13 @@ const Cardsplanes = () => {
   </div>
     </div>
     <div className="col order-1">
-    <div className="w-100 m-1 col-sm-12 col-md-6 col-lg-3">
+    <div className="">
     <div className="card text-center">
       <div className="card-body bg-cardm text-light rounded-3">
         <img src={Plan2} className="img-fluid" alt="plan2" width={150}/>
         <h5 className="card-title">Madurando</h5>
         <p className="card-text">Servicio para mascotas de 5 a 10 años</p>
-       <Link to="/Adultos">ADULTOS</Link>
+       <Link className="btn btn-outline-light rounded-pill " to="/Adultos">CONSULTAR AHORA</Link>
       </div>
     </div>
   </div>

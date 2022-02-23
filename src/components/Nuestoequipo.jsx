@@ -8,20 +8,22 @@ import "../App.css";
 
 const Nuestoequipo = () => {
   return (
-    <div style={{ backgroundImage: `url(${nuestroequipo})` }}>
+    
+    <div style={{ backgroundImage: `url(${nuestroequipo})` }} className="border border-danger">
       <h1 className="text-center text-light">NUESTRO EQUIPO</h1>
       <Carousel fade>
         <Carousel.Item>
-          <img className="rounded mx-auto d-block w-25" src={doc1} alt="First slide" />
+          <img className="img-fluid rounded mx-auto d-block w-25" src={doc1} alt="First slide" />
         </Carousel.Item>
         <Carousel.Item>
-          <img className="rounded mx-auto d-block w-25" src={doc2} alt="Second slide" />
+          <img className="img-fluid rounded mx-auto d-block w-25" src={doc2} alt="Second slide" />
         </Carousel.Item>
         <Carousel.Item>
-          <img className="rounded mx-auto d-block w-25" src={doc3} alt="Third slide" />
+          <img className="img-fluid rounded mx-auto d-block w-25" src={doc3} alt="Third slide" />
         </Carousel.Item>
       </Carousel>
     </div>
+  
   );
 };
 

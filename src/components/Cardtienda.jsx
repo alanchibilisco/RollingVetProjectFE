@@ -6,11 +6,11 @@ import Juguetes from "./img/juguetes.png"
 
 const Cardtienda = () => {
     return (
-      <div className="container mt-5 ">
+      <div className="container mt-5 border border-danger">
         <h1 className="text-center colorfuente">NUESTRA TIENDA</h1>
         <img className="container" src={LineaSeparado} alt="lineaseparadora" />
 
-      <div className="row mx-auto">
+      <div className="mx-auto row row-cols-1 row-cols-md-3 g-4">
     <div className="col">
     <div className="w-100 my-3 col-sm-12 col-md-6 col-lg-3">
     <div className="card text-center border-celeste">

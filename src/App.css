@@ -167,6 +167,10 @@
   border: 20px solid #218b99;
 }
 
+.fondoplanes{
+  color: #1a6572;
+}
+
 @font-face {
   font-family: 'typo_round_regular_demoRg';
   src: url('./components/fonts/typo_round_regular_demo-webfont.woff2') format('woff2'),

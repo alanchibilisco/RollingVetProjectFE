@@ -135,6 +135,11 @@ function App() {
             path="/QuienesSomos"
             element={<QuienesSomos></QuienesSomos>}
           ></Route>
+          <Route
+            exact
+            path="/Adultos"
+            element={<Adultos></Adultos>}
+          ></Route>
           <Route exact path="*" element={<Error404></Error404>}></Route>
           <Route
             exact

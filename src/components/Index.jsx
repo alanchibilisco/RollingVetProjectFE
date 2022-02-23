@@ -19,7 +19,7 @@ const Index = ({weather}) => {
       <Weather weather={weather}></Weather>      
       :
       <></>
-      }      
+    }         
       <Carrousel />      
       <Cardservicios />
       <Nuestrosaliados/>
