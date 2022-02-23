@@ -17,7 +17,7 @@ import CrearTurno from "./components/cruds/CrearTurno";
 import EditPacientes from "./components/cruds/EditPacientes";
 import EditTurnos from "./components/cruds/EditTurnos";
 import bcrypt from "bcryptjs/dist/bcrypt";
-import Adultos from "./components/Adultos";
+
 import Madurando from "./components/Madurando";
 
 function App() {
@@ -138,7 +138,7 @@ function App() {
           <Route
             exact
             path="/Adultos"
-            element={<Adultos></Adultos>}
+            element={<Madurando></Madurando>}
           ></Route>
           <Route exact path="*" element={<Error404></Error404>}></Route>
           <Route
