@@ -7,7 +7,7 @@ import carrusel3 from "./img/carrusel3.jpg";
 const Carrousel = () => {
   return (
     <div>
-      <Carousel className="">
+      <Carousel fade>
         <Carousel.Item>
           <img className="d-block w-100 h-50" src={carrusel1} alt="First slide" />
           <Carousel.Caption>
