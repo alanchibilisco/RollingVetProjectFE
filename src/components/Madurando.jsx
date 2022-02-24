@@ -1,29 +1,28 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import NavBar from "./NavBar";
 import Footer from "./Footer";
 import ListGroup from "react-bootstrap/ListGroup";
-
 import { validateTexto, validateEmail } from "./Validaciones";
 import Swal from "sweetalert2";
-const Madurando = ({sendEmail}) => {
+import emailjs from "@emailjs/browser";
+const Madurando = () => {
 
-  const userRef=useRef('');
-  const emailRef=useRef('');    
+  const form=useRef();
 
   const handleSubmit=(e)=>{
-    e.preventDefault();
-    if(!validateTexto(userRef.current.value.trimStart())||!validateEmail(emailRef.current.value.trimStart())){
+    e.preventDefault();   
+    if(!validateTexto(form.current.user_name.value.trimStart())||!validateEmail(form.current.user_email.value.trimStart())){
       Swal.fire("Ops!", "Algun dato es incorrecto", "error");
       return;
-    }else{
-      const form={
-        user_name: userRef.current.value.trimStart(),
-        user_email: emailRef.current.value.trimStart(),
-        message: 'Plan mensual MADURANDO de 5 a 10 años'
-      };
-      sendEmail(form);
-      Swal.fire("Consulta enviada!", "Le responderemos a la brevedad", "success");
-    }    
+    } 
+    emailjs.sendForm('service_zu85aso', 'template_wenn5tm', form.current, 'user_QppiDb4vLZrsgJIksRfUR')
+    .then((result) => {
+        console.log(result.text);
+    }, (error) => {
+        console.log(error.text);
+    });
+       Swal.fire("Consulta enviada!", "Le responderemos a la brevedad", "success");
+         
   }
 
 
@@ -72,13 +71,14 @@ const Madurando = ({sendEmail}) => {
            <h4 className="text-center">Solicitar informacion completa del Plan</h4>
         <div className="d-flex justify-content-center">
   
-        <div class="col-3 text-center ">
-          <form>
+        <div class="col-md-5 col-sm-12 text-center ">
+
+          <form ref={form} onSubmit={handleSubmit}>
             <div class="mb-3">
               <label for="exampleInputEmail1" class="form-label">
             Ingresa tu Nombre
               </label>
-              <input type="text" class="form-control" ref={userRef} />
+              <input type="text" class="form-control" name="user_name"/>
             </div>
             <div class="mb-3">
               <label for="exampleInputPassword1" class="form-label">
@@ -89,15 +89,22 @@ const Madurando = ({sendEmail}) => {
                 class="form-control"
                 id="exampleInputEmail1"
                 aria-describedby="emailHelp"
-                ref={emailRef}
+                name="user_email"
               />
             </div>
+            <div class="mb-3">
+              <label for="exampleInputMessage" class="form-label">
+            Consulta
+              </label>
+              <input type="text" class="form-control" name="message" value='Plan mensual "MADURANDO" de 0 a 5 años' />
+            </div>
             <div>
-            <button type="submit" class="btn-celeste-serv text-end" onClick={handleSubmit}>
+            <button class="btn-celeste-serv text-end">
               CONSULTAR
             </button>
             </div>
-          </form>
+          </form>   
+
         </div>
         </div>
       </div>

@@ -20,7 +20,7 @@ import bcrypt from "bcryptjs/dist/bcrypt";
 import Madurando from "./components/Madurando";
 import Cachorro from "./components/Cachorro";
 import Adultos from "./components/Adultos";
-import emailjs from "@emailjs/browser";
+
 
 function App() {
   //useState
@@ -123,16 +123,6 @@ function App() {
   };
   //fin borrado
   //send email
-  const sendEmail=(form)=>{
-    
-    emailjs.sendForm('service_zu85aso', 'template_wenn5tm', form , 'user_QppiDb4vLZrsgJIksRfUR')
-          .then((result) => {
-              console.log(result.text);
-          }, (error) => {
-              console.log(error.text);
-          });
-  };
-
   //end send email
 
   return (
@@ -152,12 +142,12 @@ function App() {
           <Route
             exact
             path="/Madurando"
-            element={<Madurando sendEmail={sendEmail}></Madurando>}
+            element={<Madurando></Madurando>}
           ></Route>
           <Route
             exact
             path="/Cachorro"
-            element={<Cachorro sendEmail={sendEmail}></Cachorro>}
+            element={<Cachorro></Cachorro>}
           ></Route>
           <Route
             exact
