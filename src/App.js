@@ -17,10 +17,9 @@ import CrearTurno from "./components/cruds/CrearTurno";
 import EditPacientes from "./components/cruds/EditPacientes";
 import EditTurnos from "./components/cruds/EditTurnos";
 import bcrypt from "bcryptjs/dist/bcrypt";
-
-import Madurando from "./components/Madurando";
-import Cachorro from "./components/Cachorro";
-import Adultos from "./components/Adultos";
+import Cardtienda from "./components/Cardtienda";
+import Adultos from "./components/Planes";
+import Planes from "./components/Cardplanes";
 
 function App() {
   //useState
@@ -139,20 +138,16 @@ function App() {
           ></Route>
           <Route
             exact
-            path="/Madurando"
-            element={<Madurando></Madurando>}
+            path="/Cardtienda"
+            element={<Cardtienda></Cardtienda>}
           ></Route>
           <Route
             exact
-            path="/Cachorro"
-            element={<Cachorro></Cachorro>}
-          ></Route>
-          <Route
-            exact
-            path="/Adultos"
-            element={<Adultos></Adultos>}
+            path="/Cardplanes"
+            element={<Planes></Planes>}
           ></Route>
           <Route exact path="*" element={<Error404></Error404>}></Route>
+          <Route exact path="/Error404" element={<Error404></Error404>}></Route>
           <Route
             exact
             path="/NuestrosServicios"
@@ -168,8 +163,6 @@ function App() {
             path="/Contactanos"
             element={<Contacto></Contacto>}
           ></Route>
-          <Route exact path="/Adultos" ></Route>
-          <Route exact path="/Madurando" component={Madurando}></Route>
           <Route
             exact
             path="/Adm"

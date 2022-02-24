@@ -9,7 +9,7 @@ import "../App.css";
 const Nuestoequipo = () => {
   return (
     
-    <div style={{ backgroundImage: `url(${nuestroequipo})` }} className="border border-danger">
+    <div style={{ backgroundImage: `url(${nuestroequipo})` }}>
       <h1 className="text-center text-light">NUESTRO EQUIPO</h1>
       <Carousel fade>
         <Carousel.Item>

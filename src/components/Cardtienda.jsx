@@ -6,7 +6,7 @@ import Juguetes from "./img/juguetes.png"
 
 const Cardtienda = () => {
     return (
-      <div className="container mt-5 border border-danger">
+      <div className="container mt-5">
         <h1 className="text-center colorfuente">NUESTRA TIENDA</h1>
         <img className="container" src={LineaSeparado} alt="lineaseparadora" />
 
