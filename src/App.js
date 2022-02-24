@@ -17,10 +17,10 @@ import CrearTurno from "./components/cruds/CrearTurno";
 import EditPacientes from "./components/cruds/EditPacientes";
 import EditTurnos from "./components/cruds/EditTurnos";
 import bcrypt from "bcryptjs/dist/bcrypt";
-
 import Madurando from "./components/Madurando";
 import Cachorro from "./components/Cachorro";
 import Adultos from "./components/Adultos";
+import emailjs from "@emailjs/browser";
 
 function App() {
   //useState
@@ -122,6 +122,18 @@ function App() {
     turnos.map((turno) => borrar(turno));
   };
   //fin borrado
+  //send email
+  const sendEmail=(form)=>{
+    
+    emailjs.sendForm('service_zu85aso', 'template_wenn5tm', form , 'user_QppiDb4vLZrsgJIksRfUR')
+          .then((result) => {
+              console.log(result.text);
+          }, (error) => {
+              console.log(error.text);
+          });
+  };
+
+  //end send email
 
   return (
     <div>
@@ -140,12 +152,12 @@ function App() {
           <Route
             exact
             path="/Madurando"
-            element={<Madurando></Madurando>}
+            element={<Madurando sendEmail={sendEmail}></Madurando>}
           ></Route>
           <Route
             exact
             path="/Cachorro"
-            element={<Cachorro></Cachorro>}
+            element={<Cachorro sendEmail={sendEmail}></Cachorro>}
           ></Route>
           <Route
             exact
@@ -168,8 +180,8 @@ function App() {
             path="/Contactanos"
             element={<Contacto></Contacto>}
           ></Route>
-          <Route exact path="/Adultos" ></Route>
-          <Route exact path="/Madurando" component={Madurando}></Route>
+          {/* <Route exact path="/Adultos" ></Route>
+          <Route exact path="/Madurando" component={Madurando}></Route> */}
           <Route
             exact
             path="/Adm"

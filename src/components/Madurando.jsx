@@ -1,9 +1,32 @@
-import React from "react";
+import React, { useRef } from "react";
 import NavBar from "./NavBar";
 import Footer from "./Footer";
 import ListGroup from "react-bootstrap/ListGroup";
 
-const Madurando = () => {
+import { validateTexto, validateEmail } from "./Validaciones";
+import Swal from "sweetalert2";
+const Madurando = ({sendEmail}) => {
+
+  const userRef=useRef('');
+  const emailRef=useRef('');    
+
+  const handleSubmit=(e)=>{
+    e.preventDefault();
+    if(!validateTexto(userRef.current.value.trimStart())||!validateEmail(emailRef.current.value.trimStart())){
+      Swal.fire("Ops!", "Algun dato es incorrecto", "error");
+      return;
+    }else{
+      const form={
+        user_name: userRef.current.value.trimStart(),
+        user_email: emailRef.current.value.trimStart(),
+        message: 'Plan mensual MADURANDO de 5 a 10 años'
+      };
+      sendEmail(form);
+      Swal.fire("Consulta enviada!", "Le responderemos a la brevedad", "success");
+    }    
+  }
+
+
   return (
     <>
       <NavBar />
@@ -55,7 +78,7 @@ const Madurando = () => {
               <label for="exampleInputEmail1" class="form-label">
             Ingresa tu Nombre
               </label>
-              <input type="text" class="form-control" />
+              <input type="text" class="form-control" ref={userRef} />
             </div>
             <div class="mb-3">
               <label for="exampleInputPassword1" class="form-label">
@@ -66,10 +89,11 @@ const Madurando = () => {
                 class="form-control"
                 id="exampleInputEmail1"
                 aria-describedby="emailHelp"
+                ref={emailRef}
               />
             </div>
             <div>
-            <button type="submit" class="btn-celeste-serv text-end">
+            <button type="submit" class="btn-celeste-serv text-end" onClick={handleSubmit}>
               CONSULTAR
             </button>
             </div>
