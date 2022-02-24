@@ -96,7 +96,7 @@ const Madurando = () => {
               <label for="exampleInputMessage" class="form-label">
             Consulta
               </label>
-              <input type="text" class="form-control" name="message" value='Plan mensual "MADURANDO" de 0 a 5 años' />
+              <input type="text" class="form-control" name="message" defaultValue='Plan mensual "MADURANDO" de 5 a 10 años' />
             </div>
             <div>
             <button class="btn-celeste-serv text-end">
