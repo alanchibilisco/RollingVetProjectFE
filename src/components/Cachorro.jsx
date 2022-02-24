@@ -5,9 +5,10 @@ import ListGroup from "react-bootstrap/ListGroup";
 import { validateTexto, validateEmail } from "./Validaciones";
 import Swal from "sweetalert2";
 import emailjs from "@emailjs/browser";
+import { useNavigate } from "react-router-dom";
 
 const Cachorro = ({sendEmail}) => {
-
+  const navigate=useNavigate();
   const form=useRef();
 
   const handleSubmit=(e)=>{
@@ -23,7 +24,7 @@ const Cachorro = ({sendEmail}) => {
         console.log(error.text);
     });
        Swal.fire("Consulta enviada!", "Le responderemos a la brevedad", "success");
-         
+       navigate('/');
   }
 
   return (

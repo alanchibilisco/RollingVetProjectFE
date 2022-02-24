@@ -29,16 +29,19 @@
       "especieMascota": "Perro",
       "razaMascota": "caschi",
       "id": 3
+    },
+    {
+      "nombreDueño": "melina",
+      "apellidoDueño": "sdkjfsjkl",
+      "email": "santillan.melina.dh@gmail.com",
+      "telefono": "3816920140",
+      "nombreMascota": "macarena",
+      "especieMascota": "perro",
+      "razaMascota": "cochina",
+      "id": 4
     }
   ],
   "turnos": [
-    {
-      "detalleCita": "control gral",
-      "veterinario": "Kuc Damian",
-      "mascota": "Mascota 1 - Paciente 1 Prueba",
-      "startDate": "Thu Feb 24 2022 16:00:00 GMT-0300 (hora estándar de Argentina)",
-      "id": 3
-    },
     {
       "detalleCita": "control",
       "veterinario": "Molinari Pablo",
