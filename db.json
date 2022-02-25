@@ -87,13 +87,15 @@
   ],
   "comentarios": [
     {
-      "user": "prueba",
-      "message": "prueba de comentario",
+      "user": "Test com one",
+      "message": "Prueba de comentario one",
+      "date": "Fri Feb 25 2022 11:37:46 GMT-0300 (hora estándar de Argentina)",
       "id": 1
     },
     {
-      "user": "Alan Prueba",
-      "message": "sdlkfjñlsakdjflñskjdf",
+      "user": "Test com two",
+      "message": "Prueba de comentario two",
+      "date": "Fri Feb 25 2022 11:38:06 GMT-0300 (hora estándar de Argentina)",
       "id": 2
     }
   ]

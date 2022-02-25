@@ -21,7 +21,7 @@ const Index = ({weather}) => {
       :
       <></>
     }         
-      <Carrousel />      
+       <Carrousel />      
       <Cardservicios />
       <Nuestrosaliados/>
       <Cardsplanes />
