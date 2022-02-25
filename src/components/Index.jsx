@@ -9,6 +9,7 @@ import Cardtienda from "./Cardtienda";
 import Nuestrosaliados from "./Nuestrosaliados";
 import Nuestoequipo from "./Nuestoequipo";
 import Weather from "./weather/Weather";
+import Comentarios from "./Comentarios";
 
 
 const Index = ({weather}) => {
@@ -26,6 +27,7 @@ const Index = ({weather}) => {
       <Cardsplanes />
       <Cardtienda />
       <Nuestoequipo/>
+      <Comentarios></Comentarios>
       <Footer />
     </div>
   );
