@@ -83,13 +83,6 @@
       "mascota": "Mascota 2 - Paciente 2 Prueba",
       "startDate": "Tue Mar 01 2022 08:00:00 GMT-0300 (hora estándar de Argentina)",
       "id": 10
-    },
-    {
-      "detalleCita": "control",
-      "veterinario": "Kuc Damian",
-      "mascota": "Mascota 2 - Paciente 2 Prueba",
-      "startDate": "Fri Feb 25 2022 08:00:00 GMT-0300 (hora estándar de Argentina)",
-      "id": 11
     }
   ],
   "users": [
