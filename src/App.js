@@ -28,6 +28,7 @@ function App() {
   const [turnos, setTurnos] = useState([]);
   const [weather, setWeather] = useState({});
   const [user, setUser] = useState([]);
+  
 
   //useEffect
   useEffect(() => {
@@ -46,10 +47,11 @@ function App() {
     getApiUser();
   }, []);
 
+  
   //utilizacion de las variables de entorno
   const URLPacientes = process.env.REACT_APP_API_PACIENTES;
   const URLTurnos = process.env.REACT_APP_API_TURNOS;
-  const URLUser = process.env.REACT_APP_API_USER;
+  const URLUser = process.env.REACT_APP_API_USER;  
   const key = process.env.REACT_APP_KEY;
 
   const getApiPacientes = async () => {
@@ -107,6 +109,8 @@ function App() {
   window.setInterval(getWeather, 600000);
   //Fin weather
 
+ 
+
   //Auto borrado de turnos en funcion a la fecha
   const autoDelete = (turnos) => {
     const borrar = async (turno) => {
@@ -122,9 +126,6 @@ function App() {
     turnos.map((turno) => borrar(turno));
   };
   //fin borrado
-  //send email
-  //end send email
-
   return (
     <div>
       <Router>

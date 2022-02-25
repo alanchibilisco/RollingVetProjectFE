@@ -84,5 +84,19 @@
       "pass": "$2a$08$UgdtDRaUoeKqrqRuObXjhOvBn6bn.zjy/RvrXLgjagnCQO6NDqRd.",
       "id": 1
     }
+  ],
+  "comentarios": [
+    {
+      "user": "Test com one",
+      "message": "Prueba de comentario one",
+      "date": "Fri Feb 25 2022 11:37:46 GMT-0300 (hora estándar de Argentina)",
+      "id": 1
+    },
+    {
+      "user": "Test com two",
+      "message": "Prueba de comentario two",
+      "date": "Fri Feb 25 2022 11:38:06 GMT-0300 (hora estándar de Argentina)",
+      "id": 2
+    }
   ]
 }
