@@ -9,22 +9,24 @@ import Cardtienda from "./Cardtienda";
 import Nuestrosaliados from "./Nuestrosaliados";
 import Nuestoequipo from "./Nuestoequipo";
 import Weather from "./weather/Weather";
+import Comentarios from "./Comentarios";
 
 const Index = ({ weather }) => {
   return (
     <div>
       <NavBar />
-      {weather.city !== undefined ? (
-        <Weather weather={weather}></Weather>
-      ) : (
-        <></>
-      )}
-      <Carrousel />
-    <Cardservicios />
-      <Nuestrosaliados />
+      {weather.city!==undefined ?
+      <Weather weather={weather}></Weather>      
+      :
+      <></>
+    }         
+       <Carrousel />      
+      <Cardservicios />
+      <Nuestrosaliados/>
       <Cardsplanes />
       <Cardtienda />
-      <Nuestoequipo />
+      <Nuestoequipo/>
+      <Comentarios></Comentarios>
       <Footer />
     </div>
   );

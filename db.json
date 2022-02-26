@@ -50,13 +50,6 @@
       "id": 5
     },
     {
-      "detalleCita": "zsxa",
-      "veterinario": "Molinari Pablo",
-      "mascota": "Mascota 1 - Paciente 1 Prueba",
-      "startDate": "Fri Feb 25 2022 09:00:00 GMT-0300 (hora estándar de Argentina)",
-      "id": 6
-    },
-    {
       "detalleCita": "asdasd",
       "veterinario": "Kuc Damian",
       "mascota": "Mascota 2 - Paciente 2 Prueba",
@@ -83,13 +76,6 @@
       "mascota": "Mascota 2 - Paciente 2 Prueba",
       "startDate": "Tue Mar 01 2022 08:00:00 GMT-0300 (hora estándar de Argentina)",
       "id": 10
-    },
-    {
-      "detalleCita": "control",
-      "veterinario": "Kuc Damian",
-      "mascota": "Mascota 2 - Paciente 2 Prueba",
-      "startDate": "Fri Feb 25 2022 08:00:00 GMT-0300 (hora estándar de Argentina)",
-      "id": 11
     }
   ],
   "users": [
@@ -97,6 +83,20 @@
       "userName": "$2a$08$0oM716UFy9lb2LLDVgr0U..B1fCssk4jcLABz8J8LpMVYW30pzawW",
       "pass": "$2a$08$UgdtDRaUoeKqrqRuObXjhOvBn6bn.zjy/RvrXLgjagnCQO6NDqRd.",
       "id": 1
+    }
+  ],
+  "comentarios": [
+    {
+      "user": "Test com one",
+      "message": "Prueba de comentario one",
+      "date": "Fri Feb 25 2022 11:37:46 GMT-0300 (hora estándar de Argentina)",
+      "id": 1
+    },
+    {
+      "user": "Test com two",
+      "message": "Prueba de comentario two",
+      "date": "Fri Feb 25 2022 11:38:06 GMT-0300 (hora estándar de Argentina)",
+      "id": 2
     }
   ]
 }
