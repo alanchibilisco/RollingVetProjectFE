@@ -18,8 +18,10 @@ import EditPacientes from "./components/cruds/EditPacientes";
 import EditTurnos from "./components/cruds/EditTurnos";
 import bcrypt from "bcryptjs/dist/bcrypt";
 import Cardtienda from "./components/Cardtienda";
-import Adultos from "./components/Planes";
+import Adultos from "./components/Adultos"
 import Planes from "./components/Cardplanes";
+import Madurando from "./components/Madurando";
+import Cachorro from "./components/Cachorro";
 
 function App() {
   //useState
@@ -121,6 +123,8 @@ function App() {
     turnos.map((turno) => borrar(turno));
   };
   //fin borrado
+  //send email
+  //end send email
 
   return (
     <div>
@@ -135,6 +139,21 @@ function App() {
             exact
             path="/QuienesSomos"
             element={<QuienesSomos></QuienesSomos>}
+          ></Route>
+          <Route
+            exact
+            path="/Cachorro"
+            element={<Cachorro></Cachorro>}
+          ></Route>
+          <Route
+            exact
+            path="/Madurando"
+            element={<Madurando></Madurando>}
+          ></Route>
+          <Route
+            exact
+            path="/Adultos"
+            element={<Adultos></Adultos>}
           ></Route>
           <Route
             exact

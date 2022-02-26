@@ -171,6 +171,34 @@
   color: #1a6572;
 }
 
+.imgPP{
+background-image: url(/src/components/img/PlanPrimerosPasosFix.jpg);
+width: 100%;
+background-repeat: no-repeat;
+}
+
+.imgM{
+  background-image: url(/src/components/img/PlanMadurandoFix.jpg);
+  width: 100%;
+  background-repeat: no-repeat;
+}
+.imgA{
+  background-image: url(/src/components/img/PlanAdultosFix.jpg);
+  width: 100%;
+  background-repeat: no-repeat;
+  height: 150;
+}
+.estlist{
+  list-style: none;
+}
+@media (max-width: 450px){
+  .flex-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
 @font-face {
   font-family: 'typo_round_regular_demoRg';
   src: url('./components/fonts/typo_round_regular_demo-webfont.woff2') format('woff2'),

@@ -1,9 +1,32 @@
-import React from "react";
+import React, { useRef } from "react";
 import NavBar from "./NavBar";
 import Footer from "./Footer";
 import ListGroup from "react-bootstrap/ListGroup";
+import { validateTexto, validateEmail } from "./Validaciones";
+import Swal from "sweetalert2";
+import emailjs from "@emailjs/browser";
+import { useNavigate } from "react-router-dom";
 
 const Adultos = () => {
+  const navigate=useNavigate();
+  const form=useRef();
+
+  const handleSubmit=(e)=>{
+    e.preventDefault();   
+    if(!validateTexto(form.current.user_name.value.trimStart())||!validateEmail(form.current.user_email.value.trimStart())){
+      Swal.fire("Ops!", "Algun dato es incorrecto", "error");
+      return;
+    } 
+    emailjs.sendForm('service_zu85aso', 'template_wenn5tm', form.current, 'user_QppiDb4vLZrsgJIksRfUR')
+    .then((result) => {
+        console.log(result.text);
+    }, (error) => {
+        console.log(error.text);
+    });
+       Swal.fire("Consulta enviada!", "Le responderemos a la brevedad", "success");
+       navigate('/');  
+  }
+
   return (
     <>
       <NavBar />
@@ -17,7 +40,7 @@ const Adultos = () => {
           </div>
           <div className="col-md-6">
             <div className="text-center">
-              <h1>Madurando</h1>
+              <h1>Adultos</h1>
               <h3>Coberturas y Servicios</h3>
               <ListGroup>
                 <ListGroup.Item className="rounded-pill">
@@ -49,13 +72,13 @@ const Adultos = () => {
            <h4 className="text-center">Solicitar informacion completa del Plan</h4>
         <div className="d-flex justify-content-center">
   
-        <div class="col-3 text-center ">
-          <form>
+        <div class="col-md-5 col-sm-12 text-center">
+        <form ref={form} onSubmit={handleSubmit}>
             <div class="mb-3">
               <label for="exampleInputEmail1" class="form-label">
             Ingresa tu Nombre
               </label>
-              <input type="text" class="form-control" />
+              <input type="text" class="form-control" name="user_name"/>
             </div>
             <div class="mb-3">
               <label for="exampleInputPassword1" class="form-label">
@@ -66,14 +89,21 @@ const Adultos = () => {
                 class="form-control"
                 id="exampleInputEmail1"
                 aria-describedby="emailHelp"
+                name="user_email"
               />
             </div>
+            <div class="mb-3">
+              <label for="exampleInputMessage" class="form-label">
+            Consulta
+              </label>
+              <input type="text" class="form-control" name="message" defaultValue='Plan mensual "ADULTOS" para mayores de 10 años' />
+            </div>
             <div>
-            <button type="submit" class="btn-celeste-serv text-end">
+            <button class="btn-celeste-serv text-end">
               CONSULTAR
             </button>
             </div>
-          </form>
+          </form>   
         </div>
         </div>
       </div>

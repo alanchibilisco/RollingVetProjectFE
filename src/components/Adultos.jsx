@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import NavBar from "./NavBar";
 import Footer from "./Footer";
 import { validateTexto, validateEmail } from "./Validaciones";
@@ -7,7 +7,7 @@ import emailjs from "@emailjs/browser";
 import { useNavigate } from "react-router-dom";
 
 
-const Cachorro = ({ sendEmail }) => {
+const Madurando = () => {
   const navigate = useNavigate();
   const form = useRef();
 
@@ -42,60 +42,59 @@ const Cachorro = ({ sendEmail }) => {
   return (
     <>
       <NavBar />
-      <div className="imgPP">
+      <div className="imgA container-fluid">
         <div className="p-5 container">
           <div className="d-flex justify-content-evenly flex-container">
             <ul className="list-group text-center">
-          <h2 className="text-light display-6">Primeros Pasos</h2>
-          <h5 className="text-light ">Cobertura y Servicios</h5>
+              <h2 className="colorfuente display-6">Madurando</h2>
+              <h5 className="colorfuente ">Cobertura y Servicios</h5>
               <li className="list-group-item rounded-pill">Consultas de Urgencias las 24hs</li>
-              <li className="rounded-pill text-center m-2 text-light estlist">Consultas Domiciliarias</li>
+              <li className="rounded-pill text-center m-2 colorfuente estlist">Consultas Domiciliarias</li>
               <li className="list-group-item rounded-pill">Vacunas</li>
-              <li className="rounded-pill text-center m-2 text-light estlist">Analisis Clinicos</li>
+              <li className="rounded-pill text-center m-2 colorfuente estlist">Analisis Clinicos</li>
               <li className="list-group-item rounded-pill">Diagnostico por Imagenes</li>
-              <li className="rounded-pill text-center m-2 text-light estlist">Cirugias</li>
+              <li className="rounded-pill text-center m-2 colorfuente estlist">Cirugias</li>
               <li className="list-group-item rounded-pill">Castracion</li>
             </ul>
           </div>
         </div>
-        <br /><br />
       </div>
-      
-      <h4 className="text-center colorfuente mt-3">Solicitar informacion completa del Plan</h4>
+      <hr />
+      <h4 className="text-center colorfuente">Solicitar informacion completa del Plan</h4>
       <div className="d-flex justify-content-center">
-        <div className="col-md-5 col-sm-12 text-center">
+        <div class="col-md-5 col-sm-12 text-center ">
           <form ref={form} onSubmit={handleSubmit}>
-            <div className="mb-3">
+            <div class="mb-3">
               <label for="exampleInputEmail1" class="form-label">
                 Ingresa tu Nombre
               </label>
-              <input type="text" className="form-control" name="user_name" />
+              <input type="text" class="form-control" name="user_name" />
             </div>
-            <div className="mb-3">
+            <div class="mb-3">
               <label for="exampleInputPassword1" class="form-label">
                 Ingresa tu Email
               </label>
               <input
                 type="email"
-                className="form-control"
+                class="form-control"
                 id="exampleInputEmail1"
                 aria-describedby="emailHelp"
                 name="user_email"
               />
             </div>
-            <div className="mb-3">
-              <label for="exampleInputMessage" className="form-label">
+            <div class="mb-3">
+              <label for="exampleInputMessage" class="form-label">
                 Consulta
               </label>
               <input
                 type="text"
-                className="form-control"
+                class="form-control"
                 name="message"
-                defaultValue='Plan mensual "CACHORROS" de 0 a 5 años'
+                defaultValue='Plan Mensual "ADULTOS" de mas de 10 años'
               />
             </div>
             <div>
-              <button className="btn-celeste-serv text-end">CONSULTAR</button>
+              <button class="btn-celeste-serv text-end">CONSULTAR</button>
             </div>
           </form>
         </div>
@@ -105,4 +104,4 @@ const Cachorro = ({ sendEmail }) => {
   );
 };
 
-export default Cachorro;
+export default Madurando;
