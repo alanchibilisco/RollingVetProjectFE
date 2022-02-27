@@ -41,14 +41,14 @@ const Paciente = ({paciente, URLPacientes, getApiPacientes}) => {
                 <td className="w-25">
                   <div className="d-flex justify-content-center">
                     <Link
-                      to={`/Adm/pacientes/editar/${paciente.id}`}
+                      to={`/Adm/pacientes/editar/${paciente._id}`}
                       className=" btn-celeste-crud mx-1 text-decoration-none text-center"
                     >
                       Editar
                     </Link>
                     <button
                       className="btn-red-crud mx-1"
-                      onClick={()=>{handleDelete(paciente.id)}}                      
+                      onClick={()=>{handleDelete(paciente._id)}}                      
                     >
                       Borrar
                     </button>

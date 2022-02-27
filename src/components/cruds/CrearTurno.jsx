@@ -121,7 +121,7 @@ const CrearTurno = ({ pacientes, URLTurnos, getApiTurnos, turnos }) => {
               {pacientes.map((paciente) => (
                 <option
                   value={`${paciente.nombreMascota} - ${paciente.nombreDueño} ${paciente.apellidoDueño}`}
-                  key={paciente.id}
+                  key={paciente._id}
                 >{`${paciente.nombreMascota} - ${paciente.nombreDueño} ${paciente.apellidoDueño}`}</option>
               ))}
             </Form.Select>

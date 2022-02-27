@@ -63,7 +63,7 @@ const AdmTurnos = ({ turnos, URLTurnos, getApiTurnos }) => {
             <tbody>
               {/* esto tiene que ir en turno */}
               {arrayMolinari.map((turno) => (
-                <Turno turno={turno} key={turno.id} URLTurnos={URLTurnos} getApiTurnos={getApiTurnos}></Turno>
+                <Turno turno={turno} key={turno._id} URLTurnos={URLTurnos} getApiTurnos={getApiTurnos}></Turno>
               ))}
             </tbody>
           </Table>
@@ -89,7 +89,7 @@ const AdmTurnos = ({ turnos, URLTurnos, getApiTurnos }) => {
             <tbody>
               {/* esto tiene que ir en turno */}
               {arrayKuc.map((turno) => (
-                <Turno turno={turno} key={turno.id} URLTurnos={URLTurnos} getApiTurnos={getApiTurnos}></Turno>
+                <Turno turno={turno} key={turno._id} URLTurnos={URLTurnos} getApiTurnos={getApiTurnos}></Turno>
               ))}
             </tbody>
           </Table>

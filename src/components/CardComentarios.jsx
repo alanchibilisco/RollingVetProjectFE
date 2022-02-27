@@ -56,7 +56,7 @@ const CardComentarios = ({ com, getApiComentarios, URLComentarios }) => {
                   <button
                     className="btn-red-crud text-decoration-none mx-1"
                     onClick={() => {
-                      handleDelete(com.id);
+                      handleDelete(com._id);
                     }}
                   >
                     BORRAR

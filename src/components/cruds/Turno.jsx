@@ -42,14 +42,14 @@ const Turno = ({turno, URLTurnos, getApiTurnos}) => {
                 <td className="w-25">
                   <div className="d-flex justify-content-center">
                     <Link
-                      to={`/Adm/turnos/editar/${turno.id}`}
+                      to={`/Adm/turnos/editar/${turno._id}`}
                       className=" btn-celeste-crud mx-1 text-decoration-none text-center"
                     >
                       Editar
                     </Link>
                     <button
                       className="btn-red-crud mx-1" 
-                      onClick={()=>{handleDelete(turno.id)}}                     
+                      onClick={()=>{handleDelete(turno._id)}}                     
                     >
                       Borrar
                     </button>

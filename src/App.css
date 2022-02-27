@@ -4,9 +4,9 @@
 
 *{
   margin: 0;
-  /* font-family: 'Varela Round', sans-serif; */
-  /*font-family: 'typo_round_regular_demoRg';*/
-  font-family: 'Hangyaboly';
+   font-family: 'Varela Round', sans-serif; 
+  /* font-family: 'typo_round_regular_demoRg'; */
+  /*font-family: 'Hangyaboly';*/
 }
 .font-celeste-crud{
   color: #218b99;

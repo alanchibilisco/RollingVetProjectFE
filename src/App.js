@@ -116,7 +116,7 @@ function App() {
   const autoDelete = (turnos) => {
     const borrar = async (turno) => {
       if (new Date(turno.startDate) < new Date()) {
-        const res = await fetch(`${URLTurnos}/${turno.id}`, {
+        const res = await fetch(`${URLTurnos}/${turno._id}`, {
           method: "DELETE",
           headers: {
             "Content-Type": "application/json",

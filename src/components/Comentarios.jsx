@@ -111,7 +111,7 @@ const Comentarios = () => {
 
           <Container className="border border-3 p-3">           
             {comentarios.map((com)=>(             
-            <CardComentarios key={com.id} com={com} URLComentarios={URLComentarios} getApiComentarios={getApiComentarios}></CardComentarios>
+            <CardComentarios key={com._id} com={com} URLComentarios={URLComentarios} getApiComentarios={getApiComentarios}></CardComentarios>
             ))}
           </Container>
                     ) : (

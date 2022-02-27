@@ -52,7 +52,7 @@ const AdmPacientes = ({pacientes, URLPacientes, getApiPacientes}) => {
             <tbody>
                 {/* esto tiene que ir en paciente */}
              
-              {pacientes.map((paciente)=>(<Paciente paciente={paciente} key={paciente.id} URLPacientes={URLPacientes} getApiPacientes={getApiPacientes}></Paciente>))}
+              {pacientes.map((paciente)=>(<Paciente paciente={paciente} key={paciente._id} URLPacientes={URLPacientes} getApiPacientes={getApiPacientes}></Paciente>))}
               
             </tbody>
           </Table>

@@ -143,7 +143,7 @@ const EditTurnos = ({ URLTurnos, getApiTurnos, pacientes, turnos }) => {
               {pacientes.map((paciente) => (
                 <option
                   value={`${paciente.nombreMascota} - ${paciente.nombreDueño} ${paciente.apellidoDueño}`}
-                  key={paciente.id}
+                  key={paciente._id}
                 >{`${paciente.nombreMascota} - ${paciente.nombreDueño} ${paciente.apellidoDueño}`}</option>
               ))}
             </Form.Select>
@@ -156,12 +156,10 @@ const EditTurnos = ({ URLTurnos, getApiTurnos, pacientes, turnos }) => {
               onChange={({ target }) => {
                 setTurno({ ...turno, veterinario: target.value });
               }}
-            >
-              <option value="Addle Romina">Dra. Addle Romina A.</option>
-              <option value="Fernandez Sara">Dra. Fernandez Sara V.</option>
+            >              
               <option value="Molinari Pablo">Dr. Molinari Pablo D.</option>
               <option value="Kuc Damian">Dr. Kuc Damian</option>
-              <option value="Mezar Diego">Dr. Mezar Diego</option>
+              
             </Form.Select>
           </Form.Group>
 
