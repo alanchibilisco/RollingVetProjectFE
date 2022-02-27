@@ -5,7 +5,8 @@
 *{
   margin: 0;
   /* font-family: 'Varela Round', sans-serif; */
-  font-family: 'typo_round_regular_demoRg';
+  /*font-family: 'typo_round_regular_demoRg';*/
+  font-family: 'Hangyaboly';
 }
 .font-celeste-crud{
   color: #218b99;
@@ -197,7 +198,9 @@ background-repeat: no-repeat;
     justify-content: center;
     align-items: center;
   }
+ 
 }
+
 
 @font-face {
   font-family: 'typo_round_regular_demoRg';
@@ -206,4 +209,12 @@ background-repeat: no-repeat;
   font-weight: normal;
   font-style: normal;
 
+}
+
+
+@font-face {
+  font-family: 'Hangyaboly';
+  src: url('./components/fonts/Hangyaboly.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
 }

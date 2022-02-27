@@ -13,8 +13,8 @@ const Footer = () => {
                 <div>
                 <a href="*" className='mx-3 text-white text-decoration-none fs-5'>
                     <FontAwesomeIcon icon={faWhatsapp}></FontAwesomeIcon>{" "}3815578693</a></div>
-                    <div>
-                <a href="*" className='mx-3 text-white text-decoration-none fs-5'><FontAwesomeIcon icon={faEnvelope}></FontAwesomeIcon>{" "}rollingvet@gmail</a></div>
+                    <div className=''>
+                <a href="*" className='mx-3 text-white text-decoration-none fs-6'><FontAwesomeIcon icon={faEnvelope}></FontAwesomeIcon>{" "}rollingvetproject@gmail.com</a></div>
                 <div>
                 <a href="*" className='mx-3 text-white text-decoration-none fs-5'><FontAwesomeIcon icon={faMapMarkerAlt}></FontAwesomeIcon>{" "}San Miguel de Tucumán</a></div>
             </div>
