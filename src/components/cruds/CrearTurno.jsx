@@ -27,11 +27,20 @@ const CrearTurno = ({ pacientes, URLTurnos, getApiTurnos, turnos }) => {
   const [mascota, setMascota] = useState("");  
   //manejo de FH  
   const [startDate, setStartDate] = useState(minDate);
-  //fin FH
+  const [turnoVetFilter, setTurnoVetFilter]=useState([]); 
+  //fin FH 
 
-  //manejo de turnos    
+  const handleVet=(target)=>{
+    setVeterinario(target.value.trimStart());
+    const filter=turnos.filter((turno)=>(turno.veterinario===target.value.trimStart()));
+    setTurnoVetFilter(filter);    
+  };
+
+  
+  //manejo de turnos 
+
     const mapTurnos=[];//aqui guardare los turnos en formato Date
-    turnos.map((turno)=>(mapTurnos.push(new Date(turno.startDate))));//recorro el array de turnos y los voy convirtiendo a formato Date y guardando en el array mapTurnos.    
+    turnoVetFilter.map((turno)=>(mapTurnos.push(new Date(turno.startDate))));//recorro el array de turnos y los voy convirtiendo a formato Date y guardando en el array mapTurnos.    
     const filterTurnos=mapTurnos.filter((turno)=>(turno.getDate()===startDate.getDate()));//filtro los turnos en funcion a la fecha    
     const excTimes=[];//aqui se guardaran los excludes times del dia de la fecha
     filterTurnos.map((turno)=>(excTimes.push(setHours(setMinutes(turno,turno.getMinutes()),turno.getHours()))));//aqui mapeo los turnos filtrados
@@ -131,7 +140,7 @@ const CrearTurno = ({ pacientes, URLTurnos, getApiTurnos, turnos }) => {
             <Form.Label className="font-celeste-crud">Veterinario*</Form.Label>
             <Form.Select
               onChange={({ target }) => {
-                setVeterinario(target.value.trimStart());
+                handleVet(target);
               }}
             >
               <option value="">Selecciona un Veterinario</option>              
