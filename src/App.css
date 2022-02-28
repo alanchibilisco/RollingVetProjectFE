@@ -1,10 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Nova+Round&family=Varela+Round&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
 
 
 
 *{
   margin: 0;
-   font-family: 'Varela Round', sans-serif; 
+  font-family: 'Nova Round', cursive;
+  /* font-family: 'Varela Round', sans-serif;    */
   /* font-family: 'typo_round_regular_demoRg'; */
   /*font-family: 'Hangyaboly';*/
 }
