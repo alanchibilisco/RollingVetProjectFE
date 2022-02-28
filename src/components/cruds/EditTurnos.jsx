@@ -27,6 +27,9 @@ const EditTurnos = ({ URLTurnos, getApiTurnos, pacientes, turnos }) => {
   const [data, setData] = useState(setHours(setMinutes(new Date(), 0), 8));
   const [minDate, setMinDate]=useState(setHours(setMinutes(new Date(), 0), 8));
 
+  const [turnoVetFilter, setTurnoVetFilter]=useState([]);
+  const [veterinario, setVeterinario]=useState("");
+
   //parametro
   const { id } = useParams();
   //efect
@@ -37,10 +40,20 @@ const EditTurnos = ({ URLTurnos, getApiTurnos, pacientes, turnos }) => {
       setTurno(turnoApi);
       setData(addDays(setHours(setMinutes(new Date(turnoApi.startDate),0),8), 2));
       setMinDate(addDays(setHours(setMinutes(new Date(turnoApi.startDate),0),8), 2));
+      setVeterinario(turnoApi.veterinario);
+      const filter=turnos.filter((turn)=>(turn.veterinario===turnoApi.veterinario));
+      setTurnoVetFilter(filter);
     } catch (error) {
       console.log(error);
     }
   }, []);
+
+  const handleVet=(target)=>{
+    setTurno({ ...turno, veterinario: target.value });
+    const filter=turnos.filter((turn)=>(turn.veterinario===target.value.trimStart()));
+    setTurnoVetFilter(filter);
+  };
+
   //manejo de turnos
   const mapTurnos = []; //aqui guardare los turnos en formato Date
   turnos.map((turno) => mapTurnos.push(new Date(turno.startDate))); //recorro el array de turnos y los voy convirtiendo a formato Date y guardando en el array mapTurnos.
@@ -154,7 +167,7 @@ const EditTurnos = ({ URLTurnos, getApiTurnos, pacientes, turnos }) => {
             <Form.Select
               value={turno.veterinario}
               onChange={({ target }) => {
-                setTurno({ ...turno, veterinario: target.value });
+                handleVet(target);
               }}
             >              
               <option value="Molinari Pablo">Dr. Molinari Pablo D.</option>
