@@ -12,7 +12,7 @@ const NavBar = () => {
     if (session) {
       session = false;
       sessionStorage.setItem("stateSession", JSON.stringify(session));
-      window.location.reload();
+      //window.location.reload();
       navigate("/");
     }
   };
