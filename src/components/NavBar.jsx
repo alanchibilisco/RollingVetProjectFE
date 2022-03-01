@@ -59,7 +59,12 @@ const NavBar = () => {
                 </>
               ) : (
                 <>
-                  <Nav.Link href="/" className="text-white">
+                  <Link to="/" className="nav-link text-white">Inicio</Link>
+                  <Link to="/QuienesSomos" className="nav-link text-white">Quienes Somos</Link>
+                  <Link to="/NuestrosServicios" className="nav-link text-white"> Nuestros Servicios</Link>
+                  <Link to="/Contactanos" className="nav-link text-white">Contactanos</Link>
+                  <Link to="/Login" className="nav-link text-white"> Login</Link>
+                  {/* <Nav.Link href="/" className="text-white">
                     INICIO
                   </Nav.Link>
                   <Nav.Link href="/QuienesSomos" className="text-white">
@@ -73,7 +78,7 @@ const NavBar = () => {
                   </Nav.Link>
                   <Nav.Link href={"/Login"} className="text-white">
                     LOGIN
-                  </Nav.Link>
+                  </Nav.Link> */}
                 </>
               )}
             </Nav>

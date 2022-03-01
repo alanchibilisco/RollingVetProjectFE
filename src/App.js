@@ -1,6 +1,6 @@
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { BrowserRouter, Routes, Route, Redirect } from "react-router-dom";
+import { BrowserRouter, Routes, Route} from "react-router-dom";
 import Index from "./components/Index";
 import Contacto from "./components/Contacto";
 import Error404 from "./components/Error404";
