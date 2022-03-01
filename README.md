@@ -16,11 +16,11 @@ json-server --watch db.json --port 3004
 
 ## ***Variables de Entonrno****
 
-- REACT_APP_API_PACIENTES
-- REACT_APP_API_TURNOS
-- REACT_APP_API_USER
-- REACT_APP_API_COMENTARIOS
-- REACT_APP_KEY (NECESARIA PARA EL MANEJO DE LA API openWeather)
+- REACT_APP_API_PACIENTES=http://localhost:3004/pacientes
+- REACT_APP_API_TURNOS=http://localhost:3004/turnos
+- REACT_APP_API_USER=http://localhost:3004/users
+- REACT_APP_API_COMENTARIOS=http://localhost:3004/comentarios
+- REACT_APP_KEY (NECESARIA PARA EL MANEJO DE LA API openWeather, la misma se obtiene registrando en el sitio de openweather)
 
 ## **Estructura general del sitio**
 - Pagina principal
