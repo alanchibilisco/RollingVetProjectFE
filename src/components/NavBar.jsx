@@ -11,8 +11,7 @@ const NavBar = () => {
   const handleClose = () => {
     if (session) {
       session = false;
-      sessionStorage.setItem("stateSession", JSON.stringify(session));
-      //window.location.reload();
+      sessionStorage.setItem("stateSession", JSON.stringify(session));      
       navigate("/");
     }
   };

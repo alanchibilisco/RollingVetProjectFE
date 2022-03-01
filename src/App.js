@@ -30,7 +30,6 @@ function App() {
   const [weather, setWeather] = useState({});
   const [user, setUser] = useState([]);
   
-
   //useEffect
   useEffect(() => {
     getApiPacientes();
@@ -48,6 +47,7 @@ function App() {
     getApiUser();
   }, []);
 
+  
   
   //utilizacion de las variables de entorno
   const URLPacientes = process.env.REACT_APP_API_PACIENTES;

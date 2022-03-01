@@ -1,9 +1,16 @@
 import React from "react";
+import { useEffect } from "react";
+import { useState } from "react";
 import { Card, Col, Row } from "react-bootstrap";
 import Swal from "sweetalert2";
 
-const CardComentarios = ({ com, getApiComentarios, URLComentarios }) => {
-  const session = JSON.parse(sessionStorage.getItem("stateSession")) || false;
+const CardComentarios = ({ com, getApiComentarios, URLComentarios, session }) => {
+
+  // const [session, setSession]=useState(false);
+  
+  // useEffect(()=>{
+  //   setSession(JSON.parse(sessionStorage.getItem("stateSession")) || false)
+  // },[]);
 
   const handleDelete = (id) => {
     Swal.fire({

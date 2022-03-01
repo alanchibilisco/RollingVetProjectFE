@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import NavBar from "./NavBar";
 import Footer from "./Footer";
 import Carrousel from "./Carrousel";
@@ -11,7 +11,13 @@ import Nuestoequipo from "./Nuestoequipo";
 import Weather from "./weather/Weather";
 import Comentarios from "./Comentarios";
 
-const Index = ({ weather }) => {
+const Index = ({ weather}) => {
+  const [session, setSession]=useState(false);
+
+  useEffect(()=>{
+    setSession(JSON.parse(sessionStorage.getItem("stateSession")) || false);    
+  },[]);
+
   return (
     <div>
       <NavBar />
@@ -26,7 +32,7 @@ const Index = ({ weather }) => {
       <Cardsplanes />
       <Cardtienda />
       <Nuestoequipo/>
-      <Comentarios></Comentarios>
+      <Comentarios session={session}></Comentarios>
       <Footer />
     </div>
   );

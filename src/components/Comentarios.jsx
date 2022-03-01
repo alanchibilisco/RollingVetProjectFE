@@ -4,7 +4,7 @@ import Swal from "sweetalert2";
 import CardComentarios from "./CardComentarios";
 import { validateTextoEsp, validateTexto } from "./Validaciones";
 
-const Comentarios = () => {
+const Comentarios = ({session}) => {
   
   const URLComentarios = process.env.REACT_APP_API_COMENTARIOS;
   const [comentarios, setComentarios] = useState([]);
@@ -111,7 +111,7 @@ const Comentarios = () => {
 
           <Container className="border border-3 p-3">           
             {comentarios.map((com)=>(             
-            <CardComentarios key={com._id} com={com} URLComentarios={URLComentarios} getApiComentarios={getApiComentarios}></CardComentarios>
+            <CardComentarios key={com._id} com={com} URLComentarios={URLComentarios} getApiComentarios={getApiComentarios} session={session}></CardComentarios>
             ))}
           </Container>
                     ) : (
