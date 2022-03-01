@@ -1,12 +1,10 @@
 import React from "react";
-import { Row, Col, CardGroup } from "react-bootstrap";
+import { Row, Col } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import CardTurnos from "./CardTurnos";
 import Footer from "../Footer";
 import NavBar from "../NavBar";
-import { useState } from "react";
 import { useEffect } from "react";
-import Swal from "sweetalert2";
 
 const Adm = ({ turnos }) => {
   const navigate = useNavigate();

@@ -16,9 +16,7 @@ import CrearPaciente from "./components/cruds/CrearPaciente";
 import CrearTurno from "./components/cruds/CrearTurno";
 import EditPacientes from "./components/cruds/EditPacientes";
 import EditTurnos from "./components/cruds/EditTurnos";
-import Cardtienda from "./components/Cardtienda";
 import Adultos from "./components/Adultos"
-import Planes from "./components/Cardplanes";
 import Madurando from "./components/Madurando";
 import Cachorro from "./components/Cachorro";
 
@@ -121,6 +119,11 @@ function App() {
             "Content-Type": "application/json",
           },
         });
+        if (res.status===200) {
+          console.log('Se AUTO ELIMINARON LOS TURNOS VIEJOS');
+        }else{
+          console.log('Error de conexion con la BBDD');
+        }
       }
     };
     turnos.map((turno) => borrar(turno));
@@ -155,19 +158,8 @@ function App() {
             exact
             path="/Adultos"
             element={<Adultos></Adultos>}
-          ></Route>
-          <Route
-            exact
-            path="/Cardtienda"
-            element={<Cardtienda></Cardtienda>}
-          ></Route>
-          <Route
-            exact
-            path="/Cardplanes"
-            element={<Planes></Planes>}
-          ></Route>
-          <Route exact path="*" element={<Error404></Error404>}></Route>
-          <Route exact path="/Error404" element={<Error404></Error404>}></Route>
+          ></Route>         
+          <Route exact path="*" element={<Error404></Error404>}></Route>         
           <Route
             exact
             path="/NuestrosServicios"

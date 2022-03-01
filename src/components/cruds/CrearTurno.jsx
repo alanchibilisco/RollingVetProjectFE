@@ -9,7 +9,7 @@ import { validateTextoEsp} from "../Validaciones";
 import DatePicker from "react-datepicker";
 import es from "date-fns/locale/es";
 import "react-datepicker/dist/react-datepicker.css";
-import { addDays, setHours, setMinutes, subDays } from "date-fns";
+import { addDays, setHours, setMinutes } from "date-fns";
 
 const CrearTurno = ({ pacientes, URLTurnos, getApiTurnos, turnos }) => {
 

@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import { useState } from "react";
-import { Col, Container, Form, Row } from "react-bootstrap";
+import { Container, Form } from "react-bootstrap";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
 import Footer from "../Footer";
@@ -28,7 +28,7 @@ const EditTurnos = ({ URLTurnos, getApiTurnos, pacientes, turnos }) => {
   const [minDate, setMinDate]=useState(setHours(setMinutes(new Date(), 0), 8));
 
   const [turnoVetFilter, setTurnoVetFilter]=useState([]);
-  const [veterinario, setVeterinario]=useState("");
+  
 
   //parametro
   const { id } = useParams();
@@ -39,8 +39,7 @@ const EditTurnos = ({ URLTurnos, getApiTurnos, pacientes, turnos }) => {
       const turnoApi = await res.json();
       setTurno(turnoApi);
       setData(addDays(setHours(setMinutes(new Date(turnoApi.startDate),0),8), 2));
-      setMinDate(addDays(setHours(setMinutes(new Date(turnoApi.startDate),0),8), 2));
-      setVeterinario(turnoApi.veterinario);
+      setMinDate(addDays(setHours(setMinutes(new Date(turnoApi.startDate),0),8), 2));      
       const filter=turnos.filter((turn)=>(turn.veterinario===turnoApi.veterinario));
       setTurnoVetFilter(filter);
     } catch (error) {
@@ -56,7 +55,7 @@ const EditTurnos = ({ URLTurnos, getApiTurnos, pacientes, turnos }) => {
 
   //manejo de turnos
   const mapTurnos = []; //aqui guardare los turnos en formato Date
-  turnos.map((turno) => mapTurnos.push(new Date(turno.startDate))); //recorro el array de turnos y los voy convirtiendo a formato Date y guardando en el array mapTurnos.
+  turnoVetFilter.map((turno) => mapTurnos.push(new Date(turno.startDate))); //recorro el array de turnos y los voy convirtiendo a formato Date y guardando en el array mapTurnos.
   const filterTurnos = mapTurnos.filter(
     (turno) => turno.getDate() === data.getDate()
   ); //filtro los turnos en funcion a la fecha

@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faMapMarkerAlt, faThermometerHalf, faWind, faCloudSun} from  '@fortawesome/free-solid-svg-icons';
 import React from 'react';
-import { faSoundcloud } from '@fortawesome/free-brands-svg-icons';
+
 
 const Weather = ({weather}) => {
     const weat={

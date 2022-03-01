@@ -1,6 +1,6 @@
 import React from "react";
 import "../App.css";
-import { Navbar, Container, Nav, NavDropdown, Button } from "react-bootstrap";
+import { Navbar, Container, Nav } from "react-bootstrap";
 import logo from "./img/rollingvet3d.png";
 import { Link, useNavigate } from "react-router-dom";
 
@@ -40,7 +40,7 @@ const NavBar = () => {
                   <Link to="/QuienesSomos" className="nav-link text-white">
                     Quienes Somos
                   </Link>
-                  <Link to="/Error404" className="nav-link text-white">
+                  <Link to="/*" className="nav-link text-white">
                     {" "}
                     Nuestros Servicios
                   </Link>

@@ -1,6 +1,5 @@
 import React from "react";
 import { Card } from "react-bootstrap";
-import { Link } from "react-router-dom";
 
 const CardTurnos = ({turno}) => {  
   const newStr=(turno.startDate).slice(0,turno.startDate.length-1);  

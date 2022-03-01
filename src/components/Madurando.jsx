@@ -1,11 +1,10 @@
-import React, { useEffect, useRef } from "react";
+import React, { useRef } from "react";
 import NavBar from "./NavBar";
 import Footer from "./Footer";
 import { validateTexto, validateEmail } from "./Validaciones";
 import Swal from "sweetalert2";
 import emailjs from "@emailjs/browser";
 import { useNavigate } from "react-router-dom";
-import madurando from "./img/PlanMadurando.jpg"
 
 const Madurando = () => {
   const navigate = useNavigate();
