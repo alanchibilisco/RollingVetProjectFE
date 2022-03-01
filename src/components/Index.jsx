@@ -20,8 +20,7 @@ const Index = ({ weather }) => {
       :
       <></>
     }         
-       <Carrousel /> 
-       <h1 className="text-center">PRUEBA DEPLOY</h1>     
+       <Carrousel />           
       <Cardservicios />
       <Nuestrosaliados/>
       <Cardsplanes />

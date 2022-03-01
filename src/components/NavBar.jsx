@@ -1,6 +1,6 @@
 import React from "react";
 import "../App.css";
-import { Navbar, Container, Nav, NavDropdown } from "react-bootstrap";
+import { Navbar, Container, Nav, NavDropdown, Button } from "react-bootstrap";
 import logo from "./img/rollingvet3d.png";
 import { Link, useNavigate } from "react-router-dom";
 
@@ -35,50 +35,42 @@ const NavBar = () => {
             <Nav className="ms-auto">
               {session ? (
                 <>
-                  <Nav.Link href="/" className="text-white">
-                    INICIO
-                  </Nav.Link>
-                  <Nav.Link href="/QuienesSomos" className="text-white">
-                    QUIENES SOMOS
-                  </Nav.Link>
-                  <Nav.Link href="/NuestrosServicios" className="text-white">
-                    NUESTROS SERVICIOS
-                  </Nav.Link>
-                  <Nav.Link href="/Contactanos" className="text-white">
-                    CONTACTANOS
-                  </Nav.Link>
-                  <Nav.Link href="/Adm" className="text-white">
-                    ADMINISTRACION
-                  </Nav.Link>
+                  <Link to="/" className="nav-link text-white">
+                    Inicio
+                  </Link>
+                  <Link to="/QuienesSomos" className="nav-link text-white">
+                    Quienes Somos
+                  </Link>
+                  <Link to="/NuestrosServicios" className="nav-link text-white">
+                    {" "}
+                    Nuestros Servicios
+                  </Link>
+                  <Link to="/Contactanos" className="nav-link text-white">
+                    Contactanos
+                  </Link>                 
                   <Nav.Link onClick={handleClose} className="text-white">
-                    LOGOUT
+                    Logout
                   </Nav.Link>
                   <div className="text-end">
-                    <Nav.Link className="text-white">USUARIO: Admin</Nav.Link>
-                  </div>
+                    <Nav.Link className="text-white">USUARIO: "Administrador"</Nav.Link>
+                  </div>                 
                 </>
               ) : (
                 <>
-                  <Link to="/" className="nav-link text-white">Inicio</Link>
-                  <Link to="/QuienesSomos" className="nav-link text-white">Quienes Somos</Link>
-                  <Link to="/NuestrosServicios" className="nav-link text-white"> Nuestros Servicios</Link>
-                  <Link to="/Contactanos" className="nav-link text-white">Contactanos</Link>
-                  <Link to="/Login" className="nav-link text-white"> Login</Link>
-                  {/* <Nav.Link href="/" className="text-white">
-                    INICIO
-                  </Nav.Link>
-                  <Nav.Link href="/QuienesSomos" className="text-white">
-                    QUIENES SOMOS
-                  </Nav.Link>
-                  <Nav.Link href="/NuestrosServicios" className="text-white">
-                    NUESTROS SERVICIOS
-                  </Nav.Link>
-                  <Nav.Link href="/Contactanos" className="text-white">
-                    CONTACTANOS
-                  </Nav.Link>
-                  <Nav.Link href={"/Login"} className="text-white">
-                    LOGIN
-                  </Nav.Link> */}
+                  <Link to="/" className="nav-link text-white">
+                    Inicio
+                  </Link>
+                  <Link to="/QuienesSomos" className="nav-link text-white">
+                    Quienes Somos
+                  </Link>
+                  <Link to="/NuestrosServicios" className="nav-link text-white">      
+                    Nuestros Servicios
+                  </Link>
+                  <Link to="/Contactanos" className="nav-link text-white">
+                    Contactanos
+                  </Link>
+                  <Link to="/Login" className="nav-link text-white">Login
+                  </Link>                  
                 </>
               )}
             </Nav>
