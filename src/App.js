@@ -91,7 +91,7 @@ function App() {
       const location= await fetch("https://freegeoip.app/json/");
       const locJson = await location.json();
       const openWeather = await fetch(
-        `http://api.openweathermap.org/data/2.5/weather?lat=${locJson.latitude}&lon=${locJson.longitude}&lang=es&units=metric&appid=${key}`
+        `https://api.openweathermap.org/data/2.5/weather?lat=${locJson.latitude}&lon=${locJson.longitude}&lang=es&units=metric&appid=${key}`
       );
       const openWthJson = await openWeather.json();
       const weather = {
