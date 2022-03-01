@@ -63,15 +63,16 @@ const Madurando = () => {
       <h4 className="text-center colorfuente">Solicitar informacion completa del Plan</h4>
       <div className="d-flex justify-content-center">
         <div class="col-md-5 col-sm-12 text-center ">
+
           <form ref={form} onSubmit={handleSubmit}>
             <div class="mb-3">
-              <label for="exampleInputEmail1" class="form-label">
+              <label for="exampleInputName" class="form-label" >
                 Ingresa tu Nombre
               </label>
-              <input type="text" class="form-control" name="user_name" />
+              <input type="text" class="form-control" name="user_name" placeholder="RollingVet" id="exampleInputName" />
             </div>
             <div class="mb-3">
-              <label for="exampleInputPassword1" class="form-label">
+              <label for="exampleInputEmail" class="form-label">
                 Ingresa tu Email
               </label>
               <input
@@ -80,6 +81,8 @@ const Madurando = () => {
                 id="exampleInputEmail1"
                 aria-describedby="emailHelp"
                 name="user_email"
+                placeholder="rollingvetproject@gmail.com"
+                id="exampleInputEmail"
               />
             </div>
             <div class="mb-3">
@@ -87,10 +90,11 @@ const Madurando = () => {
                 Consulta
               </label>
               <input
-                type="text"
+                type="text"                
                 class="form-control"
                 name="message"
                 defaultValue='Plan mensual "MADURANDO" de 5 a 10 años'
+                
               />
             </div>
             <div>

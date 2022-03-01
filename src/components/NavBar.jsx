@@ -41,13 +41,16 @@ const NavBar = () => {
                   <Link to="/QuienesSomos" className="nav-link text-white">
                     Quienes Somos
                   </Link>
-                  <Link to="/NuestrosServicios" className="nav-link text-white">
+                  <Link to="/Error404" className="nav-link text-white">
                     {" "}
                     Nuestros Servicios
                   </Link>
                   <Link to="/Contactanos" className="nav-link text-white">
                     Contactanos
-                  </Link>                 
+                  </Link>
+                  <Link to="/Adm" className="nav-link text-white">
+                    Administracion
+                  </Link>                  
                   <Nav.Link onClick={handleClose} className="text-white">
                     Logout
                   </Nav.Link>
@@ -63,7 +66,7 @@ const NavBar = () => {
                   <Link to="/QuienesSomos" className="nav-link text-white">
                     Quienes Somos
                   </Link>
-                  <Link to="/NuestrosServicios" className="nav-link text-white">      
+                  <Link to="/Error404" className="nav-link text-white">      
                     Nuestros Servicios
                   </Link>
                   <Link to="/Contactanos" className="nav-link text-white">

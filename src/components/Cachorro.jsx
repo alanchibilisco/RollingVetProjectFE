@@ -66,13 +66,13 @@ const Cachorro = ({ sendEmail }) => {
         <div className="col-md-5 col-sm-12 text-center">
           <form ref={form} onSubmit={handleSubmit}>
             <div className="mb-3">
-              <label for="exampleInputEmail1" class="form-label">
+              <label for="exampleInputName" class="form-label">
                 Ingresa tu Nombre
               </label>
-              <input type="text" className="form-control" name="user_name" />
+              <input type="text" className="form-control" name="user_name" placeholder="RollingVet" id="exampleInputName" />
             </div>
             <div className="mb-3">
-              <label for="exampleInputPassword1" class="form-label">
+              <label for="exampleInputEmail" class="form-label">
                 Ingresa tu Email
               </label>
               <input
@@ -81,6 +81,8 @@ const Cachorro = ({ sendEmail }) => {
                 id="exampleInputEmail1"
                 aria-describedby="emailHelp"
                 name="user_email"
+                placeholder="rollingvetproject@gmail.com"
+                id="exampleInputEmail"
               />
             </div>
             <div className="mb-3">

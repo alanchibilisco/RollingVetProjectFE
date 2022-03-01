@@ -22,77 +22,77 @@ const QuienesSomos = () => {
             <section>
                 <article className="album py-5">
                     <div className="container">
-                    <div class="row row-cols-1 row-cols-sm-12 row-cols-md-3 g-3">
-                <div class="col">
-                    <img src={avatarAlan} class="bd-placeholder-img card-img-top rounded-circle" width="100px" height="400px" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveaspectratio="xMidYMid slice" focusable="false" alt='avatarAlan'/>
-                    <div class="card shadow-sm">
-                        <div class="card-body text-center">
-                            <h5 class="fontTitulos">Alan Chibilisco </h5>
-                            <p class="fontSubtitulos">Estudiante de Programación</p>
-                            <p class="fontSubtitulos">33 Años</p>
-                            <p class="fontSubtitulos">alan.chibilisco@gmail.com</p>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div class="btn-group">
+                    <div className="row row-cols-1 row-cols-sm-12 row-cols-md-3 g-3">
+                <div className="col">
+                    <img src={avatarAlan} className="bd-placeholder-img card-img-top rounded-circle" width="100px" height="400px" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false" alt='avatarAlan'/>
+                    <div className="card shadow-sm">
+                        <div className="card-body text-center">
+                            <h5 className="fontTitulos">Alan Chibilisco </h5>
+                            <p className="fontSubtitulos">Estudiante de Programación</p>
+                            <p className="fontSubtitulos">33 Años</p>
+                            <p className="fontSubtitulos">alan.chibilisco@gmail.com</p>
+                            <div className="d-flex justify-content-between align-items-center">
+                                <div className="btn-group">
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col">
-                    <img src= {avatarSanti} class="bd-placeholder-img card-img-top rounded-circle" width="100px" height="400px" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveaspectratio="xMidYMid slice" focusable="false"/>
-                    <div class="card shadow-sm">
-                        <div class="card-body text-center">
-                            <h5 class="fontTitulos">Santiago Adan</h5>
-                            <p class="fontSubtitulos">Estudiante de Programación</p>
-                            <p class="fontSubtitulos">22 Años</p>
-                            <p class="fontSubtitulos">santiadan25@gmail.com</p>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div class="btn-group">
+                <div className="col">
+                    <img src= {avatarSanti} className="bd-placeholder-img card-img-top rounded-circle" width="100px" height="400px" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"/>
+                    <div className="card shadow-sm">
+                        <div className="card-body text-center">
+                            <h5 className="fontTitulos">Santiago Adan</h5>
+                            <p className="fontSubtitulos">Estudiante de Programación</p>
+                            <p className="fontSubtitulos">22 Años</p>
+                            <p className="fontSubtitulos">santiadan25@gmail.com</p>
+                            <div className="d-flex justify-content-between align-items-center">
+                                <div className="btn-group">
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col">
-                    <img src= {avatarMarta} class="bd-placeholder-img card-img-top rounded-circle" width="100px" height="400px" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveaspectratio="xMidYMid slice" focusable="false"/>
-                    <div class="card shadow-sm">
-                        <div class="card-body text-center">
-                            <h5 class="fontTitulos">Marta Arriola</h5>
-                            <p class="fontSubtitulos">Estudiante de Programación</p>
-                            <p class="fontSubtitulos">34 Años</p>
-                            <p class="fontSubtitulos">arriolamarta01@gmail.com</p>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div class="btn-group">
+                <div className="col">
+                    <img src= {avatarMarta} className="bd-placeholder-img card-img-top rounded-circle" width="100px" height="400px" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"/>
+                    <div className="card shadow-sm">
+                        <div className="card-body text-center">
+                            <h5 className="fontTitulos">Marta Arriola</h5>
+                            <p className="fontSubtitulos">Estudiante de Programación</p>
+                            <p className="fontSubtitulos">34 Años</p>
+                            <p className="fontSubtitulos">arriolamarta01@gmail.com</p>
+                            <div className="d-flex justify-content-between align-items-center">
+                                <div className="btn-group">
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col">
-                    <img src= {avatarLeonel} class="bd-placeholder-img card-img-top rounded-circle" width="100px" height="400px" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveaspectratio="xMidYMid slice" focusable="false"/>
-                    <div class="card shadow-sm">
-                        <div class="card-body text-center">
-                            <h5 class="fontTitulos">Leonel Alderete</h5>
-                            <p class="fontSubtitulos">Estudiante de Programación</p>
-                            <p class="fontSubtitulos">17 Años</p>
-                            <p class="fontSubtitulos">leonel.e.alderete@gmail.com</p>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div class="btn-group">
+                <div className="col">
+                    <img src= {avatarLeonel} className="bd-placeholder-img card-img-top rounded-circle" width="100px" height="400px" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"/>
+                    <div className="card shadow-sm">
+                        <div className="card-body text-center">
+                            <h5 className="fontTitulos">Leonel Alderete</h5>
+                            <p className="fontSubtitulos">Estudiante de Programación</p>
+                            <p className="fontSubtitulos">17 Años</p>
+                            <p className="fontSubtitulos">leonel.e.alderete@gmail.com</p>
+                            <div className="d-flex justify-content-between align-items-center">
+                                <div className="btn-group">
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col">
-                    <img src= {avatarLuis} class="bd-placeholder-img card-img-top rounded-circle" width="100px" height="400px" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveaspectratio="xMidYMid slice" focusable="false"/>
-                    <div class="card shadow-sm">
-                        <div class="card-body text-center">
-                            <h5 class="fontTitulos">Luis Reartez</h5>
-                            <p class="fontSubtitulos">Estudiante de Programación</p>
-                            <p class="fontSubtitulos">27 Años</p>
-                            <p class="fontSubtitulos">Luisreartez55@gmail.com</p>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div class="btn-group">
+                <div className="col">
+                    <img src= {avatarLuis} className="bd-placeholder-img card-img-top rounded-circle" width="100px" height="400px" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"/>
+                    <div className="card shadow-sm">
+                        <div className="card-body text-center">
+                            <h5 className="fontTitulos">Luis Reartez</h5>
+                            <p className="fontSubtitulos">Estudiante de Programación</p>
+                            <p className="fontSubtitulos">27 Años</p>
+                            <p className="fontSubtitulos">Luisreartez55@gmail.com</p>
+                            <div className="d-flex justify-content-between align-items-center">
+                                <div className="btn-group">
                                 </div>
                             </div>
                         </div>
