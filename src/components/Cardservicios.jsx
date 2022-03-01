@@ -16,14 +16,14 @@ const Cardservicios = () => {
             mantener su salud general
           </p>
           <div >
-            <Link to="/Error404" className="btn-celeste-serv text-decoration-none text-end">Ver Mas</Link>
+            <Link to="/*" className="btn-celeste-serv text-decoration-none text-end">Ver Mas</Link>
           </div>
           <h3 className="colorfuente">Rayos X</h3>
           <p className="colorfuente">
             Los mejores equipos de RX para el uso veterinario
           </p>
           <div >
-            <Link to="/Error404" className="btn-celeste-serv text-decoration-none text-end">Ver Mas</Link>
+            <Link to="/*" className="btn-celeste-serv text-decoration-none text-end">Ver Mas</Link>
           </div>
     </div>
     <div className="col-lg">
@@ -36,12 +36,12 @@ const Cardservicios = () => {
             mejor amigo reciba la mejor atencion{" "}
           </p>
           <div >
-            <Link to="/Error404" className="btn-celeste-serv text-decoration-none text-end">Ver Mas</Link>
+            <Link to="/*" className="btn-celeste-serv text-decoration-none text-end">Ver Mas</Link>
           </div>
           <h3 className="colorfuente">Guardia Veterinaria</h3>
           <p className="colorfuente">Urgencias las 24 horas</p>
           <div >
-            <Link to="/Error404" className="btn-celeste-serv text-decoration-none text-end">Ver Mas</Link>
+            <Link to="/*" className="btn-celeste-serv text-decoration-none text-end">Ver Mas</Link>
           </div>
     </div>
   </div>
