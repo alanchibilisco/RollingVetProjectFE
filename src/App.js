@@ -16,7 +16,6 @@ import CrearPaciente from "./components/cruds/CrearPaciente";
 import CrearTurno from "./components/cruds/CrearTurno";
 import EditPacientes from "./components/cruds/EditPacientes";
 import EditTurnos from "./components/cruds/EditTurnos";
-import bcrypt from "bcryptjs/dist/bcrypt";
 import Cardtienda from "./components/Cardtienda";
 import Adultos from "./components/Adultos"
 import Planes from "./components/Cardplanes";
