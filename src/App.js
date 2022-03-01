@@ -1,6 +1,6 @@
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { BrowserRouter as Router, Routes, Route, Redirect } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Redirect } from "react-router-dom";
 import Index from "./components/Index";
 import Contacto from "./components/Contacto";
 import Error404 from "./components/Error404";
@@ -129,7 +129,8 @@ function App() {
   //fin borrado
   return (
     <div>
-      <Router>
+      <BrowserRouter>
+      <main>
         <Routes>
           <Route
             exact
@@ -255,7 +256,8 @@ function App() {
             }
           ></Route>
         </Routes>
-      </Router>
+        </main>
+        </BrowserRouter>
     </div>
   );
 }
