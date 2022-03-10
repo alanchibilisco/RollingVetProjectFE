@@ -48,7 +48,7 @@ const CardComentarios = ({ com, getApiComentarios, URLComentarios, session }) =>
           <Row className="mb-2">
             <Col sm={12} className="border border-2">
               <Card.Body>
-                <Card.Title className="font-celeste-crud fw-bold">{com.user}</Card.Title>
+                <Card.Title className="font-celeste-crud fw-bold text-break">{com.user}</Card.Title>
                 <Card.Text>{com.message}</Card.Text>
                 <div className="text-end my-3 font-celeste-crud">{new Date(com.date).toLocaleString()}</div>
                 <div className="text-end">
