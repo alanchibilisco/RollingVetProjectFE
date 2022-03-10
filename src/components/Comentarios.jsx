@@ -81,6 +81,8 @@ const Comentarios = ({session}) => {
             value={user}
               type="text"
               placeholder="Usuario Rolling"
+              minLength={4}
+              maxLength={100}
               onChange={({ target }) => setUser(target.value.trimStart())}
             ></Form.Control>
           </Form.Group>
@@ -93,6 +95,8 @@ const Comentarios = ({session}) => {
               as="textarea"
               type="text"
               placeholder="Ej: Hola"
+              minLength={4}
+              maxLength={500}
               style={{ height: "100px" }}
               onChange={({ target }) => {
                 setMessage(target.value.trimStart());
@@ -121,7 +125,7 @@ const Comentarios = ({session}) => {
             </div>
           </>
         )}
-      </div>
+      </div>      
     </div>
   );
 };
