@@ -33,7 +33,7 @@ const Index = ({ weather}) => {
       <Cardtienda />
       <Nuestoequipo/>
       <Comentarios session={session}></Comentarios>
-      {/* <Footer /> */}
+      <Footer />
     </div>
   );
 };
