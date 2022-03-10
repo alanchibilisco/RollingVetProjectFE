@@ -194,6 +194,9 @@ background-repeat: no-repeat;
 .estlist{
   list-style: none;
 }
+.img-banner{
+  width: 25%;
+}
 @media (max-width: 450px){
   .flex-container{
     display: flex;
@@ -201,6 +204,14 @@ background-repeat: no-repeat;
     align-items: center;
   }
  
+}
+
+@media all and (max-width: 576px){
+  .img-banner{
+    height: 300px;
+    width: 100%;
+    object-fit:fill;    
+  }
 }
 
 

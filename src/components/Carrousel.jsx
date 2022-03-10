@@ -9,18 +9,18 @@ const Carrousel = () => {
     <div>
       <Carousel fade>
         <Carousel.Item>
-          <img className="d-block w-100 h-50" src={carrusel1} alt="First slide" />
+          <img className="d-block w-100  img-banner" src={carrusel1} alt="First slide" />
           <Carousel.Caption>
           </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item>
-          <img className="d-block w-100 h-50" src={carrusel2} alt="Second slide" />
+          <img className="d-block w-100 img-banner" src={carrusel2} alt="Second slide" />
 
           <Carousel.Caption>
           </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item>
-          <img className="d-block w-100 h-75" src={carrusel3} alt="Third slide" />
+          <img className="d-block w-100 img-banner" src={carrusel3} alt="Third slide" />
 
           <Carousel.Caption>
             

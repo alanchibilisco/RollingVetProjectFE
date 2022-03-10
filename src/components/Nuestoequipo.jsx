@@ -13,13 +13,13 @@ const Nuestoequipo = () => {
       <div className="container">
       <Carousel fade>
         <Carousel.Item>
-          <img className="img-fluid rounded mx-auto d-block w-25" src={doc1} alt="First slide" />
+          <img className=" rounded mx-auto d-block img-banner" src={doc1} alt="First slide" />
         </Carousel.Item>
         <Carousel.Item>
-          <img className="img-fluid rounded mx-auto d-block w-25" src={doc2} alt="Second slide" />
+          <img className=" rounded mx-auto d-block img-banner" src={doc2} alt="Second slide" />
         </Carousel.Item>
         <Carousel.Item>
-          <img className="img-fluid rounded mx-auto d-block w-25" src={doc3} alt="Third slide" />
+          <img className=" rounded mx-auto d-block img-banner" src={doc3} alt="Third slide" />
         </Carousel.Item>
       </Carousel>
     </div>
