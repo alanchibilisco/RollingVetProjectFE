@@ -8,13 +8,13 @@
 ## ***Comandos***
 Cuando se clone este repositorio se deben ejecutar los siguientes comandos:
 # ****Para instalar las dependencias****
-npm i
+`npm i`
 # ****Para ejecutar nuestra app de react****
-npm start
+`npm start`
 # ****Para ejecutar nuestra base de datos (Ejecutar en otra terminal/consola distinta a donde se esta ejecutando react)
-json-server --watch db.json --port 3004
+`json-server --watch db.json --port 3004`
 
-## ***Variables de Entonrno****
+## ***Variables de Entorno****
 
 - REACT_APP_API_PACIENTES=http://localhost:3004/pacientes
 - REACT_APP_API_TURNOS=http://localhost:3004/turnos
