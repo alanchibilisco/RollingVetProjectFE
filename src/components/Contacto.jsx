@@ -6,21 +6,29 @@ import { useNavigate } from "react-router-dom";
 import { validateTextoEsp, validateEmail, validateTexto } from "./Validaciones";
 import Swal from "sweetalert2";
 import emailjs from "@emailjs/browser";
+import { Form } from "react-bootstrap";
 
 const Contacto = () => {
-  
   const navigate = useNavigate();
   const form = useRef();
+  const [validated, setValidated]=useState(false);
+
+  const gralValidate = () => {
+    if (
+      validateTexto(form.current.user_name.value.trimStart()) &&
+      validateEmail(form.current.user_email.value.trimStart()) && validateTextoEsp(form.current.message.value.trimStart())
+    ) {
+      return true;
+    } else {
+      return false;
+    }
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (
-      !validateTexto(form.current.user_name.value.trimStart()) ||
-      !validateEmail(form.current.user_email.value.trimStart()) ||!validateTextoEsp(form.current.message.value.trimStart())
-    ) {
-      Swal.fire("Ops!", "Algun dato es incorrecto", "error");
-      return;
-    }
-    emailjs
+    const Form=e.currentTarget;
+    if (Form.checkValidity()!==false&&gralValidate()) {
+      emailjs
       .sendForm(
         "service_zu85aso",
         "template_wenn5tm",
@@ -37,9 +45,14 @@ const Contacto = () => {
       );
     Swal.fire("Consulta enviada!", "Le responderemos a la brevedad", "success");
     navigate("/");
+    }else{
+      e.stopPropagation();
+      Swal.fire("Ops!", "Algun dato es incorrecto", "error");      
+    }
+    setValidated(true);
   };
   return (
-    <div>
+    <div>      
       <div style={{ backgroundImage: `url(${background})` }}>
         <NavBar />
         <div className="container ">
@@ -47,44 +60,72 @@ const Contacto = () => {
           <hr className="text-light" />
           <article className="row">
             <div className="col-sm-12 col-md-6 mt-4">
-            <form ref={form} onSubmit={handleSubmit}>
-            <div class="mb-3">
-              <label for="exampleInputEmail1" class="form-label text-white">
-                Ingresa tu Nombre
-              </label>
-              <input type="text" class="form-control" name="user_name" placeholder="RollingVet" />
-            </div>
-            <div class="mb-3">
-              <label for="exampleInputPassword1" class="form-label text-white">
-                Ingresa tu Email
-              </label>
-              <input
-                type="email"
-                class="form-control"
-                id="exampleInputEmail1"
-                aria-describedby="emailHelp"
-                name="user_email"
-                placeholder="rollingvetproject@gmail.com"
-              />
-            </div>
-            <div class="mb-3">
-              <label for="exampleInputMessage" class="form-label text-white">
-                Consulta
-              </label>
-              <textarea
-                type="text"
-                minLength={4}
-                maxLength={500}
-                rows="5"
-                class="form-control"
-                name="message"    
-                placeholder="ingrese su consulta aqui"            
-              />
-            </div>
-            <div className="text-center">
-              <button class="btn-celeste-serv text-end">CONSULTAR</button>
-            </div>
-          </form>
+              <Form ref={form} onSubmit={handleSubmit} noValidate validated={validated}>
+                <div class="mb-3">
+                  <label for="inputUser" class="form-label text-white">
+                    Ingresa tu Nombre
+                  </label>
+                  <input
+                  required
+                    type="text"
+                    class="form-control"
+                    name="user_name"
+                    placeholder="RollingVet"
+                    id="inputUser"
+                    minLength={4}
+                    maxLength={60}                    
+                  />
+                  <Form.Control.Feedback type="invalid" className=" bg-white fw-bold">
+                Ingrese su Nombre y Apellido (min. 4 caracteres, max. 60
+                caracteres, SOLO LETRAS)
+              </Form.Control.Feedback>
+                </div>
+                <div class="mb-3">
+                  <label
+                    for="inputEmail"
+                    class="form-label text-white"
+                  >
+                    Ingresa tu Email
+                  </label>
+                  <input
+                  required
+                    type="email"
+                    class="form-control"
+                    id="inputEmail"
+                    aria-describedby="emailHelp"
+                    name="user_email"
+                    placeholder="rollingvetproject@gmail.com"
+                  />
+                  <Form.Control.Feedback type="invalid" className="bg-white fw-bold">
+                Ingrese un email valido
+              </Form.Control.Feedback>
+                </div>
+                <div class="mb-3">
+                  <label
+                    for="inputMessage"
+                    class="form-label text-white"
+                  >
+                    Consulta
+                  </label>
+                  <textarea
+                  required
+                    type="text"
+                    minLength={4}
+                    maxLength={500}
+                    rows="5"
+                    class="form-control"
+                    name="message"
+                    placeholder="ingrese su consulta aqui"
+                    id="inputMessage"
+                  />
+                  <Form.Control.Feedback type="invalid" className=" bg-white fw-bold">
+                Ingrese su consulta (min. 4 caracteres, max. 500)
+              </Form.Control.Feedback>
+                </div>
+                <div className="text-center">
+                  <button class="btn-celeste-serv text-end">CONSULTAR</button>
+                </div>
+              </Form>
             </div>
             <div className="col-sm-12 col-md-6 mb-6 mt-4">
               <iframe
