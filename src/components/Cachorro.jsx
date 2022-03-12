@@ -127,7 +127,7 @@ const Cachorro = () => {
                 required
                 type="email"
                 className="form-control"
-                id="exampleInputEmail1"
+                id="exampleInputEmail"
                 aria-describedby="emailHelp"
                 name="user_email"
                 placeholder="rollingvetproject@gmail.com"
