@@ -101,7 +101,7 @@ const Cachorro = () => {
             validated={validated}
           >
             <div className="mb-3">
-              <label for="exampleInputName" class="form-label">
+              <label htmlFor="exampleInputName" className="form-label">
                 Ingresa tu Nombre
               </label>
               <input
@@ -120,7 +120,7 @@ const Cachorro = () => {
               </Form.Control.Feedback>
             </div>
             <div className="mb-3">
-              <label for="exampleInputEmail" class="form-label">
+              <label htmlFor="exampleInputEmail" className="form-label">
                 Ingresa tu Email
               </label>
               <input
@@ -137,7 +137,7 @@ const Cachorro = () => {
               </Form.Control.Feedback>
             </div>
             <div className="mb-3">
-              <label for="exampleInputMessage" className="form-label">
+              <label htmlFor="exampleInputMessage" className="form-label">
                 Consulta
               </label>
               <input

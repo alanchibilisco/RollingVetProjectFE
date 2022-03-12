@@ -90,21 +90,21 @@ const Madurando = () => {
         Solicitar informacion completa del Plan
       </h4>
       <div className="d-flex justify-content-center">
-        <div class="col-md-5 col-sm-12 text-center ">
+        <div className="col-md-5 col-sm-12 text-center ">
           <Form
             ref={form}
             onSubmit={handleSubmit}
             noValidate
             validated={validated}
           >
-            <div class="mb-3">
-              <label for="exampleInputName" class="form-label">
+            <div className="mb-3">
+              <label htmlFor="exampleInputName" className="form-label">
                 Ingresa tu Nombre
               </label>
               <input
               required
                 type="text"
-                class="form-control"
+                className="form-control"
                 name="user_name"
                 placeholder="RollingVet"
                 id="exampleInputName"
@@ -114,14 +114,14 @@ const Madurando = () => {
               <Form.Control.Feedback type="invalid">Ingrese su Nombre y Apellido (min. 4 caracteres, max. 60
                 caracteres, SOLO LETRAS)</Form.Control.Feedback>
             </div>
-            <div class="mb-3">
-              <label for="exampleInputEmail" class="form-label">
+            <div className="mb-3">
+              <label htmlFor="exampleInputEmail" className="form-label">
                 Ingresa tu Email
               </label>
               <input
               required
                 type="email"
-                class="form-control"
+                className="form-control"
                 id="exampleInputEmail1"
                 aria-describedby="emailHelp"
                 name="user_email"
@@ -129,20 +129,20 @@ const Madurando = () => {
               />
               <Form.Control.Feedback type="invalid">Ingrese un email valido</Form.Control.Feedback>
             </div>
-            <div class="mb-3">
-              <label for="exampleInputMessage" class="form-label">
+            <div className="mb-3">
+              <label htmlFor="exampleInputMessage" className="form-label">
                 Consulta
               </label>
               <input
                 type="text"
-                class="form-control"
+                className="form-control"
                 name="message"
                 defaultValue='Plan mensual "MADURANDO" de 5 a 10 años'
                 readOnly
               />
             </div>
             <div>
-              <button class="btn-celeste-serv text-end">CONSULTAR</button>
+              <button className="btn-celeste-serv text-end">CONSULTAR</button>
             </div>
           </Form>
         </div>

@@ -61,14 +61,14 @@ const Contacto = () => {
           <article className="row">
             <div className="col-sm-12 col-md-6 mt-4">
               <Form ref={form} onSubmit={handleSubmit} noValidate validated={validated}>
-                <div class="mb-3">
-                  <label for="inputUser" class="form-label text-white">
+                <div className="mb-3">
+                  <label htmlFor="inputUser" className="form-label text-white">
                     Ingresa tu Nombre
                   </label>
                   <input
                   required
                     type="text"
-                    class="form-control"
+                    className="form-control"
                     name="user_name"
                     placeholder="RollingVet"
                     id="inputUser"
@@ -80,17 +80,17 @@ const Contacto = () => {
                 caracteres, SOLO LETRAS)
               </Form.Control.Feedback>
                 </div>
-                <div class="mb-3">
+                <div className="mb-3">
                   <label
-                    for="inputEmail"
-                    class="form-label text-white"
+                    htmlFor="inputEmail"
+                    className="form-label text-white"
                   >
                     Ingresa tu Email
                   </label>
                   <input
                   required
                     type="email"
-                    class="form-control"
+                    className="form-control"
                     id="inputEmail"
                     aria-describedby="emailHelp"
                     name="user_email"
@@ -100,10 +100,10 @@ const Contacto = () => {
                 Ingrese un email valido
               </Form.Control.Feedback>
                 </div>
-                <div class="mb-3">
+                <div className="mb-3">
                   <label
-                    for="inputMessage"
-                    class="form-label text-white"
+                    htmlFor="inputMessage"
+                    className="form-label text-white"
                   >
                     Consulta
                   </label>
@@ -113,7 +113,7 @@ const Contacto = () => {
                     minLength={4}
                     maxLength={500}
                     rows="5"
-                    class="form-control"
+                    className="form-control"
                     name="message"
                     placeholder="ingrese su consulta aqui"
                     id="inputMessage"
@@ -123,7 +123,7 @@ const Contacto = () => {
               </Form.Control.Feedback>
                 </div>
                 <div className="text-center">
-                  <button class="btn-celeste-serv text-end">CONSULTAR</button>
+                  <button className="btn-celeste-serv text-end">CONSULTAR</button>
                 </div>
               </Form>
             </div>
