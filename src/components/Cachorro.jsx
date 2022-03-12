@@ -1,56 +1,59 @@
 import React, { useRef, useState } from "react";
 import NavBar from "./NavBar";
 import Footer from "./Footer";
-import { validateTexto, validateEmail, validateTextoEsp } from "./Validaciones";
+import { validateTexto, validateEmail} from "./Validaciones";
 import Swal from "sweetalert2";
 import emailjs from "@emailjs/browser";
 import { useNavigate } from "react-router-dom";
 import { Form } from "react-bootstrap";
 
-const Cachorro = ({ sendEmail }) => {
+const Cachorro = () => {
   const navigate = useNavigate();
   const form = useRef();
-  const [validated, setValidated]=useState(false);
+  const [validated, setValidated] = useState(false);
 
-  const gralValidate=()=>{
-    if(validateTexto(form.current.user_name.value.trimStart())&& validateEmail(form.current.user_email.value.trimStart())){
+  const gralValidate = () => {
+    if (
+      validateTexto(form.current.user_name.value.trimStart()) &&
+      validateEmail(form.current.user_email.value.trimStart())
+    ) {
       return true;
-    }else{
+    } else {
       return false;
     }
-  }
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const Form=e.currentTarget;
-    if (Form.checkValidity()!==false && gralValidate()) {
-      
-      
+    const Form = e.currentTarget;
+    if (Form.checkValidity() !== false && gralValidate()) {
       emailjs
-      .sendForm(
-        "service_zu85aso",
-        "template_wenn5tm",
-        form.current,
-        "user_QppiDb4vLZrsgJIksRfUR"
-      )
-      .then(
-        (result) => {
-          console.log(result.text);
-        },
-        (error) => {
-          console.log(error.text);
-        }
+        .sendForm(
+          "service_zu85aso",
+          "template_wenn5tm",
+          form.current,
+          "user_QppiDb4vLZrsgJIksRfUR"
+        )
+        .then(
+          (result) => {
+            console.log(result.text);
+          },
+          (error) => {
+            console.log(error.text);
+          }
+        );
+      Swal.fire(
+        "Consulta enviada!",
+        "Le responderemos a la brevedad",
+        "success"
       );
-    Swal.fire("Consulta enviada!", "Le responderemos a la brevedad", "success");
-    navigate("/");
-
-    }else{
+      navigate("/");
+    } else {
       e.stopPropagation();
-      Swal.fire("Ops!", "Algun dato es incorrecto", "error");      
+      Swal.fire("Ops!", "Algun dato es incorrecto", "error");
     }
 
     setValidated(true);
-    
   };
 
   return (
@@ -91,13 +94,18 @@ const Cachorro = ({ sendEmail }) => {
       </h4>
       <div className="d-flex justify-content-center">
         <div className="col-md-5 col-sm-12 text-center">
-          <Form ref={form} onSubmit={handleSubmit} noValidate validated={validated}>
+          <Form
+            ref={form}
+            onSubmit={handleSubmit}
+            noValidate
+            validated={validated}
+          >
             <div className="mb-3">
               <label for="exampleInputName" class="form-label">
                 Ingresa tu Nombre
               </label>
               <input
-              required
+                required
                 type="text"
                 className="form-control"
                 name="user_name"
@@ -106,15 +114,17 @@ const Cachorro = ({ sendEmail }) => {
                 minLength={4}
                 maxLength={60}
               />
-              <Form.Control.Feedback type="invalid">Ingrese su Nombre y Apellido (min. 4 caracteres, max. 60
-              caracteres, SOLO LETRAS)</Form.Control.Feedback>
+              <Form.Control.Feedback type="invalid">
+                Ingrese su Nombre y Apellido (min. 4 caracteres, max. 60
+                caracteres, SOLO LETRAS)
+              </Form.Control.Feedback>
             </div>
             <div className="mb-3">
               <label for="exampleInputEmail" class="form-label">
                 Ingresa tu Email
               </label>
               <input
-              required
+                required
                 type="email"
                 className="form-control"
                 id="exampleInputEmail1"
@@ -122,7 +132,9 @@ const Cachorro = ({ sendEmail }) => {
                 name="user_email"
                 placeholder="rollingvetproject@gmail.com"
               />
-              <Form.Control.Feedback type="invalid">Ingrese un email valido</Form.Control.Feedback>
+              <Form.Control.Feedback type="invalid">
+                Ingrese un email valido
+              </Form.Control.Feedback>
             </div>
             <div className="mb-3">
               <label for="exampleInputMessage" className="form-label">
