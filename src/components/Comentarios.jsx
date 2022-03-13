@@ -123,7 +123,7 @@ const Comentarios = ({ session }) => {
             </Form.Control.Feedback>
           </Form.Group>
           <div className="text-end">
-            <button className="btn-celeste-crud">GUARDAR</button>            
+            <button className="btn-celeste-crud">GUARDAR</button>
           </div>
         </Form>
         <hr />

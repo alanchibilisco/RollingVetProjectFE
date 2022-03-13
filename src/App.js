@@ -84,10 +84,7 @@ function App() {
   };
   //weather
   const getWeather = async () => {
-    try {
-      //const ipify = require("ipify2");
-      //const resIp = await ipify.ipv4();
-      //const location = await fetch(`http://ip-api.com/json/${resIp}`);
+    try {      
       const location= await fetch("https://freegeoip.app/json/");
       const locJson = await location.json();
       const openWeather = await fetch(
