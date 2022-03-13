@@ -63,6 +63,7 @@ const Comentarios = ({ session }) => {
               getApiComentarios();
               setUser("");
               setMessage("");
+              setValidated(false);
             }
           } catch (error) {
             console.log(error);
