@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef} from "react";
 import NavBar from "./NavBar";
 import Footer from "./Footer";
 import { validateTexto, validateEmail} from "./Validaciones";
@@ -8,9 +8,11 @@ import { useNavigate } from "react-router-dom";
 import { Form } from "react-bootstrap";
 
 const Cachorro = () => {
+  // let ip=document.getElementById('exampleInputEmail');
+  // console.log(ip);
   const navigate = useNavigate();
   const form = useRef();
-  const [validated, setValidated] = useState(false);
+  // const [validated, setValidated] = useState(false);
 
   const gralValidate = () => {
     if (
@@ -23,10 +25,31 @@ const Cachorro = () => {
     }
   };
 
+  const inputEmail=document.getElementById("exampleInputEmail");
+  const testEmail=()=>{    
+    if (validateEmail(inputEmail.value)) {
+      inputEmail.className="form-control is-valid"; 
+      return true;     
+    }else{
+      inputEmail.className="form-control is-invalid";  
+      return false;
+    }
+  }
+  const inputUser=document.getElementById('exampleInputName');
+  const testUser=()=>{    
+    if (validateTexto(inputUser.value)&&inputUser.value.length>=4) {
+      inputUser.className='form-control is-valid'
+      return true;
+    }else{
+      inputUser.className='form-control is-invalid'
+      return false;
+    }
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    const Form = e.currentTarget;
-    if (Form.checkValidity() !== false && gralValidate()) {
+    
+    if (gralValidate()) {      
       emailjs
         .sendForm(
           "service_zu85aso",
@@ -48,12 +71,20 @@ const Cachorro = () => {
         "success"
       );
       navigate("/");
-    } else {
-      e.stopPropagation();
-      Swal.fire("Ops!", "Algun dato es incorrecto", "error");
+    }else if(testUser()){     
+      Swal.fire("Ops!", "Por favor ingrese su email", "error");
+      inputEmail.className="form-control is-invalid";      
+    }else if(testEmail()){
+      Swal.fire("Ops!", "Por favor ingrese su nombre", "error");      
+      inputUser.className='form-control is-invalid'
+    }
+    else {      
+      Swal.fire("Ops!", "Debe completar todos los campos", "error");
+      inputEmail.className="form-control is-invalid";
+      inputUser.className='form-control is-invalid'
     }
 
-    setValidated(true);
+    // setValidated(true);
   };
 
   return (
@@ -96,9 +127,8 @@ const Cachorro = () => {
         <div className="col-md-5 col-sm-12 text-center">
           <Form
             ref={form}
-            onSubmit={handleSubmit}
-            noValidate
-            validated={validated}
+            onSubmit={handleSubmit}   
+            noValidate             
           >
             <div className="mb-3">
               <label htmlFor="exampleInputName" className="form-label">
@@ -113,6 +143,7 @@ const Cachorro = () => {
                 id="exampleInputName"
                 minLength={4}
                 maxLength={60}
+                onChange={testUser}                
               />
               <Form.Control.Feedback type="invalid">
                 Ingrese su Nombre y Apellido (min. 4 caracteres, max. 60
@@ -125,12 +156,13 @@ const Cachorro = () => {
               </label>
               <input
                 required
-                type="email"
+                type="email"                
                 className="form-control"
                 id="exampleInputEmail"
                 aria-describedby="emailHelp"
                 name="user_email"
                 placeholder="rollingvetproject@gmail.com"
+                onChange={testEmail}                
               />
               <Form.Control.Feedback type="invalid">
                 Ingrese un email valido
