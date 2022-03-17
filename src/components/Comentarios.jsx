@@ -8,9 +8,9 @@ const Comentarios = ({ session }) => {
   const URLComentarios = process.env.REACT_APP_API_COMENTARIOS;
   const [comentarios, setComentarios] = useState([]);
   const [user, setUser] = useState("");
-  const [message, setMessage] = useState("");
-  const [validated, setValidated] = useState(false);
-
+  const [message, setMessage] = useState("");  
+  const [inputUser, setInputUser] = useState("");
+  const [inputMessage, setInputMessage] = useState("");
   const getApiComentarios = async () => {
     try {
       const res = await fetch(URLComentarios);
@@ -31,12 +31,33 @@ const Comentarios = ({ session }) => {
 
   useEffect(() => {
     getApiComentarios();
+    setInputUser(document.getElementById("inputUser"));
+    setInputMessage(document.getElementById("inputMessage"));
   }, []);
 
+  const testMessage = () => {
+    if (validateTextoEsp(inputMessage.value)&&inputMessage.value.length>=4) {
+      inputMessage.className = "form-control is-valid";
+      return true;
+    } else {
+      inputMessage.className = "form-control is-invalid";
+      return false;
+    }
+  };
+
+  const testUser = () => {
+    if (validateTexto(inputUser.value) && inputUser.value.length >= 4) {
+      inputUser.className = "form-control is-valid";
+      return true;
+    } else {
+      inputUser.className = "form-control is-invalid";
+      return false;
+    }
+  };
+
   const handleSubmit = (e) => {
-    e.preventDefault();
-    const form = e.currentTarget;
-    if (form.checkValidity() !== false && gralValidate()) {
+    e.preventDefault();    
+    if (gralValidate()) {
       const newCom = {
         user,
         message,
@@ -63,26 +84,37 @@ const Comentarios = ({ session }) => {
               getApiComentarios();
               setUser("");
               setMessage("");
-              setValidated(false);
+              inputMessage.className="form-control";
+              inputUser.className="form-control";         
             }
           } catch (error) {
             console.log(error);
           }
         }
       });
-    } else {
-      e.stopPropagation();
-      Swal.fire("Ops!", "Algunos de los campos es incorrectos", "error");
-    }
-    setValidated(true);
+    } else if (testUser()) {
+      Swal.fire("Ops!", "Por favor ingrese su mensaje", "error");
+      inputMessage.className = "form-control is-invalid";
+    } else if (testMessage()) {
+      Swal.fire("Ops!", "Por favor ingrese su nombre", "error");
+      inputUser.className = "form-control is-invalid";
+    }else {      
+      Swal.fire("Ops!", "Debe completar todos los campos", "error");
+      inputMessage.className = "form-control is-invalid";
+      inputUser.className = "form-control is-invalid";
+    }    
   };
+  //texto de 500 caracteres
+  const t500="aaaaffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff";
+  console.log(t500.length);
+  //fin texto 500 caracteres
   return (
     <div>
       <Container className="my-3">
         <h2 className="text-center font-celeste-crud">COMENTARIOS</h2>
         <hr />
-        <Form noValidate validated={validated} onSubmit={handleSubmit}>
-          <Form.Group className="mb-3" controlId="validationUser">
+        <Form noValidate onSubmit={handleSubmit}>
+          <Form.Group className="mb-3">
             <Form.Label className="font-celeste-crud">
               Ingrese su Nombre y Apellido
             </Form.Label>
@@ -93,14 +125,18 @@ const Comentarios = ({ session }) => {
               placeholder="Usuario Rolling"
               minLength={4}
               maxLength={60}
-              onChange={({ target }) => setUser(target.value.trimStart())}
+              id="inputUser"
+              onChange={({ target }) => {
+                setUser(target.value.trimStart());
+                testUser();
+              }}
             ></Form.Control>
             <Form.Control.Feedback type="invalid">
               Ingrese su Nombre y Apellido (min. 4 caracteres, max. 60
               caracteres, SOLO LETRAS)
             </Form.Control.Feedback>
           </Form.Group>
-          <Form.Group className="mb-3" controlId="validationMessage">
+          <Form.Group className="mb-3">
             <Form.Label className="font-celeste-crud">
               Ingrese su comentario*
             </Form.Label>
@@ -112,9 +148,11 @@ const Comentarios = ({ session }) => {
               placeholder="Ej: Hola"
               minLength={4}
               maxLength={500}
+              id="inputMessage"
               style={{ height: "100px" }}
               onChange={({ target }) => {
                 setMessage(target.value.trimStart());
+                testMessage();
               }}
             ></Form.Control>
             <Form.Control.Feedback type="invalid">
