@@ -103,11 +103,7 @@ const Comentarios = ({ session }) => {
       inputMessage.className = "form-control is-invalid";
       inputUser.className = "form-control is-invalid";
     }    
-  };
-  //texto de 500 caracteres
-  const t500="aaaaffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff";
-  console.log(t500.length);
-  //fin texto 500 caracteres
+  };  
   return (
     <div>
       <Container className="my-3">
