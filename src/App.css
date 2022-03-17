@@ -196,6 +196,9 @@ background-repeat: no-repeat;
 .img-banner{
   width: 25%;
 }
+.img-banner2{
+  width: 100%;
+}
 @media (max-width: 450px){
   .flex-container{
     display: flex;
@@ -210,6 +213,11 @@ background-repeat: no-repeat;
     height: 280px;
     width: 100%;
     object-fit:fill;    
+  }
+  .img-banner2{
+    height: 160px;
+    width: 100%;
+    object-fit: cover;
   }
   .img-error{
     height: 300px;

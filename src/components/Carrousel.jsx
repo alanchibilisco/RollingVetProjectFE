@@ -1,26 +1,26 @@
 import React from "react";
 import { Carousel } from "react-bootstrap";
-import carrusel1 from "./img/carrusel1.jpg";
-import carrusel2 from "./img/carrusel2.jpg";
-import carrusel3 from "./img/carrusel3.jpg";
+import carrusel1 from "./img/c6.png";
+import carrusel2 from "./img/c4.png";
+import carrusel3 from "./img/c5.png";
 
 const Carrousel = () => {
   return (
     <div>
       <Carousel fade>
         <Carousel.Item>
-          <img className="d-block w-100  img-banner" src={carrusel1} alt="First slide" />
+          <img className="d-block w-100  img-banner2" src={carrusel1} alt="First slide" />
           <Carousel.Caption>
           </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item>
-          <img className="d-block w-100 img-banner" src={carrusel2} alt="Second slide" />
+          <img className="d-block w-100 img-banner2" src={carrusel2} alt="Second slide" />
 
           <Carousel.Caption>
           </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item>
-          <img className="d-block w-100 img-banner" src={carrusel3} alt="Third slide" />
+          <img className="d-block w-100 img-banner2" src={carrusel3} alt="Third slide" />
 
           <Carousel.Caption>
             
