@@ -26,8 +26,8 @@ const Cardservicios = () => {
             <Link to="/*" className="btn-celeste-serv text-decoration-none text-end">Ver Mas</Link>
           </div>
     </div>
-    <div className="col-lg">
-      <img src={perrocard} alt="perro" className="img-fluid"/>
+    <div className="col-lg text-center">
+      <img src={perrocard} alt="perro" className="img-serv"/>
     </div>
     <div className="col text-center">
     <h3 className="colorfuente">Peluqueria</h3>

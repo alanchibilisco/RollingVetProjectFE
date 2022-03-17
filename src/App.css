@@ -199,6 +199,12 @@ background-repeat: no-repeat;
 .img-banner2{
   width: 100%;
 }
+.img-serv{
+  width: 100%;
+}
+.img-banner-serv{
+  width: 25%;
+}
 @media (max-width: 450px){
   .flex-container{
     display: flex;
@@ -209,9 +215,9 @@ background-repeat: no-repeat;
 }
 
 @media all and (max-width: 576px){
-  .img-banner{
-    height: 280px;
-    width: 100%;
+  .img-banner-serv{
+    height: 300px;
+    width: 80%;    
     object-fit:fill;    
   }
   .img-banner2{
@@ -219,6 +225,9 @@ background-repeat: no-repeat;
     width: 100%;
     object-fit: cover;
   }
+  .img-serv{
+    width: 50%;    
+  }  
   .img-error{
     height: 300px;
     width: 100%;
@@ -228,6 +237,17 @@ background-repeat: no-repeat;
     height: 280px;
     width: 100%;
     object-fit: cover;
+  }
+}
+
+@media all and (max-width: 991px) and (min-width: 577px){
+  .img-serv{
+    width: 50%;    
+  }
+  .img-banner-serv{
+    height: 300px;
+    width: 40%;
+    object-fit:fill;    
   }
 }
 
