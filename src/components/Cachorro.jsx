@@ -1,19 +1,21 @@
-import React, { useRef} from "react";
+import React, { useRef, useState, useEffect } from "react";
 import NavBar from "./NavBar";
 import Footer from "./Footer";
-import { validateTexto, validateEmail} from "./Validaciones";
+import { validateTexto, validateEmail } from "./Validaciones";
 import Swal from "sweetalert2";
 import emailjs from "@emailjs/browser";
 import { useNavigate } from "react-router-dom";
 import { Form } from "react-bootstrap";
 
 const Cachorro = () => {
-  // let ip=document.getElementById('exampleInputEmail');
-  // console.log(ip);
   const navigate = useNavigate();
   const form = useRef();
-  // const [validated, setValidated] = useState(false);
-
+  const [inputUser, setInputUser] = useState("");
+  const [inputEmail, setInputEmail] = useState("");
+  useEffect(() => {
+    setInputUser(document.getElementById("exampleInputName"));
+    setInputEmail(document.getElementById("exampleInputEmail"));
+  }, []);
   const gralValidate = () => {
     if (
       validateTexto(form.current.user_name.value.trimStart()) &&
@@ -25,31 +27,30 @@ const Cachorro = () => {
     }
   };
 
-  const inputEmail=document.getElementById("exampleInputEmail");
-  const testEmail=()=>{    
+  const testEmail = () => {
     if (validateEmail(inputEmail.value)) {
-      inputEmail.className="form-control is-valid"; 
-      return true;     
-    }else{
-      inputEmail.className="form-control is-invalid";  
-      return false;
-    }
-  }
-  const inputUser=document.getElementById('exampleInputName');
-  const testUser=()=>{    
-    if (validateTexto(inputUser.value)&&inputUser.value.length>=4) {
-      inputUser.className='form-control is-valid'
+      inputEmail.className = "form-control is-valid";
       return true;
-    }else{
-      inputUser.className='form-control is-invalid'
+    } else {
+      inputEmail.className = "form-control is-invalid";
       return false;
     }
-  }
+  };
+
+  const testUser = () => {
+    if (validateTexto(inputUser.value) && inputUser.value.length >= 4) {
+      inputUser.className = "form-control is-valid";
+      return true;
+    } else {
+      inputUser.className = "form-control is-invalid";
+      return false;
+    }
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    
-    if (gralValidate()) {      
+
+    if (gralValidate()) {
       emailjs
         .sendForm(
           "service_zu85aso",
@@ -71,22 +72,18 @@ const Cachorro = () => {
         "success"
       );
       navigate("/");
-    }else if(testUser()){     
+    } else if (testUser()) {
       Swal.fire("Ops!", "Por favor ingrese su email", "error");
-      inputEmail.className="form-control is-invalid";      
-    }else if(testEmail()){
-      Swal.fire("Ops!", "Por favor ingrese su nombre", "error");      
-      inputUser.className='form-control is-invalid'
-    }
-    else {      
+      inputEmail.className = "form-control is-invalid";
+    } else if (testEmail()) {
+      Swal.fire("Ops!", "Por favor ingrese su nombre", "error");
+      inputUser.className = "form-control is-invalid";
+    } else {
       Swal.fire("Ops!", "Debe completar todos los campos", "error");
-      inputEmail.className="form-control is-invalid";
-      inputUser.className='form-control is-invalid'
+      inputEmail.className = "form-control is-invalid";
+      inputUser.className = "form-control is-invalid";
     }
-
-    // setValidated(true);
   };
-
   return (
     <>
       <NavBar />
@@ -125,11 +122,7 @@ const Cachorro = () => {
       </h4>
       <div className="d-flex justify-content-center">
         <div className="col-md-5 col-sm-12 text-center">
-          <Form
-            ref={form}
-            onSubmit={handleSubmit}   
-            noValidate             
-          >
+          <Form ref={form} onSubmit={handleSubmit} noValidate>
             <div className="mb-3">
               <label htmlFor="exampleInputName" className="form-label">
                 Ingresa tu Nombre
@@ -143,7 +136,7 @@ const Cachorro = () => {
                 id="exampleInputName"
                 minLength={4}
                 maxLength={60}
-                onChange={testUser}                
+                onChange={testUser}
               />
               <Form.Control.Feedback type="invalid">
                 Ingrese su Nombre y Apellido (min. 4 caracteres, max. 60
@@ -156,13 +149,13 @@ const Cachorro = () => {
               </label>
               <input
                 required
-                type="email"                
+                type="email"
                 className="form-control"
                 id="exampleInputEmail"
                 aria-describedby="emailHelp"
                 name="user_email"
                 placeholder="rollingvetproject@gmail.com"
-                onChange={testEmail}                
+                onChange={testEmail}
               />
               <Form.Control.Feedback type="invalid">
                 Ingrese un email valido
