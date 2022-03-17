@@ -24,7 +24,13 @@ const EditPacientes = ({ URLPacientes, getApiPacientes }) => {
 
   //state
   const [paciente, setPaciente] = useState({});
-  const [validated, setValidated] = useState(true);
+  const [inputName, setInputName] = useState("");
+  const [inputSName, setInputSName] = useState("");
+  const [inputEmail, setInputEmail] = useState("");
+  const [inputTel, setInputTel] = useState("");
+  const [inputMasc, setInputMasc] = useState("");
+  const [inputEsp, setInputEsp] = useState("");
+  const [inputRaza, setInputRaza] = useState("");
   //parametro
   const { id } = useParams();
   //efect
@@ -37,6 +43,15 @@ const EditPacientes = ({ URLPacientes, getApiPacientes }) => {
       console.log(error);
     }
   }, []);
+  useEffect(() => {
+    setInputName(document.getElementById("inputName"));
+    setInputSName(document.getElementById("inputSName"));
+    setInputEmail(document.getElementById("inputEmail"));
+    setInputTel(document.getElementById("inputTel"));
+    setInputMasc(document.getElementById("inputMasc"));
+    setInputEsp(document.getElementById("inputEsp"));
+    setInputRaza(document.getElementById("inputRaza"));   
+  }, []);
   //referencias
   const nombreDueñoRef = useRef("");
   const apellidoDueñoRef = useRef("");
@@ -47,6 +62,70 @@ const EditPacientes = ({ URLPacientes, getApiPacientes }) => {
   const razaMascRef = useRef("");
   //navigate
   const navigate = useNavigate();
+  //test
+  const testName = () => {
+    if (validateTexto(inputName.value) && inputName.value.length >= 4) {
+      inputName.className = "form-control is-valid";
+      return true;
+    } else {
+      inputName.className = "form-control is-invalid";
+      return false;
+    }
+  };
+  const testSName = () => {
+    if (validateTexto(inputSName.value) && inputSName.value.length >= 2) {
+      inputSName.className = "form-control is-valid";
+      return true;
+    } else {
+      inputSName.className = "form-control is-invalid";
+      return false;
+    }
+  };
+  const testEmail = () => {
+    if (validateEmail(inputEmail.value)) {
+      inputEmail.className = "form-control is-valid";
+      return true;
+    } else {
+      inputEmail.className = "form-control is-invalid";
+      return false;
+    }
+  };
+  const testTel = () => {
+    if (validateTelefono(inputTel.value) && inputTel.value.length >= 7) {
+      inputTel.className = "form-control is-valid";
+      return true;
+    } else {
+      inputTel.className = "form-control is-invalid";
+      return false;
+    }
+  };
+  const testMasc = () => {
+    if (validateTexto(inputMasc.value) && inputMasc.value.length >= 4) {
+      inputMasc.className = "form-control is-valid";
+      return true;
+    } else {
+      inputMasc.className = "form-control is-invalid";
+      return false;
+    }
+  };
+  const testEsp = () => {
+    if (validateTexto(inputEsp.value) && inputEsp.value.length >= 4) {
+      inputEsp.className = "form-control is-valid";
+      return true;
+    } else {
+      inputEsp.className = "form-control is-invalid";
+      return false;
+    }
+  };
+  const testRaza = () => {
+    if (validateTexto(inputRaza.value) && inputRaza.value.length >= 4) {
+      inputRaza.className = "form-control is-valid";
+      return true;
+    } else {
+      inputRaza.className = "form-control is-invalid";
+      return false;
+    }
+  };
   //gralValidate
   const gralValidate = () => {
     if (
@@ -66,8 +145,7 @@ const EditPacientes = ({ URLPacientes, getApiPacientes }) => {
   //handleSubmit
   const handleSubmit = (e) => {
     e.preventDefault();
-    const form = e.currentTarget;
-    if (form.checkValidity() !== false && gralValidate()) {
+    if (gralValidate()) {
       const pacienteUpdate = {
         nombreDueño: nombreDueñoRef.current.value,
         apellidoDueño: apellidoDueñoRef.current.value,
@@ -109,10 +187,18 @@ const EditPacientes = ({ URLPacientes, getApiPacientes }) => {
         }
       });
     } else {
-      e.stopPropagation();
-      Swal.fire("Ops!", "Algunos de los campos es incorrectos", "error");
+      Swal.fire("Ops!", "Debe completar todos los campos correctamente", "error");
+      testName();
+      testSName();
+      testEmail();
+      testTel();
+      testMasc();
+      testEsp();
+      testRaza();
     }
   };
+  //Effect para validar los campos al cargarlos
+  
 
   return (
     <div>
@@ -121,78 +207,85 @@ const EditPacientes = ({ URLPacientes, getApiPacientes }) => {
         <h1 className="font-celeste-crud">Editar Paciente</h1>
         <hr />
         {/* Form Product */}
-        <Form
-          className="my-5"
-          onSubmit={handleSubmit}
-          noValidate
-          validated={validated}
-        >
+        <Form className="my-5" onSubmit={handleSubmit} noValidate>
           <h2 className="text-center font-celeste-crud">Informacion</h2>
           <hr />
           <Row>
             <Col xs={12} md={6}>
               <h3 className="text-center font-celeste-crud">Dueño</h3>
 
-              <Form.Group className="mb-3" controlId="formBasicName">
-                <Form.Label className="font-celeste-crud">Nombre*</Form.Label>
+              <Form.Group className="mb-3">
+                <Form.Label className="font-celeste-crud" htmlFor="inputName">
+                  Nombre*
+                </Form.Label>
                 <Form.Control
                   required
+                  id="inputName"
                   type="text"
                   placeholder="Rolling"
                   defaultValue={paciente.nombreDueño}
                   minLength={4}
-                  maxLength={100}
+                  maxLength={60}
                   ref={nombreDueñoRef}
+                  onChange={testName}
                 />
                 <Form.Control.Feedback type="invalid" className="fw-bold">
-                  Ingrese su Nombre (min. 4 caracteres, max. 100 caracteres,
-                  SOLO LETRAS)
+                  Ingrese su Nombre (min. 4 caracteres, max. 60 caracteres, SOLO
+                  LETRAS)
                 </Form.Control.Feedback>
               </Form.Group>
 
-              <Form.Group className="mb-3" controlId="formBasicLastName">
-                <Form.Label className="font-celeste-crud">Apellido*</Form.Label>
+              <Form.Group className="mb-3">
+                <Form.Label className="font-celeste-crud" htmlFor="inputSName">
+                  Apellido*
+                </Form.Label>
                 <Form.Control
                   required
+                  id="inputSName"
                   type="text"
                   placeholder="Veterinaria"
-                  minLength={4}
-                  maxLength={100}
+                  minLength={2}
+                  maxLength={60}
                   defaultValue={paciente.apellidoDueño}
                   ref={apellidoDueñoRef}
+                  onChange={testSName}
                 />
                 <Form.Control.Feedback type="invalid" className="fw-bold">
-                  Ingrese su Apellido (min. 4 caracteres, max. 100 caracteres,
+                  Ingrese su Apellido (min. 2 caracteres, max. 60 caracteres,
                   SOLO LETRAS)
                 </Form.Control.Feedback>
               </Form.Group>
 
-              <Form.Group className="mb-3" controlId="formBasicEmail">
-                <Form.Label className="font-celeste-crud">Email*</Form.Label>
+              <Form.Group className="mb-3">
+                <Form.Label className="font-celeste-crud" htmlFor="inputEmail">
+                  Email*
+                </Form.Label>
                 <Form.Control
                   required
+                  id="inputEmail"
                   type="email"
                   placeholder="rollingvet@rollingvet.com.ar"
-                  minLength={12}
-                  maxLength={100}
                   defaultValue={paciente.email}
                   ref={emailRef}
+                  onChange={testEmail}
                 />
                 <Form.Control.Feedback type="invalid" className="fw-bold">
                   Ingrese un email valido
                 </Form.Control.Feedback>
               </Form.Group>
 
-              <Form.Group className="mb-3" controlId="formBasicPhone">
-                <Form.Label className="font-celeste-crud">Telefono*</Form.Label>
+              <Form.Group className="mb-3">
+                <Form.Label className="font-celeste-crud" htmlFor="inputTel">Telefono*</Form.Label>
                 <Form.Control
                   required
-                  type="text"
+                  id="inputTel"
+                  type="tel"
                   placeholder="3816000000"
                   minLength={7}
                   maxLength={20}
                   defaultValue={paciente.telefono}
                   ref={telefonoRef}
+                  onChange={testTel}
                 />
                 <Form.Control.Feedback type="invalid" className="fw-bold">
                   Ingrese un numero de telefono valido
@@ -202,18 +295,20 @@ const EditPacientes = ({ URLPacientes, getApiPacientes }) => {
             <Col xs={12} md={6}>
               <h3 className="text-center font-celeste-crud">Mascota</h3>
 
-              <Form.Group className="mb-3" controlId="formBasicNameMasc">
-                <Form.Label className="font-celeste-crud">
+              <Form.Group className="mb-3">
+                <Form.Label className="font-celeste-crud" htmlFor="inputMasc">
                   Nombre Mascota*
                 </Form.Label>
                 <Form.Control
                   required
+                  id="inputMasc"
                   type="text"
                   placeholder="Mascota"
                   minLength={3}
                   maxLength={50}
                   defaultValue={paciente.nombreMascota}
                   ref={nombreMascRef}
+                  onChange={testMasc}
                 />
                 <Form.Control.Feedback type="invalid" className="fw-bold">
                   Ingrese un Nombre (min. 3 caracteres, max. 50 caracteres, SOLO
@@ -221,16 +316,20 @@ const EditPacientes = ({ URLPacientes, getApiPacientes }) => {
                 </Form.Control.Feedback>
               </Form.Group>
 
-              <Form.Group className="mb-3" controlId="formBasicEspecie">
-                <Form.Label className="font-celeste-crud">Especie*</Form.Label>
+              <Form.Group className="mb-3">
+                <Form.Label className="font-celeste-crud" htmlFor="inputEsp">
+                  Especie*
+                </Form.Label>
                 <Form.Control
                   required
+                  id="inputEsp"
                   type="text"
                   placeholder="Especie"
                   minLength={3}
                   maxLength={50}
                   defaultValue={paciente.especieMascota}
                   ref={especieMascRef}
+                  onChange={testEsp}
                 />
                 <Form.Control.Feedback type="invalid" className="fw-bold">
                   Ingrese una Especie (min. 3 caracteres, max. 50 caracteres,
@@ -238,16 +337,20 @@ const EditPacientes = ({ URLPacientes, getApiPacientes }) => {
                 </Form.Control.Feedback>
               </Form.Group>
 
-              <Form.Group className="mb-3" controlId="formBasicRaza">
-                <Form.Label className="font-celeste-crud">Raza*</Form.Label>
+              <Form.Group className="mb-3">
+                <Form.Label className="font-celeste-crud" htmlFor="inputRaza">
+                  Raza*
+                </Form.Label>
                 <Form.Control
                   required
+                  id="inputRaza"
                   type="text"
                   placeholder="Raza"
                   minLength={3}
                   maxLength={50}
                   defaultValue={paciente.razaMascota}
                   ref={razaMascRef}
+                  onChange={testRaza}
                 />
                 <Form.Control.Feedback type="invalid" className="fw-bold">
                   Ingrese una Raza (min. 3 caracteres, max. 50 caracteres, SOLO

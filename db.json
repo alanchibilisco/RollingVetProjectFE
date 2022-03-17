@@ -1,21 +1,21 @@
 {
   "pacientes": [
     {
-      "nombreDueño": "Paciente 1",
+      "nombreDueño": "Paciente",
       "apellidoDueño": "Prueba",
       "email": "paciente1prueba@gmail.com",
       "telefono": "3816000000",
-      "nombreMascota": "Mascota 1",
+      "nombreMascota": "Mascota",
       "especieMascota": "Perro",
       "razaMascota": "Mestizo",
       "id": 1
     },
     {
-      "nombreDueño": "Paciente 2",
+      "nombreDueño": "PacienteDos",
       "apellidoDueño": "Prueba",
       "email": "paciente2prueba@gmail.com",
       "telefono": "3812000001",
-      "nombreMascota": "Mascota 2",
+      "nombreMascota": "MascotaDos",
       "especieMascota": "Perro",
       "razaMascota": "Mestizo",
       "id": 2
