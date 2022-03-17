@@ -137,6 +137,7 @@ const Cachorro = () => {
                 minLength={4}
                 maxLength={60}
                 onChange={testUser}
+                
               />
               <Form.Control.Feedback type="invalid">
                 Ingrese su Nombre y Apellido (min. 4 caracteres, max. 60
@@ -156,6 +157,7 @@ const Cachorro = () => {
                 name="user_email"
                 placeholder="rollingvetproject@gmail.com"
                 onChange={testEmail}
+                
               />
               <Form.Control.Feedback type="invalid">
                 Ingrese un email valido

@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import NavBar from "./NavBar";
 import Footer from "./Footer";
 import background from "./img/contactoIMG.jpg";
@@ -11,48 +11,102 @@ import { Form } from "react-bootstrap";
 const Contacto = () => {
   const navigate = useNavigate();
   const form = useRef();
-  const [validated, setValidated]=useState(false);
-
+  const [inputUser, setInputUser] = useState("");
+  const [inputEmail, setInputEmail] = useState("");
+  const [inputMessage, setInputMessage] = useState("");
+  useEffect(() => {
+    setInputUser(document.getElementById("inputUser"));
+    setInputEmail(document.getElementById("inputEmail"));
+    setInputMessage(document.getElementById("inputMessage"));
+  }, []);
   const gralValidate = () => {
     if (
       validateTexto(form.current.user_name.value.trimStart()) &&
-      validateEmail(form.current.user_email.value.trimStart()) && validateTextoEsp(form.current.message.value.trimStart())
+      validateEmail(form.current.user_email.value.trimStart()) &&
+      validateTextoEsp(form.current.message.value.trimStart())
     ) {
       return true;
     } else {
       return false;
     }
   };
+  const testEmail = () => {
+    if (validateEmail(inputEmail.value)) {
+      inputEmail.className = "form-control is-valid";
+      return true;
+    } else {
+      inputEmail.className = "form-control is-invalid";
+      return false;
+    }
+  };
+
+  const testUser = () => {
+    if (validateTexto(inputUser.value) && inputUser.value.length >= 4) {
+      inputUser.className = "form-control is-valid";
+      return true;
+    } else {
+      inputUser.className = "form-control is-invalid";
+      return false;
+    }
+  };
+  const testMessage = () => {
+    if (
+      validateTextoEsp(inputMessage.value) &&
+      inputMessage.value.length >= 4
+    ) {
+      inputMessage.className = "form-control is-valid";
+      return true;
+    } else {
+      inputMessage.className = "form-control is-invalid";
+      return false;
+    }
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const Form=e.currentTarget;
-    if (Form.checkValidity()!==false&&gralValidate()) {
+    if (gralValidate()) {
       emailjs
-      .sendForm(
-        "service_zu85aso",
-        "template_wenn5tm",
-        form.current,
-        "user_QppiDb4vLZrsgJIksRfUR"
-      )
-      .then(
-        (result) => {
-          console.log(result.text);
-        },
-        (error) => {
-          console.log(error.text);
-        }
+        .sendForm(
+          "service_zu85aso",
+          "template_wenn5tm",
+          form.current,
+          "user_QppiDb4vLZrsgJIksRfUR"
+        )
+        .then(
+          (result) => {
+            console.log(result.text);
+          },
+          (error) => {
+            console.log(error.text);
+          }
+        );
+      Swal.fire(
+        "Consulta enviada!",
+        "Le responderemos a la brevedad",
+        "success"
       );
-    Swal.fire("Consulta enviada!", "Le responderemos a la brevedad", "success");
-    navigate("/");
-    }else{
-      e.stopPropagation();
-      Swal.fire("Ops!", "Algun dato es incorrecto", "error");      
+      navigate("/");
+    } else if (testUser() && !testEmail() && !testMessage()) {
+      Swal.fire("Ops!", "Por favor ingrese su email y su mensaje", "error");
+      inputEmail.className = "form-control is-invalid";
+      inputMessage.className = "form-control is-invalid";
+    } else if (testEmail() && !testUser() && !testMessage()) {
+      Swal.fire("Ops!", "Por favor ingrese su nombre y el mensaje", "error");
+      inputUser.className = "form-control is-invalid";
+      inputMessage.className = "form-control is-invalid";
+    } else if (testMessage() && !testUser() && !testEmail()) {
+      Swal.fire("Ops!", "Por favor ingrese su nombre y su email", "error");
+      inputUser.className = "form-control is-invalid";
+      inputEmail.className = "form-control is-invalid";
+    } else {
+      Swal.fire("Ops!", "Debe completar todos los campos", "error");
+      inputEmail.className = "form-control is-invalid";
+      inputUser.className = "form-control is-invalid";
+      inputMessage.className = "form-control is-invalid";
     }
-    setValidated(true);
   };
   return (
-    <div>      
+    <div>
       <div style={{ backgroundImage: `url(${background})` }}>
         <NavBar />
         <div className="container ">
@@ -60,45 +114,50 @@ const Contacto = () => {
           <hr className="text-light" />
           <article className="row">
             <div className="col-sm-12 col-md-6 mt-4">
-              <Form ref={form} onSubmit={handleSubmit} noValidate validated={validated}>
+              <Form ref={form} onSubmit={handleSubmit} noValidate>
                 <div className="mb-3">
                   <label htmlFor="inputUser" className="form-label text-white">
                     Ingresa tu Nombre
                   </label>
                   <input
-                  required
+                    required
                     type="text"
                     className="form-control"
                     name="user_name"
                     placeholder="RollingVet"
                     id="inputUser"
                     minLength={4}
-                    maxLength={60}                    
+                    maxLength={60}
+                    onChange={testUser}
                   />
-                  <Form.Control.Feedback type="invalid" className=" bg-white fw-bold">
-                Ingrese su Nombre y Apellido (min. 4 caracteres, max. 60
-                caracteres, SOLO LETRAS)
-              </Form.Control.Feedback>
+                  <Form.Control.Feedback
+                    type="invalid"
+                    className=" bg-white fw-bold"
+                  >
+                    Ingrese su Nombre y Apellido (min. 4 caracteres, max. 60
+                    caracteres, SOLO LETRAS)
+                  </Form.Control.Feedback>
                 </div>
                 <div className="mb-3">
-                  <label
-                    htmlFor="inputEmail"
-                    className="form-label text-white"
-                  >
+                  <label htmlFor="inputEmail" className="form-label text-white">
                     Ingresa tu Email
                   </label>
                   <input
-                  required
+                    required
                     type="email"
                     className="form-control"
                     id="inputEmail"
                     aria-describedby="emailHelp"
                     name="user_email"
                     placeholder="rollingvetproject@gmail.com"
+                    onChange={testEmail}
                   />
-                  <Form.Control.Feedback type="invalid" className="bg-white fw-bold">
-                Ingrese un email valido
-              </Form.Control.Feedback>
+                  <Form.Control.Feedback
+                    type="invalid"
+                    className="bg-white fw-bold"
+                  >
+                    Ingrese un email valido
+                  </Form.Control.Feedback>
                 </div>
                 <div className="mb-3">
                   <label
@@ -108,7 +167,7 @@ const Contacto = () => {
                     Consulta
                   </label>
                   <textarea
-                  required
+                    required
                     type="text"
                     minLength={4}
                     maxLength={500}
@@ -117,13 +176,19 @@ const Contacto = () => {
                     name="message"
                     placeholder="ingrese su consulta aqui"
                     id="inputMessage"
+                    onChange={testMessage}
                   />
-                  <Form.Control.Feedback type="invalid" className=" bg-white fw-bold">
-                Ingrese su consulta (min. 4 caracteres, max. 500)
-              </Form.Control.Feedback>
+                  <Form.Control.Feedback
+                    type="invalid"
+                    className=" bg-white fw-bold"
+                  >
+                    Ingrese su consulta (min. 4 caracteres, max. 500)
+                  </Form.Control.Feedback>
                 </div>
                 <div className="text-center">
-                  <button className="btn-celeste-serv text-end">CONSULTAR</button>
+                  <button className="btn-celeste-serv text-end">
+                    CONSULTAR
+                  </button>
                 </div>
               </Form>
             </div>
