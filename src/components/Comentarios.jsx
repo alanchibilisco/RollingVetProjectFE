@@ -111,7 +111,7 @@ const Comentarios = ({ session }) => {
         <hr />
         <Form noValidate onSubmit={handleSubmit}>
           <Form.Group className="mb-3">
-            <Form.Label className="font-celeste-crud">
+            <Form.Label className="font-celeste-crud" htmlFor="inputUser">
               Ingrese su Nombre y Apellido
             </Form.Label>
             <Form.Control
@@ -133,8 +133,8 @@ const Comentarios = ({ session }) => {
             </Form.Control.Feedback>
           </Form.Group>
           <Form.Group className="mb-3">
-            <Form.Label className="font-celeste-crud">
-              Ingrese su comentario*
+            <Form.Label className="font-celeste-crud" htmlFor="inputMessage">
+              Ingrese su comentario
             </Form.Label>
             <Form.Control
               required

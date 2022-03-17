@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Col, Container, Form, Row } from "react-bootstrap";
 import Footer from "./Footer";
 import NavBar from "./NavBar";
@@ -6,13 +6,39 @@ import contacto from "./img/contactoIMG.jpg";
 import bcrypt from "bcryptjs/dist/bcrypt";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import { validateTexto } from "./Validaciones";
 
 const Login = ({ user }) => {
   const [logUser, setLogUser] = useState("");
   const [logPass, setLogPass] = useState("");
-  const [validated, setValidated] = useState(false);
+  const [inputUser, setInputUser] = useState("");
+  const [inputPass, setInputPass] = useState("");
+
+  useEffect(() => {
+    setInputUser(document.getElementById("inputUser"));
+    setInputPass(document.getElementById("inputPass"));
+  }, []);
   let session = false;
   const navigate = useNavigate();
+  const testPass = () => {
+    if (validateTexto(inputPass.value) && inputPass.value.length === 7) {
+      inputPass.className = "form-control is-valid";
+      return true;
+    } else {
+      inputPass.className = "form-control is-invalid";
+      return false;
+    }
+  };
+
+  const testUser = () => {
+    if (validateTexto(inputUser.value) && inputUser.value.length === 5) {
+      inputUser.className = "form-control is-valid";
+      return true;
+    } else {
+      inputUser.className = "form-control is-invalid";
+      return false;
+    }
+  };
   const gralValidate = () => {
     if (
       bcrypt.compareSync(logUser, user[0].userName) &&
@@ -25,25 +51,25 @@ const Login = ({ user }) => {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    const form = e.currentTarget;
-    if (form.checkValidity() !== false && gralValidate()) {
+    if (gralValidate()) {
       session = true;
       sessionStorage.setItem("stateSession", JSON.stringify(session));
       Swal.fire('Bienvenido "ADMINISTRADOR"!', "RollingVet v.1.0.0", "success");
       setTimeout(() => {
         navigate("/");
       }, 1000);
+    } else if (testUser()) {
+      Swal.fire("Ops!", "Por favor ingrese la contraseña", "error");
+      inputPass.className = "form-control is-invalid";
+    } else if (testPass()) {
+      Swal.fire("Ops!", "Por favor ingrese su nombre de usuario", "error");
+      inputUser.className = "form-control is-invalid";
     } else {
-      e.stopPropagation();
-      Swal.fire(
-        "Usuario o Contraseña Incorrectos",
-        "Vuelva a intentar",
-        "error"
-      );
+      Swal.fire("Ops", "Debe completar todos los campos", "error");
+      inputPass.className = "form-control is-invalid";
+      inputUser.className = "form-control is-invalid";
     }
-    setValidated(true);
   };
-
   return (
     <div>
       <NavBar />
@@ -51,23 +77,20 @@ const Login = ({ user }) => {
         <h1 className="font-celeste-crud">INICIE SESION</h1>
         <hr />
         <div className="my-5">
-          <Form
-            className="my-5"
-            onSubmit={handleSubmit}
-            noValidate
-            validated={validated}
-          >
+          <Form className="my-5" onSubmit={handleSubmit} noValidate>
             <Row>
               <Col xs={12} md={6} className="my-2">
-                <Form.Group className="mb-3" controlId="formBasicUser">
-                  <Form.Label className="font-celeste-crud">
+                <Form.Group className="mb-3">
+                  <Form.Label className="font-celeste-crud" htmlFor="inputUser">
                     Nombre de usuario / email
                   </Form.Label>
                   <Form.Control
                     type="text"
+                    id="inputUser"
                     placeholder="RollingUser"
                     onChange={({ target }) => {
                       setLogUser(target.value.trimStart());
+                      testUser();
                     }}
                     minLength={5}
                     maxLength={5}
@@ -77,17 +100,19 @@ const Login = ({ user }) => {
                     Ingrese un usuario valido
                   </Form.Control.Feedback>
                 </Form.Group>
-                <Form.Group className="mb-3" controlId="formBasicPass">
-                  <Form.Label className="font-celeste-crud">
+                <Form.Group className="mb-3">
+                  <Form.Label className="font-celeste-crud" htmlFor="inputPass">
                     Contraseña
                   </Form.Label>
                   <Form.Control
                     required
+                    id="inputPass"
                     type="password"
                     placeholder="rollingPass"
-                    onChange={({ target }) =>
-                      setLogPass(target.value.trimStart())
-                    }
+                    onChange={({ target }) => {
+                      setLogPass(target.value.trimStart());
+                      testPass();
+                    }}
                     minLength={7}
                     maxLength={7}
                   ></Form.Control>
