@@ -1,4 +1,5 @@
-const regExpTexto = /^[A-Za-z\s?]+$/;
+const regExpTexto = /*/^[A-Za-z\s?]+$/;*//^[A-Za-zÑñÁáÉéÍíÓóÚúÜü ]+$/;
+
 const regExpTextoEsp=/^[\w\W ]+$/;
 const regExpCategory = /^[A-Za-z\-\s?]+$/;
 const regExpEmail =
