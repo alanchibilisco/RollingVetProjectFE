@@ -18,13 +18,21 @@ const CrearTurno = ({ pacientes, URLTurnos, getApiTurnos, turnos }) => {
   if (!session) {
     redirect("/");
   }
-
+  let minDate2;
+  if (minDate.getDay()===6) {
+    minDate2=addDays(setHours(setMinutes(minDate, 0), 8), 2);
+    console.log(minDate2);
+  }else if(minDate.getDay()===0){
+    minDate2=addDays(setHours(setMinutes(minDate, 0), 8), 1);
+    console.log(minDate2);
+  }
+  console.log(minDate);
   const [detalleCita, setDetalleCita] = useState("");
   const [veterinario, setVeterinario] = useState("");
   const [mascota, setMascota] = useState("");
   
   //manejo de FH
-  const [startDate, setStartDate] = useState(minDate);
+  const [startDate, setStartDate] = useState(minDate2);
   const [turnoVetFilter, setTurnoVetFilter] = useState([]);
   //fin FH
   //validaciones
@@ -274,7 +282,7 @@ const CrearTurno = ({ pacientes, URLTurnos, getApiTurnos, turnos }) => {
                 handleDate(date);
                 testDate();
               }}
-              minDate={minDate}
+              minDate={minDate2}
               filterDate={(date) => date.getDay() !== 6 && date.getDay() !== 0}
               showTimeSelect
               excludeTimes={excTimes}
