@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Container, Form } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
@@ -22,12 +22,66 @@ const CrearTurno = ({ pacientes, URLTurnos, getApiTurnos, turnos }) => {
   const [detalleCita, setDetalleCita] = useState("");
   const [veterinario, setVeterinario] = useState("");
   const [mascota, setMascota] = useState("");
-  const [validated, setValidated] = useState(false);
+  
   //manejo de FH
   const [startDate, setStartDate] = useState(minDate);
   const [turnoVetFilter, setTurnoVetFilter] = useState([]);
   //fin FH
+  //validaciones
+  const [inputMasc, setInputMasc]=useState("");
+  const [inputVet, setInputVet]=useState("");
+  const [inputDetail, setInputDetail]=useState("");
+  const [inputDate, setInputDate]=useState("");
+  useEffect(()=>{
+    setInputMasc(document.getElementById("inputMasc"));
+    setInputVet(document.getElementById("inputVet"));
+    setInputDetail(document.getElementById("inputDetail"));
+    setInputDate(document.getElementById("inputDate"));    
+  },[]);
+  
+  
+  const testMasc=()=>{
+    if (validateTextoEsp(inputMasc.value)&&inputMasc.value!=="") {
+      inputMasc.className="form-control is-valid";
+      return true;
+    }else{
+      inputMasc.className="form-control is-invalid"
+      return false;
+    }
+  };
 
+  const testVet=()=>{
+    if (validateTextoEsp(inputVet.value)&&inputVet.value!=="") {
+      inputVet.className="form-control is-valid";
+      return true;
+    }else{
+      inputVet.className="form-control is-invalid";
+      return false;
+    }
+  };
+
+  const testDetail=()=>{
+    if (validateTextoEsp(inputDetail.value)&&inputDetail.value.length>=4) {
+      inputDetail.className="form-control is-valid";
+      return true;
+    }else{
+      inputDetail.className="form-control is-invalid";
+      return false;
+    }
+  };
+
+  const testDate=()=>{
+    if (startDate.getDay()!==0&&startDate.getDay()!==6) {
+      inputDate.className="form-control is-valid mb-3";
+      return true;
+    }else{
+      inputDate.className="form-control is-invalid mb-3";
+      return false;
+    }
+  };
+
+
+  //fin validaciones
   const handleVet = (target) => {
     setVeterinario(target.value.trimStart());
     const filter = turnos.filter(
@@ -77,7 +131,7 @@ const CrearTurno = ({ pacientes, URLTurnos, getApiTurnos, turnos }) => {
     if (
       validateTextoEsp(detalleCita) &&
       validateTextoEsp(veterinario) &&
-      validateTextoEsp(mascota)
+      validateTextoEsp(mascota)&&testDate()
     ) {
       return true;
     } else {
@@ -85,9 +139,8 @@ const CrearTurno = ({ pacientes, URLTurnos, getApiTurnos, turnos }) => {
     }
   };
   const handleSubmit = (e) => {
-    e.preventDefault();
-    const form = e.currentTarget;
-    if (form.checkValidity() !== false && gralValidate()) {
+    e.preventDefault();    
+    if (gralValidate()) {
       const newTurno = {
         detalleCita,
         veterinario,
@@ -121,11 +174,13 @@ const CrearTurno = ({ pacientes, URLTurnos, getApiTurnos, turnos }) => {
           }
         }
       });
-    } else {
-      e.stopPropagation();
-      Swal.fire("Ops!", "Algunos de los campos es incorrectos", "Error");
-    }
-    setValidated(true);
+    } else {      
+      Swal.fire("Ops!", "Debe completar todos los campos correctamente", "error");
+      testMasc();
+      testVet();
+      testDetail();
+      testDate();
+    }    
   };
 
   return (
@@ -137,15 +192,16 @@ const CrearTurno = ({ pacientes, URLTurnos, getApiTurnos, turnos }) => {
         <Form
           className="my-5"
           onSubmit={handleSubmit}
-          noValidate
-          validated={validated}
+          noValidate          
         >
-          <Form.Group className="mb-3" controlId="formBasicMascota">
-            <Form.Label className="font-celeste-crud">Mascota*</Form.Label>
+          <Form.Group className="mb-3">
+            <Form.Label className="font-celeste-crud" htmlFor="inputMasc">Mascota*</Form.Label>
             <Form.Select
               required
+              id="inputMasc"
               onChange={({ target }) => {
                 setMascota(target.value.trimStart());
+                testMasc();
               }}
             >
               <option value="">Selecciona una mascota</option>
@@ -161,12 +217,14 @@ const CrearTurno = ({ pacientes, URLTurnos, getApiTurnos, turnos }) => {
             </Form.Control.Feedback>
           </Form.Group>
 
-          <Form.Group className="mb-3" controlId="formBasicVet">
-            <Form.Label className="font-celeste-crud">Veterinario*</Form.Label>
+          <Form.Group className="mb-3">
+            <Form.Label className="font-celeste-crud" htmlFor="inputVet">Veterinario*</Form.Label>
             <Form.Select
               required
+              id="inputVet"
               onChange={({ target }) => {
                 handleVet(target);
+                testVet();
               }}
             >
               <option value="">Selecciona un Veterinario</option>
@@ -178,12 +236,13 @@ const CrearTurno = ({ pacientes, URLTurnos, getApiTurnos, turnos }) => {
             </Form.Control.Feedback>
           </Form.Group>
 
-          <Form.Group className="mb-3" controlId="formBasicDetalle">
-            <Form.Label className="font-celeste-crud">
+          <Form.Group className="mb-3">
+            <Form.Label className="font-celeste-crud" htmlFor="inputDetail">
               Detalle de Cita*
             </Form.Label>
             <Form.Control
               required
+              id="inputDetail"
               as="textarea"
               type="text"
               placeholder="Ej: Control"
@@ -192,6 +251,7 @@ const CrearTurno = ({ pacientes, URLTurnos, getApiTurnos, turnos }) => {
               style={{ height: "100px" }}
               onChange={({ target }) => {
                 setDetalleCita(target.value.trimStart());
+                testDetail();
               }}
             ></Form.Control>
             <Form.Control.Feedback type="invalid" className="fw-bold">
@@ -200,17 +260,19 @@ const CrearTurno = ({ pacientes, URLTurnos, getApiTurnos, turnos }) => {
             </Form.Control.Feedback>
           </Form.Group>
           <Form.Group>
-            <Form.Label className="font-celeste-crud">
+            <Form.Label className="font-celeste-crud" htmlFor="inputDate">
               Seleccione fecha y hora (los turnos se reservan con 2 dias de
               anticipacion)
             </Form.Label>
 
             <DatePicker
               required
+              id="inputDate"
               locale={es}
               selected={startDate}
               onChange={(date) => {
                 handleDate(date);
+                testDate();
               }}
               minDate={minDate}
               filterDate={(date) => date.getDay() !== 6 && date.getDay() !== 0}
