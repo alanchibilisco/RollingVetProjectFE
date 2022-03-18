@@ -20,13 +20,10 @@ const CrearTurno = ({ pacientes, URLTurnos, getApiTurnos, turnos }) => {
   }
   let minDate2;
   if (minDate.getDay()===6) {
-    minDate2=addDays(setHours(setMinutes(minDate, 0), 8), 2);
-    console.log(minDate2);
+    minDate2=addDays(setHours(setMinutes(minDate, 0), 8), 2);    
   }else if(minDate.getDay()===0){
-    minDate2=addDays(setHours(setMinutes(minDate, 0), 8), 1);
-    console.log(minDate2);
-  }
-  console.log(minDate);
+    minDate2=addDays(setHours(setMinutes(minDate, 0), 8), 1);    
+  }  
   const [detalleCita, setDetalleCita] = useState("");
   const [veterinario, setVeterinario] = useState("");
   const [mascota, setMascota] = useState("");

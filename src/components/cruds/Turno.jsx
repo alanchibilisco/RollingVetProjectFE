@@ -42,7 +42,7 @@ const Turno = ({turno, URLTurnos, getApiTurnos}) => {
                 <td className="w-25">
                   <div className="d-flex justify-content-center">
                     <Link
-                      to={`/Adm/turnos/editar/${turno._id}`}
+                      to={`/Adm/turnos/editar/${turno.id}`}
                       className=" btn-celeste-crud mx-1 text-decoration-none text-center"
                     >
                       Editar

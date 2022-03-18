@@ -20,9 +20,6 @@ const EditTurnos = ({ URLTurnos, getApiTurnos, pacientes, turnos }) => {
       redirect("/");
     }
   }, []);
-  //validate
-  const [validated, setValidated] = useState(true);
-
   //state
   const [turno, setTurno] = useState({});
   const [data, setData] = useState(setHours(setMinutes(new Date(), 0), 8));
@@ -101,19 +98,72 @@ const EditTurnos = ({ URLTurnos, getApiTurnos, pacientes, turnos }) => {
     if (
       validateTextoEsp(turno.mascota) &&
       validateTextoEsp(turno.veterinario) &&
-      validateTextoEsp(detalleCitaRef.current.value.trimStart())
+      validateTextoEsp(detalleCitaRef.current.value.trimStart()&&testDate())
     ) {
       return true;
     } else {
       return false;
     }
   };
+  //validaciones
+  const[inputMasc, setInputMasc]=useState("");
+  const [inputVet, setInputVet]=useState("");
+  const [inputDetail, setInputDetail]=useState("");
+  const [inputDate, setInputDate]=useState("");
+  useEffect(()=>{
+    setInputMasc(document.getElementById("inputMasc"));
+    setInputVet(document.getElementById("inputVet"));
+    setInputDetail(document.getElementById("inputDetail"));
+    if(turno.startDate !== undefined){
+      setInputDate(document.getElementById("inputDate"));
+    };    
+  },[]);
+  console.log(inputDate);
+  const testMasc=()=>{
+    if (validateTextoEsp(inputMasc.value)&&inputMasc.value!=="") {
+      inputMasc.className="form-control is-valid";
+      return true;
+    }else{
+      inputMasc.className="form-control is-invalid"
+      return false;
+    }
+  };
+
+  const testVet=()=>{
+    if (validateTextoEsp(inputVet.value)&&inputVet.value!=="") {
+      inputVet.className="form-control is-valid";
+      return true;
+    }else{
+      inputVet.className="form-control is-invalid";
+      return false;
+    }
+  };
+
+  const testDetail=()=>{
+    if (validateTextoEsp(inputDetail.value)&&inputDetail.value.length>=4) {
+      inputDetail.className="form-control is-valid";
+      return true;
+    }else{
+      inputDetail.className="form-control is-invalid";
+      return false;
+    }
+  };
+
+  const testDate=()=>{
+    if (data.getDay()!==0&&data.getDay()!==6) {
+      inputDate.className="form-control is-valid mb-3";
+      return true;
+    }else{
+      inputDate.className="form-control is-invalid mb-3";
+      return false;
+    }
+  };
+  //
 
   //handleSubmit
   const handleSubmit = (e) => {
-    e.preventDefault();
-    const form = e.currentTarget;
-    if (form.checkValidity() !== false && gralValidate()) {
+    e.preventDefault();    
+    if (gralValidate()) {
       const turnoUpdate = {
         detalleCita: detalleCitaRef.current.value,
         veterinario: turno.veterinario,
@@ -151,9 +201,12 @@ const EditTurnos = ({ URLTurnos, getApiTurnos, pacientes, turnos }) => {
           }
         }
       });
-    } else {
-      e.stopPropagation();
-      Swal.fire("Ops!", "Algunos de los campos es incorrectos", "error");
+    } else {      
+      Swal.fire("Ops!", "Debe completar todos los campos correctamente", "error");
+      testMasc();
+      testVet();
+      testDetail();
+      testDate();
     }
   };
 
@@ -166,16 +219,17 @@ const EditTurnos = ({ URLTurnos, getApiTurnos, pacientes, turnos }) => {
         <Form
           className="my-5"
           onSubmit={handleSubmit}
-          noValidate
-          validated={validated}
+          noValidate          
         >
-          <Form.Group className="mb-3" controlId="formBasicMascota">
-            <Form.Label className="font-celeste-crud">Mascota*</Form.Label>
+          <Form.Group className="mb-3">
+            <Form.Label className="font-celeste-crud" htmlFor="inputMasc">Mascota*</Form.Label>
             <Form.Select
               required
+              id="inputMasc"
               value={turno.mascota}
               onChange={({ target }) => {
                 setTurno({ ...turno, mascota: target.value });
+                testMasc();
               }}
             >
               {pacientes.map((paciente) => (
@@ -190,13 +244,15 @@ const EditTurnos = ({ URLTurnos, getApiTurnos, pacientes, turnos }) => {
             </Form.Control.Feedback>
           </Form.Group>
 
-          <Form.Group className="mb-3" controlId="formBasicVet">
-            <Form.Label className="font-celeste-crud">Veterinario*</Form.Label>
+          <Form.Group className="mb-3">
+            <Form.Label className="font-celeste-crud" htmlFor="inputVet">Veterinario*</Form.Label>
             <Form.Select
               required
+              id="inputVet"
               value={turno.veterinario}
               onChange={({ target }) => {
                 handleVet(target);
+                testVet();
               }}
             >
               <option value="Molinari Pablo">Dr. Molinari Pablo D.</option>
@@ -207,12 +263,13 @@ const EditTurnos = ({ URLTurnos, getApiTurnos, pacientes, turnos }) => {
             </Form.Control.Feedback>
           </Form.Group>
 
-          <Form.Group className="mb-3" controlId="formBasicDetalle">
-            <Form.Label className="font-celeste-crud">
+          <Form.Group className="mb-3">
+            <Form.Label className="font-celeste-crud" htmlFor="inputDetail">
               Detalle de Cita*
             </Form.Label>
             <Form.Control
               required
+              id="inputDetail"
               as="textarea"
               type="text"
               placeholder="Mascota"
@@ -221,6 +278,7 @@ const EditTurnos = ({ URLTurnos, getApiTurnos, pacientes, turnos }) => {
               ref={detalleCitaRef}
               minLength={4}
               maxLength={500}
+              onChange={testDetail}
             ></Form.Control>
             <Form.Label className="font-celeste-crud">
               Seleccione fecha y hora (los turnos se reservan con 2 dias de
@@ -228,18 +286,20 @@ const EditTurnos = ({ URLTurnos, getApiTurnos, pacientes, turnos }) => {
             </Form.Label>
           </Form.Group>
           {/* inicio datepickery */}
-          {turno.startDate !== undefined ? (
+          {turno.startDate !== undefined ? (            
             <Form.Group>
-              <Form.Label className="font-celeste-crud">
+              <Form.Label className="font-celeste-crud" htmlFor="inputDate">
                 Seleccione fecha y hora (su turno era:{" "}
                 {new Date(turno.startDate).toLocaleString()})
               </Form.Label>
               <DatePicker
                 required
+                id="inputDate"
                 locale={es}
                 selected={data}
                 onChange={(date) => {
                   handleDate(date);
+                  testDate();
                 }}
                 minDate={minDate}
                 filterDate={(date) =>
@@ -249,7 +309,7 @@ const EditTurnos = ({ URLTurnos, getApiTurnos, pacientes, turnos }) => {
                 excludeTimes={excTimes}
                 includeTimes={includesTimes}
                 dateFormat="Pp"
-                className="container-fluid form form-control mb-3"
+                className="container-fluid form-control mb-3"
               ></DatePicker>
             </Form.Group>
           ) : (
