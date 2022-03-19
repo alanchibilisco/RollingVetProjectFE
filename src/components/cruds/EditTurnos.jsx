@@ -26,6 +26,7 @@ const EditTurnos = ({ URLTurnos, getApiTurnos, pacientes, turnos }) => {
   const [minDate, setMinDate] = useState(
     setHours(setMinutes(new Date(), 0), 8)
   );
+  const [turnoStr, setTurnoStr]=useState("");
 
   const [turnoVetFilter, setTurnoVetFilter] = useState([]);
 
@@ -46,7 +47,8 @@ const EditTurnos = ({ URLTurnos, getApiTurnos, pacientes, turnos }) => {
       const filter = turnos.filter(
         (turn) => turn.veterinario === turnoApi.veterinario
       );
-      setTurnoVetFilter(filter);
+      setTurnoVetFilter(filter);   
+      setTurnoStr(new Date(turnoApi.startDate).toLocaleString());
     } catch (error) {
       console.log(error);
     }
@@ -98,7 +100,7 @@ const EditTurnos = ({ URLTurnos, getApiTurnos, pacientes, turnos }) => {
     if (
       validateTextoEsp(turno.mascota) &&
       validateTextoEsp(turno.veterinario) &&
-      validateTextoEsp(detalleCitaRef.current.value.trimStart()&&testDate())
+      validateTextoEsp(detalleCitaRef.current.value.trimStart())&&testDate()
     ) {
       return true;
     } else {
@@ -114,9 +116,7 @@ const EditTurnos = ({ URLTurnos, getApiTurnos, pacientes, turnos }) => {
     setInputMasc(document.getElementById("inputMasc"));
     setInputVet(document.getElementById("inputVet"));
     setInputDetail(document.getElementById("inputDetail"));
-    if(turno.startDate !== undefined){
-      setInputDate(document.getElementById("inputDate"));
-    };    
+    setInputDate(document.getElementById("inputDate"));    
   },[]);
   console.log(inputDate);
   const testMasc=()=>{
@@ -149,7 +149,7 @@ const EditTurnos = ({ URLTurnos, getApiTurnos, pacientes, turnos }) => {
     }
   };
 
-  const testDate=()=>{
+  const testDate=()=>{    
     if (data.getDay()!==0&&data.getDay()!==6) {
       inputDate.className="form-control is-valid mb-3";
       return true;
@@ -280,17 +280,15 @@ const EditTurnos = ({ URLTurnos, getApiTurnos, pacientes, turnos }) => {
               maxLength={500}
               onChange={testDetail}
             ></Form.Control>
-            <Form.Label className="font-celeste-crud">
-              Seleccione fecha y hora (los turnos se reservan con 2 dias de
-              anticipacion)
-            </Form.Label>
+            <Form.Control.Feedback type="invalid" className="fw-bold">
+              Ingrese el detalle de la cita (min. 4 caracteres, max. 500
+              caracteres)
+            </Form.Control.Feedback>
           </Form.Group>
-          {/* inicio datepickery */}
-          {turno.startDate !== undefined ? (            
-            <Form.Group>
+          {/* inicio datepickery */}          
+            <Form.Group>              
               <Form.Label className="font-celeste-crud" htmlFor="inputDate">
-                Seleccione fecha y hora (su turno era:{" "}
-                {new Date(turno.startDate).toLocaleString()})
+                Seleccione fecha y hora su turno era " {turnoStr} "          
               </Form.Label>
               <DatePicker
                 required
@@ -312,10 +310,6 @@ const EditTurnos = ({ URLTurnos, getApiTurnos, pacientes, turnos }) => {
                 className="container-fluid form-control mb-3"
               ></DatePicker>
             </Form.Group>
-          ) : (
-            <></>
-          )}
-
           <div className="d-flex justify-content-end">
             <button className="btn-celeste-crud text-center mx-1">
               Guardar
