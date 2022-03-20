@@ -117,8 +117,7 @@ const EditTurnos = ({ URLTurnos, getApiTurnos, pacientes, turnos }) => {
     setInputVet(document.getElementById("inputVet"));
     setInputDetail(document.getElementById("inputDetail"));
     setInputDate(document.getElementById("inputDate"));    
-  },[]);
-  console.log(inputDate);
+  },[]);  
   const testMasc=()=>{
     if (validateTextoEsp(inputMasc.value)&&inputMasc.value!=="") {
       inputMasc.className="form-control is-valid";
