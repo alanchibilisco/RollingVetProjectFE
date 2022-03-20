@@ -86,23 +86,11 @@ const Contacto = () => {
         "success"
       );
       navigate("/");
-    } else if (testUser() && !testEmail() && !testMessage()) {
-      Swal.fire("Ops!", "Por favor ingrese su email y su mensaje", "error");
-      inputEmail.className = "form-control is-invalid";
-      inputMessage.className = "form-control is-invalid";
-    } else if (testEmail() && !testUser() && !testMessage()) {
-      Swal.fire("Ops!", "Por favor ingrese su nombre y el mensaje", "error");
-      inputUser.className = "form-control is-invalid";
-      inputMessage.className = "form-control is-invalid";
-    } else if (testMessage() && !testUser() && !testEmail()) {
-      Swal.fire("Ops!", "Por favor ingrese su nombre y su email", "error");
-      inputUser.className = "form-control is-invalid";
-      inputEmail.className = "form-control is-invalid";
-    } else {
-      Swal.fire("Ops!", "Debe completar todos los campos", "error");
-      inputEmail.className = "form-control is-invalid";
-      inputUser.className = "form-control is-invalid";
-      inputMessage.className = "form-control is-invalid";
+    }else {
+      Swal.fire("Ops!", "Debe completar todos los campos correctamente", "error");
+     testUser();
+     testEmail();
+     testMessage();
     }
   };
   return (

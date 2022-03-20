@@ -196,9 +196,7 @@ const EditPacientes = ({ URLPacientes, getApiPacientes }) => {
       testEsp();
       testRaza();
     }
-  };
-  //Effect para validar los campos al cargarlos
-  
+  };  
 
   return (
     <div>

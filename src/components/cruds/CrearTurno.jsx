@@ -12,74 +12,72 @@ import "react-datepicker/dist/react-datepicker.css";
 import { addDays, setHours, setMinutes } from "date-fns";
 
 const CrearTurno = ({ pacientes, URLTurnos, getApiTurnos, turnos }) => {
-  const minDate = addDays(setHours(setMinutes(new Date(), 0), 8), 2);  
+  const minDate = addDays(setHours(setMinutes(new Date(), 0), 8), 2); 
   const redirect = useNavigate();
   const session = JSON.parse(sessionStorage.getItem("stateSession")) || false;
   if (!session) {
     redirect("/");
   }
-    
+
   const [detalleCita, setDetalleCita] = useState("");
   const [veterinario, setVeterinario] = useState("");
   const [mascota, setMascota] = useState("");
-  
+
   //manejo de FH
   const [startDate, setStartDate] = useState(minDate);
   const [turnoVetFilter, setTurnoVetFilter] = useState([]);
   //fin FH
   //validaciones
-  const [inputMasc, setInputMasc]=useState("");
-  const [inputVet, setInputVet]=useState("");
-  const [inputDetail, setInputDetail]=useState("");
-  const [inputDate, setInputDate]=useState("");
-  useEffect(()=>{
+  const [inputMasc, setInputMasc] = useState("");
+  const [inputVet, setInputVet] = useState("");
+  const [inputDetail, setInputDetail] = useState("");
+  const [inputDate, setInputDate] = useState("");
+  useEffect(() => {
     setInputMasc(document.getElementById("inputMasc"));
     setInputVet(document.getElementById("inputVet"));
     setInputDetail(document.getElementById("inputDetail"));
-    setInputDate(document.getElementById("inputDate"));    
-  },[]);
-  
-  
-  const testMasc=()=>{
-    if (validateTextoEsp(inputMasc.value)&&inputMasc.value!=="") {
-      inputMasc.className="form-control is-valid";
+    setInputDate(document.getElementById("inputDate"));
+  }, []);
+
+  const testMasc = () => {
+    if (validateTextoEsp(inputMasc.value) && inputMasc.value !== "") {
+      inputMasc.className = "form-control is-valid";
       return true;
-    }else{
-      inputMasc.className="form-control is-invalid"
+    } else {
+      inputMasc.className = "form-control is-invalid";
       return false;
     }
   };
 
-  const testVet=()=>{
-    if (validateTextoEsp(inputVet.value)&&inputVet.value!=="") {
-      inputVet.className="form-control is-valid";
+  const testVet = () => {
+    if (validateTextoEsp(inputVet.value) && inputVet.value !== "") {
+      inputVet.className = "form-control is-valid";
       return true;
-    }else{
-      inputVet.className="form-control is-invalid";
+    } else {
+      inputVet.className = "form-control is-invalid";
       return false;
     }
   };
 
-  const testDetail=()=>{
-    if (validateTextoEsp(inputDetail.value)&&inputDetail.value.length>=4) {
-      inputDetail.className="form-control is-valid";
+  const testDetail = () => {
+    if (validateTextoEsp(inputDetail.value) && inputDetail.value.length >= 4) {
+      inputDetail.className = "form-control is-valid";
       return true;
-    }else{
-      inputDetail.className="form-control is-invalid";
+    } else {
+      inputDetail.className = "form-control is-invalid";
       return false;
     }
   };
 
-  const testDate=()=>{
-    if (startDate.getDay()!==0&&startDate.getDay()!==6) {
-      inputDate.className=" container-fluid form-control is-valid mb-3";
+  const testDate = () => {
+    if (startDate.getDay() !== 0 && startDate.getDay() !== 6) {
+      inputDate.className = " container-fluid form-control is-valid mb-3";
       return true;
-    }else{
-      inputDate.className=" conmtainer-fluid form-control is-invalid mb-3";
+    } else {
+      inputDate.className = " conmtainer-fluid form-control is-invalid mb-3";
       return false;
     }
   };
-
 
   //fin validaciones
   const handleVet = (target) => {
@@ -131,7 +129,8 @@ const CrearTurno = ({ pacientes, URLTurnos, getApiTurnos, turnos }) => {
     if (
       validateTextoEsp(detalleCita) &&
       validateTextoEsp(veterinario) &&
-      validateTextoEsp(mascota)&&testDate()
+      validateTextoEsp(mascota) &&
+      testDate()
     ) {
       return true;
     } else {
@@ -139,7 +138,7 @@ const CrearTurno = ({ pacientes, URLTurnos, getApiTurnos, turnos }) => {
     }
   };
   const handleSubmit = (e) => {
-    e.preventDefault();    
+    e.preventDefault();
     if (gralValidate()) {
       const newTurno = {
         detalleCita,
@@ -174,13 +173,17 @@ const CrearTurno = ({ pacientes, URLTurnos, getApiTurnos, turnos }) => {
           }
         }
       });
-    } else {      
-      Swal.fire("Ops!", "Debe completar todos los campos correctamente", "error");
+    } else {
+      Swal.fire(
+        "Ops!",
+        "Debe completar todos los campos correctamente",
+        "error"
+      );
       testMasc();
       testVet();
       testDetail();
       testDate();
-    }    
+    }
   };
 
   return (
@@ -189,13 +192,11 @@ const CrearTurno = ({ pacientes, URLTurnos, getApiTurnos, turnos }) => {
       <Container className="py-5">
         <h1 className="font-celeste-crud">Agregar Turno</h1>
         <hr />
-        <Form
-          className="my-5"
-          onSubmit={handleSubmit}
-          noValidate          
-        >
+        <Form className="my-5" onSubmit={handleSubmit} noValidate>
           <Form.Group className="mb-3">
-            <Form.Label className="font-celeste-crud" htmlFor="inputMasc">Mascota*</Form.Label>
+            <Form.Label className="font-celeste-crud" htmlFor="inputMasc">
+              Mascota*
+            </Form.Label>
             <Form.Select
               required
               id="inputMasc"
@@ -218,7 +219,9 @@ const CrearTurno = ({ pacientes, URLTurnos, getApiTurnos, turnos }) => {
           </Form.Group>
 
           <Form.Group className="mb-3">
-            <Form.Label className="font-celeste-crud" htmlFor="inputVet">Veterinario*</Form.Label>
+            <Form.Label className="font-celeste-crud" htmlFor="inputVet">
+              Veterinario*
+            </Form.Label>
             <Form.Select
               required
               id="inputVet"
