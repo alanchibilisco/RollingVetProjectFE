@@ -164,7 +164,7 @@ const CrearTurno = ({ pacientes, URLTurnos, getApiTurnos, turnos }) => {
               body: JSON.stringify(newTurno),
             });
             if (res.status === 201) {
-              Swal.fire("Creado!", "El turno fue creado.", "OK");
+              Swal.fire("Creado!", "El turno fue creado.", "success");
               getApiTurnos();
               navigate("/Adm/turnos");
             }
