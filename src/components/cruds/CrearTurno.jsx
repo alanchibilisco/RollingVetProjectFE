@@ -12,24 +12,19 @@ import "react-datepicker/dist/react-datepicker.css";
 import { addDays, setHours, setMinutes } from "date-fns";
 
 const CrearTurno = ({ pacientes, URLTurnos, getApiTurnos, turnos }) => {
-  const minDate = addDays(setHours(setMinutes(new Date(), 0), 8), 2);
+  const minDate = addDays(setHours(setMinutes(new Date(), 0), 8), 2);  
   const redirect = useNavigate();
   const session = JSON.parse(sessionStorage.getItem("stateSession")) || false;
   if (!session) {
     redirect("/");
   }
-  let minDate2;
-  if (minDate.getDay()===6) {
-    minDate2=addDays(setHours(setMinutes(minDate, 0), 8), 2);    
-  }else if(minDate.getDay()===0){
-    minDate2=addDays(setHours(setMinutes(minDate, 0), 8), 1);    
-  }  
+    
   const [detalleCita, setDetalleCita] = useState("");
   const [veterinario, setVeterinario] = useState("");
   const [mascota, setMascota] = useState("");
   
   //manejo de FH
-  const [startDate, setStartDate] = useState(minDate2);
+  const [startDate, setStartDate] = useState(minDate);
   const [turnoVetFilter, setTurnoVetFilter] = useState([]);
   //fin FH
   //validaciones
@@ -77,10 +72,10 @@ const CrearTurno = ({ pacientes, URLTurnos, getApiTurnos, turnos }) => {
 
   const testDate=()=>{
     if (startDate.getDay()!==0&&startDate.getDay()!==6) {
-      inputDate.className="form-control is-valid mb-3";
+      inputDate.className=" container-fluid form-control is-valid mb-3";
       return true;
     }else{
-      inputDate.className="form-control is-invalid mb-3";
+      inputDate.className=" conmtainer-fluid form-control is-invalid mb-3";
       return false;
     }
   };
@@ -279,13 +274,14 @@ const CrearTurno = ({ pacientes, URLTurnos, getApiTurnos, turnos }) => {
                 handleDate(date);
                 testDate();
               }}
-              minDate={minDate2}
+              onClickOutside={testDate}
+              minDate={minDate}
               filterDate={(date) => date.getDay() !== 6 && date.getDay() !== 0}
               showTimeSelect
               excludeTimes={excTimes}
               includeTimes={incTimes}
               dateFormat="Pp"
-              className="container-fluid form form-control mb-3"
+              className="container-fluid form-control mb-3"
             ></DatePicker>
           </Form.Group>
           <div className="d-flex justify-content-end">

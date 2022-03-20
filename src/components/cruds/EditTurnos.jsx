@@ -299,6 +299,7 @@ const EditTurnos = ({ URLTurnos, getApiTurnos, pacientes, turnos }) => {
                   handleDate(date);
                   testDate();
                 }}
+                onClickOutside={testDate}
                 minDate={minDate}
                 filterDate={(date) =>
                   date.getDay() !== 6 && date.getDay() !== 0

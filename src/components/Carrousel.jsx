@@ -7,24 +7,15 @@ import carrusel3 from "./img/c5.png";
 const Carrousel = () => {
   return (
     <div>
-      <Carousel fade>
+      <Carousel>
         <Carousel.Item>
-          <img className="d-block w-100  img-banner2" src={carrusel1} alt="First slide" />
-          <Carousel.Caption>
-          </Carousel.Caption>
+          <img className="w-100  img-banner2" src={carrusel1} alt="First slide" />        
         </Carousel.Item>
         <Carousel.Item>
-          <img className="d-block w-100 img-banner2" src={carrusel2} alt="Second slide" />
-
-          <Carousel.Caption>
-          </Carousel.Caption>
+          <img className="w-100 img-banner2" src={carrusel2} alt="Second slide" />          
         </Carousel.Item>
         <Carousel.Item>
-          <img className="d-block w-100 img-banner2" src={carrusel3} alt="Third slide" />
-
-          <Carousel.Caption>
-            
-          </Carousel.Caption>
+          <img className="w-100 img-banner2" src={carrusel3} alt="Third slide" />        
         </Carousel.Item>
       </Carousel>
     </div>

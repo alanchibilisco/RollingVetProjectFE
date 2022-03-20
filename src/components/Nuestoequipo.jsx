@@ -17,10 +17,7 @@ const Nuestoequipo = () => {
         </Carousel.Item>
         <Carousel.Item>
           <img className=" rounded mx-auto img-banner-serv" src={doc2} alt="Second slide" />
-        </Carousel.Item>
-        {/* <Carousel.Item>
-          <img className=" rounded mx-auto img-banner-serv" src={doc3} alt="Third slide" />
-        </Carousel.Item> */}
+        </Carousel.Item>        
       </Carousel>
     </div>
       </div>
